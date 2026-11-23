@@ -1,0 +1,55 @@
+﻿<Window x:Class="BveVehicleEditor.BackupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource BkX.001}" Width="480" SizeToContent="Height" MinWidth="380"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+
+    <!-- 「すべて保存」で上書きする前に、前の中身を控えとして残すか・残す数を選ぶウィンドウ（「ファイル → バックアップの設定…」から開く） -->
+    <StackPanel Margin="12">
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,10" FontSize="12"
+                   Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                   Text="{DynamicResource BkX.002}" />
+
+        <CheckBox x:Name="ChkEnabled" Content="{DynamicResource BkX.003}" Margin="0,0,0,8" Click="Input_Changed" />
+
+        <StackPanel x:Name="PanelCount" Orientation="Horizontal" Margin="0,0,0,8">
+            <TextBlock Text="{DynamicResource BkX.004}" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <TextBox x:Name="TxtMaxCount" Width="80" TextChanged="Input_Changed" ToolTip="{DynamicResource BkX.005}" />
+            <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Text="{DynamicResource BkX.006}"
+                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+        </StackPanel>
+
+        <TextBlock Text="{DynamicResource BkX.007}"
+                   TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+        <TextBox x:Name="TxtFolder" IsReadOnly="True" TextWrapping="Wrap" Margin="0,2,0,12" />
+
+        <!-- 自動保存：決まった間隔で、保存していない編集中の中身を控えとしてアプリのフォルダーに書く（車両ファイルは書き換えない） -->
+        <TextBlock TextWrapping="Wrap" Margin="0,0,0,8" FontSize="12"
+                   Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                   Text="{DynamicResource BkX.008}" />
+
+        <CheckBox x:Name="ChkAutoSave" Content="{DynamicResource BkX.009}" Margin="0,0,0,8" Click="Input_Changed" />
+
+        <StackPanel x:Name="PanelAutoSave" Orientation="Horizontal" Margin="0,0,0,8">
+            <TextBlock Text="{DynamicResource BkX.010}" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <TextBox x:Name="TxtAutoSaveMinutes" Width="80" TextChanged="Input_Changed" ToolTip="{DynamicResource BkX.011}" />
+            <TextBlock VerticalAlignment="Center" Margin="8,0,0,0" Text="{DynamicResource BkX.012}"
+                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+        </StackPanel>
+
+        <TextBlock Text="{DynamicResource BkX.013}" TextWrapping="Wrap" FontSize="12" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+        <TextBox x:Name="TxtAutoSaveFolder" IsReadOnly="True" TextWrapping="Wrap" Margin="0,2,0,8" />
+
+        <TextBlock x:Name="TxtProblem" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,8"
+                   Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+
+        <DockPanel>
+            <Button Content="{DynamicResource BkX.014}" Click="BtnDefault_Click" ToolTip="{DynamicResource BkX.015}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnOk" Content="OK" MinWidth="90" Margin="0,0,8,0" IsDefault="True" Click="BtnOk_Click"
+                        Style="{DynamicResource AccentButtonStyle}" />
+                <Button Content="{DynamicResource BkX.016}" MinWidth="90" IsCancel="True" />
+            </StackPanel>
+        </DockPanel>
+    </StackPanel>
+</Window>

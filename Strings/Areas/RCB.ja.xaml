@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ResistanceCalculator.Brake.cs の文（日本語）。英語は RCB.en.xaml -->
+    <sys:String x:Key="RCB.001">限流値は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="RCB.002">限流値のときの力は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="RCB.003">段の数は 1～{0} にしてください。</sys:String>
+    <sys:String x:Key="RCB.004">いちばん速い段と最後の段の速度は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="RCB.005">最後の段の速度は、いちばん速い段の速度以下にしてください（ブレーキは速い速度から段が進みます）。</sys:String>
+    <sys:String x:Key="RCB.006">段ごとの切り替わる速度の数（{0} 個）を、段の数（{1}）と同じにするか、空にしてください。</sys:String>
+    <sys:String x:Key="RCB.007">段ごとの切り替わる速度は、0 より大きく、だんだん小さくなる（同じでもよい）並びにしてください（速い順）。</sys:String>
+    <sys:String x:Key="RCB.008">段ごとの限流値はマイナスにできません。</sys:String>
+    <sys:String x:Key="RCB.009">飽和の強さ s は 0 より大きくしてください（ふつう 0.2～5）。</sys:String>
+    <sys:String x:Key="RCB.010">限流値より上の飽和の強さはマイナスにできません（0 なら s と同じ）。</sys:String>
+    <sys:String x:Key="RCB.011">速度による電圧の下がり b はマイナスにできません（ふつう 0～0.003）。</sys:String>
+    <sys:String x:Key="RCB.012">速度による電圧の下がり b が大きすぎて、速い段で電流が流れません。b を小さくしてください。</sys:String>
+    <sys:String x:Key="RCB.013">最高速度は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="RCB.014">速度の刻みは 0 より大きくしてください。</sys:String>
+</ResourceDictionary>

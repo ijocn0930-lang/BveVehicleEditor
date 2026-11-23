@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- AudioDeviceCheck.cs の文（日本語）。英語は Aud.en.xaml -->
+    <sys:String x:Key="Aud.001">
+（サービスの開始には管理者の権限が要ります。管理者でないユーザーは、PC の管理者に頼んでください。PC を再起動しても開始されることがあります）</sys:String>
+    <sys:String x:Key="Aud.002">Windows のサービス「Windows Audio Endpoint Builder」が止まっています（このサービスが止まると「Windows Audio」も止まります）。Windows の「サービス」で、この 2 つを開始してください。</sys:String>
+    <sys:String x:Key="Aud.003">Windows のサービス「Windows Audio」が止まっています。Windows の「サービス」で開始してください。</sys:String>
+    <sys:String x:Key="Aud.004">音の出る機器（スピーカー・ヘッドホンなど）が見つかりません。つながっているか、Windows の「サウンド」の設定で無効になっていないか確かめてください。</sys:String>
+    <sys:String x:Key="Aud.005">PC で音を出せない状態です（音の出る機器がないか、Windows の「Windows Audio」「Windows Audio Endpoint Builder」のサービスが止まっています）。ほかのアプリで音が出るか確かめてください。</sys:String>
+</ResourceDictionary>

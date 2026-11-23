@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- FontWindow.xaml の文（日本語）。英語は FoX.en.xaml -->
+    <sys:String x:Key="FoX.001">フォント</sys:String>
+    <sys:String x:Key="FoX.002">6 つのタブのテキストエリアの文字に使います。等幅のフォント（文字の幅がそろうもの）がおすすめです。BIZ UDゴシック・MS ゴシックは日本語のコメントも同じフォントで出ます。</sys:String>
+    <sys:String x:Key="FoX.003">フォント</sys:String>
+    <sys:String x:Key="FoX.004">上はおすすめの等幅のフォント（この PC に入っているものだけ）、下はこの PC に入っているすべてのフォント</sys:String>
+    <sys:String x:Key="FoX.005">大きさ</sys:String>
+    <sys:String x:Key="FoX.006">8～40（Ctrl+マウスホイールでも変えられます）</sys:String>
+    <sys:String x:Key="FoX.007">見本</sys:String>
+    <sys:String x:Key="FoX.008">初めに戻す</sys:String>
+    <sys:String x:Key="FoX.009">Consolas・13 にします（OK で当てはめます）</sys:String>
+    <sys:String x:Key="FoX.010">キャンセル</sys:String>
+</ResourceDictionary>

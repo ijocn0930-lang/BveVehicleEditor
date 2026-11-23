@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TableWindow.MotorNoise.cs の文（日本語）。英語は TwM.en.xaml -->
+    <sys:String x:Key="TwM.001">{0} 行目の{1}「{2}」</sys:String>
+    <sys:String x:Key="TwM.002">　ほか {0} か所</sys:String>
+    <sys:String x:Key="TwM.003">音量が 0～1 でないセル（1 が元の音量）：{0}{1}</sys:String>
+    <sys:String x:Key="TwM.004">ピッチがマイナスのセル（1 が元の高さ）：{0}{1}</sys:String>
+    <sys:String x:Key="TwM.005">サウンドのファイルを読み込めていないので、音の列が Sound.txt の [Motor] にあるかは調べられません。</sys:String>
+    <sys:String x:Key="TwM.006">・</sys:String>
+    <sys:String x:Key="TwM.007"> ほか {0} 列</sys:String>
+    <sys:String x:Key="TwM.008">{0}{1} は Sound.txt の [Motor] に書かれていないので鳴りません（サウンドのタブの [Motor] で番号を足せます）。</sys:String>
+</ResourceDictionary>

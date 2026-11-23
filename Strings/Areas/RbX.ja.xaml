@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ResistanceBrakeWindow.xaml の文（日本語）。英語は RbX.en.xaml -->
+    <sys:String x:Key="RbX.001">抵抗制御で作る - ブレーキ</sys:String>
+    <sys:String x:Key="RbX.002">発電ブレーキの式で、段ごとの表（列が段）を作ります。速い速度から下がり、電流が限流値まで下がると次の段（抵抗の小さい段）へ進みます。段 1 がいちばん速い速度で使われ、最後の段より遅くなると電流が保てずにブレーキが弱まります。満車の表は空車と同じ値で作ります（満車は進段パラメーターの限流値が変わるだけです）。</sys:String>
+    <sys:String x:Key="RbX.003">作る表</sys:String>
+    <sys:String x:Key="RbX.004">チェックした表をまとめて作ります。開いている表は画面の表を置き換えます（保存するまでファイルは変わりません）。ほかの表は、確認してからファイルに直接書きます（書く前の中身は同じフォルダーに .bak で残します）。</sys:String>
+    <sys:String x:Key="RbX.005">グラフで見る表：</sys:String>
+    <sys:String x:Key="RbX.006">段と限流値</sys:String>
+    <sys:String x:Key="RbX.007">段の数</sys:String>
+    <sys:String x:Key="RbX.008">ブレーキの段の数（表の列の数）</sys:String>
+    <sys:String x:Key="RbX.009">限流値 [A]</sys:String>
+    <sys:String x:Key="RbX.010">進段パラメーターの CurrentLimitingValue_Empty（空車）。段ごとに違うときは、いちばん多い値</sys:String>
+    <sys:String x:Key="RbX.011">限流値の力 [N]</sys:String>
+    <sys:String x:Key="RbX.012">電流が限流値のときのブレーキの力（M 車 1 両あたり）</sys:String>
+    <sys:String x:Key="RbX.013">段 1 [km/h]</sys:String>
+    <sys:String x:Key="RbX.014">いちばん速い段（段 1）の電流が限流値まで下がる速度</sys:String>
+    <sys:String x:Key="RbX.015">最後の段 [km/h]</sys:String>
+    <sys:String x:Key="RbX.016">最後の段の電流が限流値まで下がる速度。これより遅いとブレーキが弱まります</sys:String>
+    <sys:String x:Key="RbX.017">飽和の強さ s</sys:String>
+    <sys:String x:Key="RbX.018">小さいほど鉄心の飽和が強い（ふつう 0.2～5。既定 1）。ブレーキが弱まり始めてから 0 になるまでの速さにも効きます</sys:String>
+    <sys:String x:Key="RbX.019">電圧の下がり b</sys:String>
+    <sys:String x:Key="RbX.020">速度が上がるほど電動機の起こす電圧が下がる割合 [1/(km/h)]（φ(x) − b × 速度）。大きいほど速い段で電流が増えにくくなります（ふつう 0～0.003。既定 0）</sys:String>
+    <sys:String x:Key="RbX.021">限流値より上の飽和</sys:String>
+    <sys:String x:Key="RbX.022">電流が限流値より大きいときだけ使う飽和の強さ。s より小さくすると、段が切り替わったあと電流が増えにくくなります（0 なら s と同じ。既定 0）</sys:String>
+    <sys:String x:Key="RbX.023">今の表に合わせる</sys:String>
+    <sys:String x:Key="RbX.024">段ごとの切り替わる速度 [km/h]（速い順に「,」で区切る。空なら段 1 と最後の段の間を同じ比で並べる）</sys:String>
+    <sys:String x:Key="RbX.025">その段の電流が段の限流値まで下がって、次の段へ進む速度。数は段の数と同じにします。「今の表に合わせる」で、今の表の値を写したほうが合うときは入ります</sys:String>
+    <sys:String x:Key="RbX.026">表の形</sys:String>
+    <sys:String x:Key="RbX.027">最高速度 [km/h]</sys:String>
+    <sys:String x:Key="RbX.028">表の最後の行の速度</sys:String>
+    <sys:String x:Key="RbX.029">速度の刻み [km/h]</sys:String>
+    <sys:String x:Key="RbX.030">表の行の速度の間隔</sys:String>
+    <sys:String x:Key="RbX.031">表に入れる</sys:String>
+    <sys:String x:Key="RbX.032">チェックした表を作ります（開いている表は画面で置き換え、ほかの表はファイルに直接書きます。先頭のコメントの行は残します）</sys:String>
+    <sys:String x:Key="RbX.033">閉じる</sys:String>
+</ResourceDictionary>

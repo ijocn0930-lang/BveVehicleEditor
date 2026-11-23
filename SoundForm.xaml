@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="BveVehicleEditor.SoundForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- サウンドのファイル（Sound.txt）の入力フォーム（段階1：セクションを選んで、音のファイルのパスと参照ボタン） -->
+    <!-- 名前のキーのセクション（[Horn] など）はキーごと、番号のセクション（[Run] など）は書かれている番号ごとに行を出す。行は SoundForm.xaml.cs で作る -->
+    <StackPanel Grid.IsSharedSizeScope="True">
+        <TextBlock Text="{DynamicResource SfX.001}"
+                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontSize="12" Margin="2,0,0,4" TextWrapping="Wrap" />
+
+        <!-- サウンドのファイルを読み込めていない、などの知らせ -->
+        <TextBlock x:Name="TxtSoundNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+        <!-- 見つからないファイル・使えないパスの警告（どのセクションの分も出す） -->
+        <TextBlock x:Name="TxtSoundWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                   Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+        <!-- 古い形式（Version 1.0）の知らせと「3.01 に書き直す」ボタン（パネルの書き直しと同じ形） -->
+        <StackPanel x:Name="PanelLegacy" Visibility="Collapsed" Margin="0,0,0,6">
+            <TextBlock x:Name="TxtLegacy" TextWrapping="Wrap" Margin="0,0,0,4" Foreground="{DynamicResource SystemFillColorCautionBrush}"
+                       Text="{DynamicResource SfX.002}" />
+            <Button x:Name="BtnUpgradeSound" Content="{DynamicResource SfX.003}" HorizontalAlignment="Left" Padding="8,4,8,5" Click="BtnUpgradeSound_Click"
+                    ToolTip="{DynamicResource SfX.004}" />
+        </StackPanel>
+
+        <DockPanel Margin="0,0,0,6">
+            <TextBlock Text="{DynamicResource SfX.005}" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <ComboBox x:Name="CmbSection" SelectionChanged="CmbSection_SelectionChanged" HorizontalAlignment="Stretch" />
+        </DockPanel>
+
+        <GroupBox x:Name="GroupKeys" Margin="0,0,0,6">
+            <StackPanel>
+                <TextBlock x:Name="TxtSectionNote" TextWrapping="Wrap" FontSize="12" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+                <Grid x:Name="GridKeys" />
+                <!-- 番号のセクションだけ：番号を入れて「この番号で音を選ぶ」 -->
+                <StackPanel x:Name="PanelAddNumber" Orientation="Horizontal" Margin="0,6,0,0" Visibility="Collapsed">
+                    <TextBlock Text="{DynamicResource SfX.006}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <TextBox x:Name="TxtNewNumber" Width="70" Margin="0,0,6,0" ToolTip="{DynamicResource SfX.007}" />
+                    <Button x:Name="BtnAddNumber" Content="{DynamicResource SfX.008}" Click="BtnAddNumber_Click" Padding="8,4,8,5"
+                            ToolTip="{DynamicResource SfX.009}" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

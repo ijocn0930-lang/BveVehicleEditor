@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- AboutWindow.xaml の文（日本語）。英語は AbX.en.xaml -->
+    <sys:String x:Key="AbX.001">バージョン情報</sys:String>
+    <sys:String x:Key="AbX.002">開発者：</sys:String>
+    <sys:String x:Key="AbX.003">ブラウザーで開きます</sys:String>
+    <sys:String x:Key="AbX.004">使っているもの</sys:String>
+    <sys:String x:Key="AbX.005">閉じる</sys:String>
+</ResourceDictionary>

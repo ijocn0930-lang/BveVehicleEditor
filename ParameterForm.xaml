@@ -1,0 +1,956 @@
+﻿<UserControl x:Class="BveVehicleEditor.ParameterForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- パラメーターファイルの入力フォーム（段階1：テキストを読んで表示するだけ。値はまだ変えられない） -->
+    <!-- 項目名にマウスを乗せると、ファイルに書くキーの名前と説明が見える -->
+    <UserControl.Resources>
+        <!-- 左側の項目名 -->
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,8,2" />
+        </Style>
+        <!-- チェックボックスの文字は、幅 480 の小さいウィンドウでも切れないよう折り返す -->
+        <Style TargetType="CheckBox" BasedOn="{StaticResource {x:Type CheckBox}}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!-- 右側の値。打ち終わって欄から出たとき・Enter を押したときに、下のテキストへ書き込む（ParameterForm.xaml.cs） -->
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Margin" Value="0,2" />
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Grid.IsSharedSizeScope：枠（基本・運転台・定速運転装置）ごとの項目名の幅をそろえ、右側の欄の左端を合わせる -->
+    <StackPanel Grid.IsSharedSizeScope="True">
+        <TextBlock Text="{DynamicResource PmX.001}"
+                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontSize="12" Margin="2,0,0,4" TextWrapping="Wrap" />
+        <!-- 同じセクションが 2 回以上書かれているときの知らせ（ParameterForm.xaml.cs の ShowValues） -->
+        <TextBlock x:Name="TxtParamNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="2,0,0,6"
+                   Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+        <!-- 公式の一覧にないセクション・キー（書き間違いかもしれない）の警告（ParameterForm.xaml.cs の ShowValues） -->
+        <TextBlock x:Name="TxtParamWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="2,0,0,6"
+                   Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+
+        <!-- ファイルの先頭（セクションの前）に書く項目 -->
+        <GroupBox Header="{DynamicResource PmX.002}" Margin="0,0,0,6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{DynamicResource PmX.003}" Style="{StaticResource FieldLabel}"
+                           ToolTip="{DynamicResource PmX.004}" />
+                <!-- 選ぶと、下のテキストの FirstCar の行を書き換える（なければ足す） -->
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <ComboBox x:Name="CmbFirstCar" Margin="0,2" MinWidth="160"
+                              SelectionChanged="CmbFirstCar_SelectionChanged">
+                        <ComboBoxItem Content="{DynamicResource PmX.005}" />
+                        <ComboBoxItem Content="{DynamicResource PmX.006}" />
+                    </ComboBox>
+                    <!-- 書かれていないときだけ、既定値を薄く出す -->
+                    <TextBlock x:Name="TxtFirstCarDefault" VerticalAlignment="Center" Margin="8,0,0,0" FontStyle="Italic"
+                               Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="Collapsed" />
+                </StackPanel>
+
+                <TextBlock Grid.Row="1" Text="{DynamicResource PmX.007}" Style="{StaticResource FieldLabel}"
+                           ToolTip="{DynamicResource PmX.008}" />
+                <!-- クリックすると、下のテキストの LoadCompensating の行を true / false に書き換える（なければ足す） -->
+                <!-- 書かれていないときの中間の印（－）は表示用。クリックでは true と false だけを行き来する（IsThreeState="False"） -->
+                <CheckBox Grid.Row="1" Grid.Column="1" x:Name="ChkLoadCompensating" Margin="0,2" Click="ChkLoadCompensating_Click" />
+            </Grid>
+        </GroupBox>
+
+        <!-- [Cab]（ツーハンドル）か [OneLeverCab]（ワンハンドル）のどちらか1つに書く項目 -->
+        <GroupBox Header="{DynamicResource PmX.009}" Margin="0,0,0,6">
+            <StackPanel>
+            <!-- 数が合わない・数字でないときの警告の一覧（スクロールしなくても目に入るよう、枠の一番上に出す） -->
+            <TextBlock x:Name="TxtCabWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                       Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{DynamicResource PmX.010}" Style="{StaticResource FieldLabel}"
+                           ToolTip="{DynamicResource PmX.011}" />
+                <WrapPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                    <!-- 選ぶと、下のテキストの [Cab] / [OneLeverCab] のセクション名を書き換える（中の項目はそのまま） -->
+                    <RadioButton x:Name="RdoCab" Content="{DynamicResource PmX.012}" Margin="0,2,12,2" Click="CabRadio_Click" />
+                    <RadioButton x:Name="RdoOneLeverCab" Content="{DynamicResource PmX.013}" Margin="0,2" Click="CabRadio_Click" />
+                </WrapPanel>
+
+                <!-- [Cab] と [OneLeverCab] が両方あるとき・どちらもないときの知らせ -->
+                <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtCabNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+
+                <TextBlock Grid.Row="2" Text="{DynamicResource PmX.014}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.015}" />
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtBrakeNotchCount" />
+
+                <TextBlock Grid.Row="3" Text="{DynamicResource PmX.016}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.017}" />
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtPowerNotchCount" />
+
+                <TextBlock Grid.Row="4" Text="{DynamicResource PmX.018}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.019}" />
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtHoldingSpeedNotchCount" />
+
+                <TextBlock Grid.Row="5" Text="{DynamicResource PmX.020}" Style="{StaticResource FieldLabel}"
+                           ToolTip="{DynamicResource PmX.021}" />
+                <CheckBox Grid.Row="5" Grid.Column="1" x:Name="ChkHoldingSpeedBrake" Margin="0,2" Click="ChkHoldingSpeedBrake_Click" />
+
+                <TextBlock Grid.Row="6" Text="{DynamicResource PmX.022}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.023}" />
+                <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtAtsCancelNotch" />
+
+                <TextBlock Grid.Row="7" Text="{DynamicResource PmX.024}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.025}" />
+                <TextBox Grid.Row="7" Grid.Column="1" x:Name="TxtMotorBrakeNotch" />
+
+                <TextBlock Grid.Row="8" Text="{DynamicResource PmX.026}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.027}" />
+                <TextBox Grid.Row="8" Grid.Column="1" x:Name="TxtReverserText" />
+
+                <TextBlock Grid.Row="9" Text="{DynamicResource PmX.028}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.029}" />
+                <TextBox Grid.Row="9" Grid.Column="1" x:Name="TxtPowerText" />
+
+                <TextBlock Grid.Row="10" Text="{DynamicResource PmX.030}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.031}" />
+                <TextBox Grid.Row="10" Grid.Column="1" x:Name="TxtBrakeText" />
+
+                <TextBlock Grid.Row="11" Text="{DynamicResource PmX.032}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.033}" />
+                <TextBox Grid.Row="11" Grid.Column="1" x:Name="TxtHoldingSpeedText" />
+            </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [ConstantSpeedControl] 定速運転装置。定速スイッチを扱ったときの制御（0～3 から選ぶ） -->
+        <!-- 選ぶと、下のテキストの Power / Neutral / Brake を書き換える（なければ足す。セクションがなければセクションごと足す） -->
+        <GroupBox Header="{DynamicResource PmX.034}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 0～3 以外の値が書かれているときの警告 -->
+                <TextBlock x:Name="TxtConstantSpeedWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.035}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.036}" />
+                    <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                        <ComboBox x:Name="CmbConstantSpeedPower" Tag="Power" Margin="0,2" MinWidth="180" SelectionChanged="ConstantSpeed_SelectionChanged">
+                            <ComboBoxItem Content="{DynamicResource PmX.037}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.038}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.039}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.040}" />
+                        </ComboBox>
+                        <TextBlock x:Name="TxtConstantSpeedPowerDefault" VerticalAlignment="Center" Margin="8,0,0,0" FontStyle="Italic"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="Collapsed" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.041}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.042}" />
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <ComboBox x:Name="CmbConstantSpeedNeutral" Tag="Neutral" Margin="0,2" MinWidth="180" SelectionChanged="ConstantSpeed_SelectionChanged">
+                            <ComboBoxItem Content="{DynamicResource PmX.043}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.044}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.045}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.046}" />
+                        </ComboBox>
+                        <TextBlock x:Name="TxtConstantSpeedNeutralDefault" VerticalAlignment="Center" Margin="8,0,0,0" FontStyle="Italic"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="Collapsed" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.047}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.048}" />
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <ComboBox x:Name="CmbConstantSpeedBrake" Tag="Brake" Margin="0,2" MinWidth="180" SelectionChanged="ConstantSpeed_SelectionChanged">
+                            <ComboBoxItem Content="{DynamicResource PmX.049}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.050}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.051}" />
+                            <ComboBoxItem Content="{DynamicResource PmX.052}" />
+                        </ComboBox>
+                        <TextBlock x:Name="TxtConstantSpeedBrakeDefault" VerticalAlignment="Center" Margin="8,0,0,0" FontStyle="Italic"
+                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}" Visibility="Collapsed" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [MainCircuit] 主制御装置。数字の欄は右に単位を出す。打ち終わって Enter かほかの欄へ移ると書き込む -->
+        <GroupBox Header="{DynamicResource PmX.053}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- ヘッダーのバージョンが古く、使えない項目があるときの知らせ -->
+                <TextBlock x:Name="TxtMainCircuitNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <!-- 数字でない・古いバージョンで使えない項目が書かれている、などの警告 -->
+                <TextBlock x:Name="TxtMainCircuitWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <!-- 単位 -->
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.054}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.055}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtRegenerationLimit" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="km/h" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.056}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.057}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtRegenerationStartLimit" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="km/h" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.058}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.059}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtLeverDelay" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{DynamicResource PmX.060}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.061}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.062}" />
+                    <CheckBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="ChkBrakePriority" Margin="0,2" Click="ChkBrakePriority_Click" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.063}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.064}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtSlipVelocityCoefficient" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="km/h/A" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [PowerReAdhesion] 主制御装置（力行・電気ブレーキ）の空転・滑走の再粘着制御。セクションを書かないと再粘着制御は行われない -->
+        <!-- 「使う」をチェックするとセクションを足し、外すと確認してからセクションごと消す -->
+        <GroupBox Header="{DynamicResource PmX.065}" Margin="0,0,0,6">
+            <StackPanel>
+                <CheckBox x:Name="ChkPowerReAdhesionEnabled" Margin="0,2,0,4" Click="ChkPowerReAdhesionEnabled_Click"
+                          Content="{DynamicResource PmX.066}" />
+                <!-- 数字でない、などの警告（このセクションはどのバージョンでも使える扱い） -->
+                <TextBlock x:Name="TxtPowerReAdhesionWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <!-- 単位 -->
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.067}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.068}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtSlipVelocity" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="km/h" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.069}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.070}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtSlipAcceleration" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.071}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.072}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtBalanceAcceleration" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.073}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.074}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtHoldingTime" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{DynamicResource PmX.075}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.076}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.077}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtReferenceAcceleration" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="5" Text="{DynamicResource PmX.078}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.079}" />
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="TxtReferenceDeceleration" />
+                    <TextBlock Grid.Row="5" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="6" Text="{DynamicResource PmX.080}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.081}" />
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtCurrentDecrease" />
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="A/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="7" Text="{DynamicResource PmX.082}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.083}" />
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="TxtCurrentIncrease" />
+                    <TextBlock Grid.Row="7" Grid.Column="2" Text="A/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- ブレーキ方式 [Ecb]（電気指令式）/ [Smee]（電磁直通）/ [Cl]（自動空気）のどれか1つ -->
+        <!-- 方式を選ぶとセクション名を書き換える。その方式で書けない項目は灰色 -->
+        <GroupBox Header="{DynamicResource PmX.084}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- どれも書かれていない・2つ以上書かれているときの知らせ -->
+                <TextBlock x:Name="TxtBrakeSystemNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <!-- 数字でない・この方式で使わない項目が書かれている、などの警告 -->
+                <TextBlock x:Name="TxtBrakeSystemWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <!-- 単位 -->
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.085}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.086}" />
+                    <WrapPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                        <RadioButton x:Name="RdoBrakeEcb" Content="{DynamicResource PmX.087}" Margin="0,2,12,2" Click="BrakeSystemRadio_Click" />
+                        <RadioButton x:Name="RdoBrakeSmee" Content="{DynamicResource PmX.088}" Margin="0,2,12,2" Click="BrakeSystemRadio_Click" />
+                        <RadioButton x:Name="RdoBrakeCl" Content="{DynamicResource PmX.089}" Margin="0,2" Click="BrakeSystemRadio_Click" />
+                    </WrapPanel>
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.090}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.091}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtMaximumPressure" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.092}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.093}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtPressureRates" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.094}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.095}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtSapBcRatio" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.096}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.097}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtSapBcOffset" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="5" Text="{DynamicResource PmX.098}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.099}" />
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="TxtBpInitialPressure" />
+                    <TextBlock Grid.Row="5" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="6" Text="{DynamicResource PmX.100}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.101}" />
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtBrakeLeverDelay" />
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="{DynamicResource PmX.102}" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Sap] 直通管の圧力調整弁。ブレーキ方式が電磁直通 [Smee] のときだけ書く（ほかの方式では灰色） -->
+        <GroupBox Header="{DynamicResource PmX.103}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 今のブレーキ方式では使わないときの知らせ -->
+                <TextBlock x:Name="TxtSapNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <!-- 数字でない・今の方式で使わないのに書かれている、などの警告 -->
+                <TextBlock x:Name="TxtSapWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <!-- 単位 -->
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.104}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.105}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtSapApplySpeed" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.106}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.107}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtSapReleaseSpeed" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.108}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.109}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtSapVolumeRatio" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Er] 釣り合い空気溜めの圧力調整弁。ブレーキ方式が自動空気 [Cl] のときだけ書く（ほかの方式では灰色） -->
+        <GroupBox Header="{DynamicResource PmX.110}" Margin="0,0,0,6">
+            <StackPanel>
+                <TextBlock x:Name="TxtErNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <TextBlock x:Name="TxtErWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.111}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.112}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtErApplySpeed" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.113}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.114}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtErReleaseSpeed" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.115}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.116}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtErVolumeRatio" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.117}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.118}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtErRapidReleaseSpeed" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Bp] ブレーキ管の圧力調整弁。ブレーキ方式が電磁直通 [Smee] か自動空気 [Cl] のときに書く（電気指令式では灰色） -->
+        <GroupBox Header="{DynamicResource PmX.119}" Margin="0,0,0,6">
+            <StackPanel>
+                <TextBlock x:Name="TxtBpNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <TextBlock x:Name="TxtBpWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.120}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.121}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtBpApplySpeed" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.122}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.123}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtBpReleaseSpeed" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.124}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.125}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtBpVolumeRatio" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.126}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.127}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtBpRapidReleaseSpeed" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- 電空協調制御 [AirSupplement]（遅れ込め制御式）/ [LockoutValve]（締切電磁弁式）のどちらか1つ -->
+        <!-- 選ぶとセクション名を書き換える。どちらもなければ BVE は既定の遅れ込め制御式として扱う -->
+        <GroupBox Header="{DynamicResource PmX.128}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- どちらも書かれていない・両方書かれているときの知らせ -->
+                <TextBlock x:Name="TxtCoordinationNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <!-- 数字でない・この方式で使わない項目が書かれている、などの警告 -->
+                <TextBlock x:Name="TxtCoordinationWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.129}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.130}" />
+                    <WrapPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                        <RadioButton x:Name="RdoAirSupplement" Content="{DynamicResource PmX.131}" Margin="0,2,12,2" Click="CoordinationRadio_Click" />
+                        <RadioButton x:Name="RdoLockoutValve" Content="{DynamicResource PmX.132}" Margin="0,2" Click="CoordinationRadio_Click" />
+                    </WrapPanel>
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.133}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.134}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtCoordinationMaximumPressure" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.135}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.136}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtCoordinationInitialPressure" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.137}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.138}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtCoordinationRegenerationLimit" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="km/h" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.139}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.140}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtCoordinationShoeFriction" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- ブレーキシリンダーの圧力調整弁 [BC]（開・閉切り替え式）/ [BcServo]（圧力比例制御式）のどちらか1つ -->
+        <!-- 選ぶとセクション名を書き換える。どちらもなければ仮に [BcServo] として扱う（ページに書かれていないため。ユーザー判断） -->
+        <GroupBox Header="{DynamicResource PmX.141}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- どちらも書かれていない・両方書かれている・受圧面積が [Brake] へ移ったバージョン、の知らせ -->
+                <TextBlock x:Name="TxtBrakeCylinderNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <!-- 数字でない・このバージョンで使えない項目が書かれている、などの警告 -->
+                <TextBlock x:Name="TxtBrakeCylinderWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.142}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.143}" />
+                    <WrapPanel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                        <RadioButton x:Name="RdoBc" Content="{DynamicResource PmX.144}" Margin="0,2,12,2" Click="BrakeCylinderRadio_Click" />
+                        <RadioButton x:Name="RdoBcServo" Content="{DynamicResource PmX.145}" Margin="0,2" Click="BrakeCylinderRadio_Click" />
+                    </WrapPanel>
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.146}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.147}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtBcApplySpeed" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.148}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.149}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtBcReleaseSpeed" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.150}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.151}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtBcVolumeRatio" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.152}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.153}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtBcApplyStart" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="5" Text="{DynamicResource PmX.154}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.155}" />
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="TxtBcApplyStop" />
+                    <TextBlock Grid.Row="5" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="6" Text="{DynamicResource PmX.156}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.157}" />
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtBcReleaseStart" />
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="7" Text="{DynamicResource PmX.158}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.159}" />
+                    <TextBox Grid.Row="7" Grid.Column="1" x:Name="TxtBcReleaseStop" />
+                    <TextBlock Grid.Row="7" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="8" Text="{DynamicResource PmX.160}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.161}" />
+                    <TextBox Grid.Row="8" Grid.Column="1" x:Name="TxtBcPistonArea" />
+                    <TextBlock Grid.Row="8" Grid.Column="2" Text="m²" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Brake] 基礎ブレーキ装置。受圧面積はどのバージョンでも書ける。制輪子の摩擦係数はヘッダーが 1.01 以下では使えない -->
+        <GroupBox Header="{DynamicResource PmX.162}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- ヘッダーが古くて制輪子の摩擦係数を使えないときの知らせ -->
+                <TextBlock x:Name="TxtBrakeNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <!-- 数字でない・このバージョンで使えない項目が書かれている、などの警告 -->
+                <TextBlock x:Name="TxtBrakeWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.163}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.164}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtBrakePistonArea" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="m²" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <!-- 制輪子の摩擦係数は「a, b, c」の3つの係数を1行に書く。幅 480 でも既定値が見えるよう、欄は1行ずつに分ける -->
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.165}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.166}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtShoeFrictionA" />
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.167}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.168}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtShoeFrictionB" />
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.169}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.170}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtShoeFrictionC" />
+
+                    <!-- 速度ごとの摩擦係数 μ（書かれていない係数は既定値で計算する）。幅 480 でも収まるよう枠の幅いっぱいに使う -->
+                    <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,4,0,4"
+                          ToolTip="{DynamicResource PmX.171}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource PmX.172}" Margin="0,0,8,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource PmX.173}" Margin="0,0,8,0" />
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="0" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="25" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="0" Grid.Column="3" Text="50" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="75" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="0" Grid.Column="5" Text="100" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="0" Grid.Column="6" Text="130" HorizontalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="TxtMu0" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="TxtMu25" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="3" x:Name="TxtMu50" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="4" x:Name="TxtMu75" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="5" x:Name="TxtMu100" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Row="1" Grid.Column="6" x:Name="TxtMu130" HorizontalAlignment="Center" />
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [BrakeReAdhesion] 基礎ブレーキ装置の滑走再粘着制御。セクションを書かないと再粘着制御は行われない。ヘッダーが 1.01 以下では使えない -->
+        <!-- 「使う」をチェックするとセクションを足し、外すと確認してからセクションごと消す -->
+        <GroupBox Header="{DynamicResource PmX.174}" Margin="0,0,0,6">
+            <StackPanel>
+                <CheckBox x:Name="ChkBrakeReAdhesionEnabled" Margin="0,2,0,4" Click="ChkBrakeReAdhesionEnabled_Click"
+                          Content="{DynamicResource PmX.175}" />
+                <!-- ヘッダーが古くて使えないときの知らせ -->
+                <TextBlock x:Name="TxtBrakeReAdhesionNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <!-- 数字でない・このバージョンで使えないのに書かれている、などの警告 -->
+                <TextBlock x:Name="TxtBrakeReAdhesionWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.176}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.177}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtBrakeSlipVelocity" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="km/h" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.178}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.179}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtBrakeSlipDeceleration" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.180}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.181}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtBrakeBalanceDeceleration" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.182}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.183}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtBrakeHoldingTime" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{DynamicResource PmX.184}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.185}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.186}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="TxtBrakeReferenceDeceleration" />
+                    <TextBlock Grid.Row="4" Grid.Column="2" Text="km/h/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="5" Text="{DynamicResource PmX.187}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.188}" />
+                    <TextBox Grid.Row="5" Grid.Column="1" x:Name="TxtBrakeBcReleaseSpeed" />
+                    <TextBlock Grid.Row="5" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="6" Text="{DynamicResource PmX.189}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.190}" />
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtBrakeBcApplySpeed" />
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="Pa½/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Compressor] 空気圧縮機と元空気溜め。始動の圧力（LowerPressure）は停止の圧力（UpperPressure）より低くする -->
+        <GroupBox Header="{DynamicResource PmX.191}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 数字でない・始動と停止の圧力が逆、などの警告 -->
+                <TextBlock x:Name="TxtCompressorWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.192}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.193}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtCompressorLowerPressure" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.194}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.195}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtCompressorUpperPressure" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="Pa" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.196}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.197}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtCompressionSpeed" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="Pa/s" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Dynamics] 力学パラメーター。走行抵抗・曲線抵抗の係数は、書かれていなければ質量・両数から計算した値が既定になる -->
+        <GroupBox Header="{DynamicResource PmX.198}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 数字でない、などの警告 -->
+                <TextBlock x:Name="TxtDynamicsWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.199}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.200}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtMotorcarWeight" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="kg" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.201}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.202}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtTrailerWeight" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="kg" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.203}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.204}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtMotorcarCount" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{DynamicResource PmX.205}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.206}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.207}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtTrailerCount" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{DynamicResource PmX.208}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="4" Text="{DynamicResource PmX.209}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.210}" />
+                    <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtMotorcarInertiaFactor" />
+
+                    <TextBlock Grid.Row="5" Text="{DynamicResource PmX.211}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.212}" />
+                    <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtTrailerInertiaFactor" />
+
+                    <TextBlock Grid.Row="6" Text="{DynamicResource PmX.213}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.214}" />
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="TxtCarLength" />
+                    <TextBlock Grid.Row="6" Grid.Column="2" Text="m" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <!-- 走行抵抗の係数は「a, b, c」の3つを1行に書く。幅 480 でも既定値が見えるよう、欄は1行ずつに分ける -->
+                    <TextBlock Grid.Row="7" Text="{DynamicResource PmX.215}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.216}" />
+                    <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtRunningResistanceA" />
+                    <TextBlock Grid.Row="8" Text="{DynamicResource PmX.217}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.218}" />
+                    <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtRunningResistanceB" />
+                    <TextBlock Grid.Row="9" Text="{DynamicResource PmX.219}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.220}" />
+                    <TextBox Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtRunningResistanceC" />
+
+                    <TextBlock Grid.Row="10" Text="{DynamicResource PmX.221}" Style="{StaticResource FieldLabel}"
+                               ToolTip="{DynamicResource PmX.222}" />
+                    <TextBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TxtCurveResistanceFactor" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Passengers] 乗客。ページでは「NEW」の印があるが、どのバージョンでも使える扱い（ユーザー判断） -->
+        <GroupBox Header="{DynamicResource PmX.223}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 数字でない、などの警告 -->
+                <TextBlock x:Name="TxtPassengersWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.224}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.225}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtPassengerCapacity" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{DynamicResource PmX.226}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.227}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.228}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtPassengerBodyWeight" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="kg" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.229}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.230}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtBoardingSpeed" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{DynamicResource PmX.231}" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="3" Text="{DynamicResource PmX.232}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.233}" />
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TxtAlightingSpeed" />
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{DynamicResource PmX.234}" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [Door] 客室ドア（側引戸） -->
+        <GroupBox Header="{DynamicResource PmX.235}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 数字でない、などの警告 -->
+                <TextBlock x:Name="TxtDoorWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{DynamicResource PmX.236}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.237}" />
+                    <TextBox Grid.Column="1" x:Name="TxtDoorCloseTime" />
+                    <TextBlock Grid.Column="2" Text="{DynamicResource PmX.238}" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- [ViewPoint] 運転士の視点。X・Y・Z はマイナスも書ける（既定値の X・Z がマイナス） -->
+        <GroupBox Header="{DynamicResource PmX.239}" Margin="0,0,0,6">
+            <StackPanel>
+                <!-- 数字でない、などの警告 -->
+                <TextBlock x:Name="TxtViewPointWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                           Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="FieldLabel" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="{DynamicResource PmX.240}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.241}" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TxtViewPointX" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="m" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="1" Text="{DynamicResource PmX.242}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.243}" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TxtViewPointY" />
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="m" VerticalAlignment="Center" Margin="6,0,0,0" />
+
+                    <TextBlock Grid.Row="2" Text="{DynamicResource PmX.244}" Style="{StaticResource FieldLabel}" ToolTip="{DynamicResource PmX.245}" />
+                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TxtViewPointZ" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="m" VerticalAlignment="Center" Margin="6,0,0,0" />
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

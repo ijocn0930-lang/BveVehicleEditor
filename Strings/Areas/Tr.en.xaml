@@ -1,0 +1,154 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TractionWindow.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- ブレーキ -->
+    <sys:String x:Key="Tr.001">Brake</sys:String>
+    <!-- 力行 -->
+    <sys:String x:Key="Tr.002">Power</sys:String>
+    <!-- 表を式から作る - {0}・{1} -->
+    <sys:String x:Key="Tr.003">Create Tables from Formulas - {0} - {1}</sys:String>
+    <!-- 開いている表：{0}の{1}（どの表も M 車 1 両あたり） -->
+    <sys:String x:Key="Tr.004">Open table: {1} of {0} (all tables are per M car)</sys:String>
+    <!-- ノッチごとの減速度・vs・va・vb・減衰の指数 k・最大の電流を下の表で直せます（セルをダブルクリック）。「表を作り直す」を押すと、最高ノッチの値から、減速度と最大の電流をノッチの割合（ノッチ n は n ÷ ノッチ数）にした表を作り直します（vs・va・vb・k は全部のノッチに同じ値が入ります）。 -->
+    <sys:String x:Key="Tr.005">You can edit the deceleration, vs, va, vb, decay exponent k and maximum current of each notch in the table below (double-click a cell). "Rebuild table" rebuilds the table from the top notch values, scaling the deceleration and maximum current by the notch ratio (notch n is n ÷ number of notches) (vs, va, vb and k are the same for all notches).</sys:String>
+    <!-- 最高ノッチの減速度 [km/h/s] -->
+    <sys:String x:Key="Tr.006">Top notch deceleration [km/h/s]</sys:String>
+    <!-- vb [km/h]（弱め始める速度） -->
+    <sys:String x:Key="Tr.007">vb [km/h] (speed where it starts to weaken)</sys:String>
+    <!-- 最高ノッチの最大の電流 [A] -->
+    <sys:String x:Key="Tr.008">Top notch maximum current [A]</sys:String>
+    <!-- 減速度 [km/h/s] -->
+    <sys:String x:Key="Tr.009">Deceleration [km/h/s]</sys:String>
+    <!-- 最大の電流 [A] -->
+    <sys:String x:Key="Tr.010">Maximum current [A]</sys:String>
+    <!-- 最大の力 [N] -->
+    <sys:String x:Key="Tr.011">Maximum force [N]</sys:String>
+    <!-- {0}（開いている表） -->
+    <sys:String x:Key="Tr.012">{0} (open table)</sys:String>
+    <!-- {0}（ファイルなし） -->
+    <sys:String x:Key="Tr.013">{0} (no file)</sys:String>
+    <!-- 画面の表を置き換えます（保存するまでファイルは変わりません） -->
+    <sys:String x:Key="Tr.014">Replaces the table in the window (the file does not change until you save)</sys:String>
+    <!-- このファイルに直接書きます：{0} -->
+    <sys:String x:Key="Tr.015">Writes directly to this file: {0}</sys:String>
+    <!-- ノッチのファイルに書かれていないか、ファイルが見つかりません（ノッチのタブの「参照」で選んでください） -->
+    <sys:String x:Key="Tr.016">Not written in the notch file, or the file was not found (choose it with "Browse" on the Notch tab)</sys:String>
+    <!-- 引張力は、① 0～v1 は一定（起動時の力）、② v1～v2 は速度に反比例、③ v2 より上は速度の k 乗に反比例（k はノッチごと）で作ります。起動時の力は「編成の重さ（慣性係数を含む）× 起動加速度 ÷ 3.6 ÷ M 車の両数」です（走行抵抗の分は足しません）。 -->
+    <sys:String x:Key="Tr.017">The force is made as: (1) constant from 0 to v1 (starting force), (2) inversely proportional to speed from v1 to v2, (3) inversely proportional to the k-th power of speed above v2 (k per notch). The starting force is "train mass (including inertia factors) × starting acceleration ÷ 3.6 ÷ number of M cars" (running resistance is not added).</sys:String>
+    <!-- 電流は、ノッチごとの起動時の電流から、0～v2 は一定、v2 より上は（v2 ÷ v）の (k−1) 乗で下げて作ります。 -->
+    <sys:String x:Key="Tr.018">The current is made from the starting current of each notch: constant from 0 to v2, and reduced by (v2 ÷ v) to the power of (k−1) above v2.</sys:String>
+    <!-- 値を変えると下のグラフがすぐ変わります。 -->
+    <sys:String x:Key="Tr.019">Changing a value updates the graph below immediately.</sys:String>
+    <!-- {0}{1}グラフの灰色の点線は M 車 1 両あたりの走行抵抗で、引張力の線と交わる速度が、つり合う（それ以上加速しない）速度の目安です。 -->
+    <sys:String x:Key="Tr.020">{0} {1} The gray dotted line in the graph is the running resistance per M car. The speed where it crosses the force line is a guide to the balancing speed (no further acceleration).</sys:String>
+    <!-- 満車の引張力は「空車の引張力 × 満車の力の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1}灰色の点線は空車の走行抵抗の目安です。 -->
+    <sys:String x:Key="Tr.021">The full-load force is "empty force × full-load force ratio" (above "Increase up to ○ km/h" it is the same as empty). {0} {1} The gray dotted line is a guide to the running resistance of the empty car.</sys:String>
+    <!-- 満車の電流は「空車の電流 × 満車の電流の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1} -->
+    <sys:String x:Key="Tr.022">The full-load current is "empty current × full-load current ratio" (above "Increase up to ○ km/h" it is the same as empty). {0} {1}</sys:String>
+    <!-- 無負荷電流（引張力が 0 になる電流）は、0～v0 は入れた値で一定、v0 より上は「値 × v0 ÷ v」で下げます（v0 が空ならノッチごとの v1）。{0} -->
+    <sys:String x:Key="Tr.023">The no-load current (current at which the force is 0) is constant at the entered value from 0 to v0 and decreases as "value × v0 ÷ v" above v0 (if v0 is empty, v1 of each notch). {0}</sys:String>
+    <!-- ブレーキの引張力は、0～vs は 0、vs～va は 0 から最大の力まで直線で上げる、va～vb は一定、vb より上は「最大の力 ×（vb ÷ v）^k」で作ります。最大の力は「編成の重さ（慣性係数を含む）× 減速度 ÷ 3.6 ÷ M 車の両数」です。 -->
+    <sys:String x:Key="Tr.024">The brake force is made as: 0 from 0 to vs, rising linearly from 0 to the maximum force from vs to va, constant from va to vb, and "maximum force × (vb ÷ v)^k" above vb. The maximum force is "train mass (including inertia factors) × deceleration ÷ 3.6 ÷ number of M cars".</sys:String>
+    <!-- ブレーキの電流は「最大の電流 × そのときの力 ÷ 最大の力」（力に比例）で作ります。 -->
+    <sys:String x:Key="Tr.025">The brake current is "maximum current × force at that time ÷ maximum force" (proportional to the force).</sys:String>
+    <!-- 値を変えると下のグラフがすぐ変わります。 -->
+    <sys:String x:Key="Tr.026">Changing a value updates the graph below immediately.</sys:String>
+    <!-- 満車の引張力は「空車の引張力 × 満車の力の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1} -->
+    <sys:String x:Key="Tr.027">The full-load force is "empty force × full-load force ratio" (above "Increase up to ○ km/h" it is the same as empty). {0} {1}</sys:String>
+    <!-- 満車の電流は「空車の電流 × 満車の電流の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1} -->
+    <sys:String x:Key="Tr.028">The full-load current is "empty current × full-load current ratio" (above "Increase up to ○ km/h" it is the same as empty). {0} {1}</sys:String>
+    <!-- 無負荷電流（引張力が 0 になる電流）は、0～v0 は入れた値で一定、v0 より上は「値 × v0 ÷ v」で下げます（v0 が空ならノッチごとの vb）。{0} -->
+    <sys:String x:Key="Tr.029">The no-load current (current at which the force is 0) is constant at the entered value from 0 to v0 and decreases as "value × v0 ÷ v" above v0 (if v0 is empty, vb of each notch). {0}</sys:String>
+    <!-- 「作る表」を 1 つ以上チェックしてください。 -->
+    <sys:String x:Key="Tr.030">Check at least one table in "Tables to create".</sys:String>
+    <!-- {0}が数字ではありません（「{1}」）。 -->
+    <sys:String x:Key="Tr.031">{0} is not a number ("{1}").</sys:String>
+    <!-- M 車の重さ -->
+    <sys:String x:Key="Tr.032">M car mass</sys:String>
+    <!-- T 車の重さ -->
+    <sys:String x:Key="Tr.033">T car mass</sys:String>
+    <!-- M 車の両数 -->
+    <sys:String x:Key="Tr.034">Number of M cars</sys:String>
+    <!-- T 車の両数 -->
+    <sys:String x:Key="Tr.035">Number of T cars</sys:String>
+    <!-- M 車の慣性係数 -->
+    <sys:String x:Key="Tr.036">M car inertia factor</sys:String>
+    <!-- T 車の慣性係数 -->
+    <sys:String x:Key="Tr.037">T car inertia factor</sys:String>
+    <!-- 増やす速度の上限 -->
+    <sys:String x:Key="Tr.038">Upper speed limit for increasing</sys:String>
+    <!-- 定員 -->
+    <sys:String x:Key="Tr.039">Capacity</sys:String>
+    <!-- 体重 -->
+    <sys:String x:Key="Tr.040">Body weight</sys:String>
+    <!-- 乗車率 -->
+    <sys:String x:Key="Tr.041">Load factor</sys:String>
+    <!-- 満車の電流の倍率 -->
+    <sys:String x:Key="Tr.042">Full-load current ratio</sys:String>
+    <!-- 無負荷電流 -->
+    <sys:String x:Key="Tr.043">No-load current</sys:String>
+    <!-- 無負荷電流が下がり始める速度 v0 -->
+    <sys:String x:Key="Tr.044">Speed v0 where the no-load current starts to fall</sys:String>
+    <!-- 最高速度 -->
+    <sys:String x:Key="Tr.045">Maximum speed</sys:String>
+    <!-- 速度の刻み -->
+    <sys:String x:Key="Tr.046">Speed step</sys:String>
+    <!-- ノッチ {0}：減速度・vs・va・vb・減衰の指数 k・最大の電流に数字でない値があります。 -->
+    <sys:String x:Key="Tr.047">Notch {0}: deceleration, vs, va, vb, decay exponent k or maximum current contains a value that is not a number.</sys:String>
+    <!-- ノッチ {0}：起動加速度・v1・v2・減衰の指数 k・起動時の電流に数字でない値があります。 -->
+    <sys:String x:Key="Tr.048">Notch {0}: starting acceleration, v1, v2, decay exponent k or starting current contains a value that is not a number.</sys:String>
+    <!-- ノッチ {0} -->
+    <sys:String x:Key="Tr.049">Notch {0}</sys:String>
+    <!-- 走行抵抗（パラメーター） -->
+    <sys:String x:Key="Tr.050">Running resistance (parameters)</sys:String>
+    <!-- 走行抵抗（既定の式） -->
+    <sys:String x:Key="Tr.051">Running resistance (default formula)</sys:String>
+    <!-- 最高ノッチの減速度・vs・va・vb・減衰の指数 k・最大の電流 -->
+    <sys:String x:Key="Tr.052">Top notch deceleration, vs, va, vb, decay exponent k and maximum current</sys:String>
+    <!-- 最高ノッチの起動加速度・v1・v2・減衰の指数 k・起動時の電流 -->
+    <sys:String x:Key="Tr.053">Top notch starting acceleration, v1, v2, decay exponent k and starting current</sys:String>
+    <!-- {0}は数字、ノッチ数は 1～255 の整数にしてください。 -->
+    <sys:String x:Key="Tr.054">{0} must be numbers, and the number of notches must be a whole number from 1 to 255.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Tr.055">Confirm</sys:String>
+    <!-- 最高ノッチの減速度 {0} km/h/s・vs {1} km/h・va {2} km/h・vb {3} km/h・減衰の指数 k {4}・最大の電流 {5} A -->
+    <sys:String x:Key="Tr.056">top notch deceleration {0} km/h/s, vs {1} km/h, va {2} km/h, vb {3} km/h, decay exponent k {4}, maximum current {5} A</sys:String>
+    <!-- 最高ノッチの起動加速度 {0} km/h/s・v1 {1} km/h・v2 {2} km/h・減衰の指数 k {3}・起動時の電流 {4} A -->
+    <sys:String x:Key="Tr.057">top notch starting acceleration {0} km/h/s, v1 {1} km/h, v2 {2} km/h, decay exponent k {3}, starting current {4} A</sys:String>
+    <!-- ノッチの表を、ノッチ数 {0}・{1} で作り直しますか？ 今のノッチの表で直した値は消えます。 -->
+    <sys:String x:Key="Tr.058">Rebuild the notch table with {0} notches and {1}?
+The values you edited in the current notch table will be lost.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Tr.059">Confirm</sys:String>
+    <!-- ・{0}：開いている表を置き換えます（保存するまでファイルは変わりません） -->
+    <sys:String x:Key="Tr.060">• {0}: replaces the open table (the file does not change until you save)</sys:String>
+    <!-- ・{0}：{1} に直接書きます -->
+    <sys:String x:Key="Tr.061">• {0}: written directly to {1}</sys:String>
+    <!-- 次の表を作ります（どの表も {0} 行 × ノッチ {1} 列。先頭のコメントの行は残します）。  {2}  ファイルに直接書く表は、書く前の中身を同じフォルダーに「○○.日時.bak」で残します。 -->
+    <sys:String x:Key="Tr.062">The following tables will be created (each table has {0} rows × {1} notch columns; the comment lines at the top are kept).
+
+{2}
+
+For tables written directly to files, the previous contents are kept in the same folder as "name.datetime.bak".</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Tr.063">Confirm</sys:String>
+    <!-- ・{0}：{1}（前の中身：{2}） -->
+    <sys:String x:Key="Tr.064">• {0}: {1} (previous contents: {2})</sys:String>
+    <!-- ・{0}：{1} 　{2} -->
+    <sys:String x:Key="Tr.065">• {0}: {1}
+  {2}</sys:String>
+    <!-- 次のファイルに書きました。  {0} -->
+    <sys:String x:Key="Tr.066">Written to the following files.
+
+{0}</sys:String>
+    <!-- {0}次のファイルは書けませんでした。  {1} -->
+    <sys:String x:Key="Tr.067">{0}The following files could not be written.
+
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Tr.068">Confirm</sys:String>
+    <!-- 表を式から作る -->
+    <sys:String x:Key="Tr.069">Create Tables from Formulas</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,311 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ParameterForm.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 遅れ込め制御式 [AirSupplement] -->
+    <sys:String x:Key="Pm.001">Delayed application [AirSupplement]</sys:String>
+    <!-- 締切電磁弁式 [LockoutValve] -->
+    <sys:String x:Key="Pm.002">Lockout valve [LockoutValve]</sys:String>
+    <!-- 開・閉切り替え式 [BC] -->
+    <sys:String x:Key="Pm.003">On/off switching [BC]</sys:String>
+    <!-- 圧力比例制御式 [BcServo] -->
+    <sys:String x:Key="Pm.004">Proportional control [BcServo]</sys:String>
+    <!-- 電気指令式 [Ecb] -->
+    <sys:String x:Key="Pm.005">Electric command [Ecb]</sys:String>
+    <!-- 電磁直通 [Smee] -->
+    <sys:String x:Key="Pm.006">Electromagnetic straight air [Smee]</sys:String>
+    <!-- 自動空気 [Cl] -->
+    <sys:String x:Key="Pm.007">Automatic air [Cl]</sys:String>
+    <!-- 等分 -->
+    <sys:String x:Key="Pm.008">equal steps</sys:String>
+    <!-- （既定: {0}） -->
+    <sys:String x:Key="Pm.009">(default: {0})</sys:String>
+    <!-- （未記入） -->
+    <sys:String x:Key="Pm.010">(empty)</sys:String>
+    <!-- ブレーキノッチ数 -->
+    <sys:String x:Key="Pm.011">Brake notches</sys:String>
+    <!-- 力行ノッチ数 -->
+    <sys:String x:Key="Pm.012">Power notches</sys:String>
+    <!-- 抑速ノッチ数 -->
+    <sys:String x:Key="Pm.013">Holding speed notches</sys:String>
+    <!-- ATS キャンセルノッチ -->
+    <sys:String x:Key="Pm.014">ATS cancel notch</sys:String>
+    <!-- モーターブレーキノッチ -->
+    <sys:String x:Key="Pm.015">Motor brake notch</sys:String>
+    <!-- レバーサーのテキスト -->
+    <sys:String x:Key="Pm.016">Reverser text</sys:String>
+    <!-- 力行ノッチのテキスト -->
+    <sys:String x:Key="Pm.017">Power notch text</sys:String>
+    <!-- ブレーキノッチのテキスト -->
+    <sys:String x:Key="Pm.018">Brake notch text</sys:String>
+    <!-- 抑速ノッチのテキスト -->
+    <sys:String x:Key="Pm.019">Holding speed notch text</sys:String>
+    <!-- 電気ブレーキを切る速度 -->
+    <sys:String x:Key="Pm.020">Electric brake cut-off speed</sys:String>
+    <!-- 電気ブレーキ開始の最低速度 -->
+    <sys:String x:Key="Pm.021">Minimum electric brake start speed</sys:String>
+    <!-- ハンドルの遅れ -->
+    <sys:String x:Key="Pm.022">Handle delay</sys:String>
+    <!-- すべり速度の比 -->
+    <sys:String x:Key="Pm.023">Slip velocity ratio</sys:String>
+    <!-- 点 A の速度差 -->
+    <sys:String x:Key="Pm.024">Speed difference at point A</sys:String>
+    <!-- 点 A の軸加速度 -->
+    <sys:String x:Key="Pm.025">Axle acceleration at point A</sys:String>
+    <!-- 点 B の軸加速度 -->
+    <sys:String x:Key="Pm.026">Axle acceleration at point B</sys:String>
+    <!-- 点 A から C の最小時間 -->
+    <sys:String x:Key="Pm.027">Minimum time from A to C</sys:String>
+    <!-- 基準速度の加速度 -->
+    <sys:String x:Key="Pm.028">Reference acceleration</sys:String>
+    <!-- 基準速度の減速度 -->
+    <sys:String x:Key="Pm.029">Reference deceleration</sys:String>
+    <!-- 電流を減らす速さ -->
+    <sys:String x:Key="Pm.030">Current decrease rate</sys:String>
+    <!-- 電流を増やす速さ -->
+    <sys:String x:Key="Pm.031">Current increase rate</sys:String>
+    <!-- 常用最大の圧力 -->
+    <sys:String x:Key="Pm.032">Maximum service pressure</sys:String>
+    <!-- ノッチごとの圧力の割合 -->
+    <sys:String x:Key="Pm.033">Pressure rate per notch</sys:String>
+    <!-- 圧力の比 -->
+    <sys:String x:Key="Pm.034">Pressure ratio</sys:String>
+    <!-- 圧力が上がり始める指令 -->
+    <sys:String x:Key="Pm.035">Pressure rise start command</sys:String>
+    <!-- 緩めたときのブレーキ管圧力 -->
+    <sys:String x:Key="Pm.036">Brake pipe pressure when released</sys:String>
+    <!-- ブレーキハンドルの遅れ -->
+    <sys:String x:Key="Pm.037">Brake handle delay</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="Pm.038">Apply speed</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="Pm.039">Release speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="Pm.040">Volume ratio</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="Pm.041">Apply speed</sys:String>
+    <!-- 常用の排気の速さ -->
+    <sys:String x:Key="Pm.042">Service release speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="Pm.043">Volume ratio</sys:String>
+    <!-- 非常の排気の速さ -->
+    <sys:String x:Key="Pm.044">Emergency release speed</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="Pm.045">Apply speed</sys:String>
+    <!-- 常用の排気の速さ -->
+    <sys:String x:Key="Pm.046">Service release speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="Pm.047">Volume ratio</sys:String>
+    <!-- 非常の排気の速さ -->
+    <sys:String x:Key="Pm.048">Emergency release speed</sys:String>
+    <!-- 電気ブレーキ最大の圧力指令 -->
+    <sys:String x:Key="Pm.049">Pressure command at maximum electric brake</sys:String>
+    <!-- 初込め圧力 -->
+    <sys:String x:Key="Pm.050">Initial pressure</sys:String>
+    <!-- 電空協調の最低速度 -->
+    <sys:String x:Key="Pm.051">Minimum blending speed</sys:String>
+    <!-- 制輪子の摩擦係数 -->
+    <sys:String x:Key="Pm.052">Brake shoe friction coefficient</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="Pm.053">Apply speed</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="Pm.054">Release speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="Pm.055">Volume ratio</sys:String>
+    <!-- 給気を始める圧力差 -->
+    <sys:String x:Key="Pm.056">Apply start difference</sys:String>
+    <!-- 給気を止める圧力差 -->
+    <sys:String x:Key="Pm.057">Apply stop difference</sys:String>
+    <!-- 排気を始める圧力差 -->
+    <sys:String x:Key="Pm.058">Release start difference</sys:String>
+    <!-- 排気を止める圧力差 -->
+    <sys:String x:Key="Pm.059">Release stop difference</sys:String>
+    <!-- シリンダーの受圧面積 -->
+    <sys:String x:Key="Pm.060">Cylinder piston area</sys:String>
+    <!-- シリンダーの受圧面積 -->
+    <sys:String x:Key="Pm.061">Cylinder piston area</sys:String>
+    <!-- 点 A の速度差 -->
+    <sys:String x:Key="Pm.062">Speed difference at point A</sys:String>
+    <!-- 点 A の軸減速度 -->
+    <sys:String x:Key="Pm.063">Axle deceleration at point A</sys:String>
+    <!-- 点 B の軸減速度 -->
+    <sys:String x:Key="Pm.064">Axle deceleration at point B</sys:String>
+    <!-- 点 A から C の最小時間 -->
+    <sys:String x:Key="Pm.065">Minimum time from A to C</sys:String>
+    <!-- 基準速度の減速度 -->
+    <sys:String x:Key="Pm.066">Reference deceleration</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="Pm.067">Release speed</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="Pm.068">Apply speed</sys:String>
+    <!-- 始動する圧力 -->
+    <sys:String x:Key="Pm.069">Start pressure</sys:String>
+    <!-- 停止する圧力 -->
+    <sys:String x:Key="Pm.070">Stop pressure</sys:String>
+    <!-- 圧力が上がる速さ -->
+    <sys:String x:Key="Pm.071">Pressure rise speed</sys:String>
+    <!-- M 車の質量 -->
+    <sys:String x:Key="Pm.072">M car mass</sys:String>
+    <!-- T 車の質量 -->
+    <sys:String x:Key="Pm.073">T car mass</sys:String>
+    <!-- M 車の両数 -->
+    <sys:String x:Key="Pm.074">Number of M cars</sys:String>
+    <!-- T 車の両数 -->
+    <sys:String x:Key="Pm.075">Number of T cars</sys:String>
+    <!-- M 車の慣性係数 -->
+    <sys:String x:Key="Pm.076">M car inertia factor</sys:String>
+    <!-- T 車の慣性係数 -->
+    <sys:String x:Key="Pm.077">T car inertia factor</sys:String>
+    <!-- 1 両の長さ -->
+    <sys:String x:Key="Pm.078">Car length</sys:String>
+    <!-- 曲線抵抗の係数 -->
+    <sys:String x:Key="Pm.079">Curve resistance factor</sys:String>
+    <!-- 1 両の定員 -->
+    <sys:String x:Key="Pm.080">Capacity per car</sys:String>
+    <!-- 乗客 1 人の質量 -->
+    <sys:String x:Key="Pm.081">Mass per passenger</sys:String>
+    <!-- 乗車する速さ -->
+    <sys:String x:Key="Pm.082">Boarding speed</sys:String>
+    <!-- 降車する速さ -->
+    <sys:String x:Key="Pm.083">Alighting speed</sys:String>
+    <!-- 閉まるのにかかる時間 -->
+    <sys:String x:Key="Pm.084">Closing time</sys:String>
+    <!-- 横の位置 X -->
+    <sys:String x:Key="Pm.085">Horizontal position X</sys:String>
+    <!-- 高さ Y -->
+    <sys:String x:Key="Pm.086">Height Y</sys:String>
+    <!-- 前後の位置 Z -->
+    <sys:String x:Key="Pm.087">Longitudinal position Z</sys:String>
+    <!-- 力行中 -->
+    <sys:String x:Key="Pm.088">While powering</sys:String>
+    <!-- 惰行中 -->
+    <sys:String x:Key="Pm.089">While coasting</sys:String>
+    <!-- ブレーキ中 -->
+    <sys:String x:Key="Pm.090">While braking</sys:String>
+    <!-- 有効 -->
+    <sys:String x:Key="Pm.091">Enabled</sys:String>
+    <!-- ブレーキ1段目を抑速ブレーキにする -->
+    <sys:String x:Key="Pm.092">Make the first brake notch a holding speed brake</sys:String>
+    <!-- {0}が、{1}以上です。始動する圧力は停止する圧力より低くしてください。 -->
+    <sys:String x:Key="Pm.093">{0} is equal to or higher than {1}. The start pressure must be lower than the stop pressure.</sys:String>
+    <!-- [{0}] は、このヘッダーのバージョン（{1}）では使えません。BVE で読まれないことがあります。 -->
+    <sys:String x:Key="Pm.094">[{0}] cannot be used with this header version ({1}). BVE may not read it.</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、[{1}] は使えません（BveTs Vehicle Parameters 2.00 以降のセクション）。 -->
+    <sys:String x:Key="Pm.095">With this header version ({0}), [{1}] cannot be used (it is a section of BveTs Vehicle Parameters 2.00 and later).</sys:String>
+    <!-- 基礎ブレーキ装置の再粘着制御は行われなくなります -->
+    <sys:String x:Key="Pm.096">re-adhesion control of the foundation brake will no longer be done</sys:String>
+    <!-- 制輪子の摩擦係数（ShoeFriction）は、このヘッダーのバージョン（{0}）では使えません。BVE で読まれないことがあります。 -->
+    <sys:String x:Key="Pm.097">The brake shoe friction coefficient (ShoeFriction) cannot be used with this header version ({0}). BVE may not read it.</sys:String>
+    <!-- 制輪子の摩擦係数（ShoeFriction）「{0}」は、「a, b, c」の 3 つの数字にしてください。 -->
+    <sys:String x:Key="Pm.098">The brake shoe friction coefficient (ShoeFriction) "{0}" must be three numbers "a, b, c".</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、制輪子の摩擦係数（ShoeFriction）は使えません（BveTs Vehicle Parameters 2.00 以降の項目）。 -->
+    <sys:String x:Key="Pm.099">With this header version ({0}), the brake shoe friction coefficient (ShoeFriction) cannot be used (it is an item of BveTs Vehicle Parameters 2.00 and later).</sys:String>
+    <!-- 走行抵抗の係数（RunningResistanceFactor）「{0}」は、「a, b, c」の 3 つの数字にしてください。 -->
+    <sys:String x:Key="Pm.100">The running resistance factor (RunningResistanceFactor) "{0}" must be three numbers "a, b, c".</sys:String>
+    <!-- （既定: {0}） -->
+    <sys:String x:Key="Pm.101">(default: {0})</sys:String>
+    <!-- この欄には数字を1つだけ入れてください（「,」「;」「#」は使えません）。 -->
+    <sys:String x:Key="Pm.102">Enter only one number in this field ("," ";" and "#" cannot be used).</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pm.103">Confirm</sys:String>
+    <!-- [BC] も [BcServo] も書かれていません。BVE がどちらを使うかは分からないので、ここでは仮に圧力比例制御式 [BcServo] として扱います。ここで値を入れると [BcServo] ごと足します。 -->
+    <sys:String x:Key="Pm.104">Neither [BC] nor [BcServo] is written. It is not known which one BVE uses, so here it is treated as the proportional control type [BcServo]. Entering a value here adds [BcServo] too.</sys:String>
+    <!-- ブレーキシリンダーの圧力調整弁が両方書かれています（{0}）。BVE ではどちらか1つだけです（上にある [{1}] を表示しています）。下のテキストで1つにしてください。 -->
+    <sys:String x:Key="Pm.105">Both brake cylinder pressure regulators are written ({0}). BVE uses only one (the upper one, [{1}], is shown). Keep only one in the text below.</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、シリンダーの受圧面積（PistonArea）は [Brake] に書きます（ここに書けるのは 1.01 以下だけ）。 -->
+    <sys:String x:Key="Pm.106">With this header version ({0}), the cylinder piston area (PistonArea) is written in [Brake] (it can be written here only for 1.01 and earlier).</sys:String>
+    <!-- {0}（{1}）は、このヘッダーのバージョン（{2}）では [{3}] に書けません。[Brake] に書きます。 -->
+    <sys:String x:Key="Pm.107">{0} ({1}) cannot be written in [{3}] with this header version ({2}). Write it in [Brake].</sys:String>
+    <!-- ・ -->
+    <sys:String x:Key="Pm.108">,</sys:String>
+    <!-- [{0}] は、このヘッダーのバージョン（{1}）では使えません。BVE で読まれないことがあります。 -->
+    <sys:String x:Key="Pm.109">[{0}] cannot be used with this header version ({1}). BVE may not read it.</sys:String>
+    <!-- [{0}] は {1} のときだけ使います。今のブレーキ方式（{2}）では使われません。 -->
+    <sys:String x:Key="Pm.110">[{0}] is used only with {1}. It is not used with the current brake system ({2}).</sys:String>
+    <!-- 今のブレーキ方式（{0}）では使いません（{1} のときだけ）。 -->
+    <sys:String x:Key="Pm.111">Not used with the current brake system ({0}) (only with {1}).</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、[{1}] は使えません（BveTs Vehicle Parameters 2.00 以降のセクション）。 -->
+    <sys:String x:Key="Pm.112">With this header version ({0}), [{1}] cannot be used (it is a section of BveTs Vehicle Parameters 2.00 and later).</sys:String>
+    <!-- [Ecb] も [Smee] も [Cl] も書かれていないので、BVE は既定の電気指令式 [Ecb] として扱います。ここで値を入れると [Ecb] ごと足します。 -->
+    <sys:String x:Key="Pm.113">None of [Ecb], [Smee] and [Cl] is written, so BVE treats it as the default electric command brake [Ecb]. Entering a value here adds [Ecb] too.</sys:String>
+    <!-- ブレーキ方式が {0} つ書かれています（{1}）。BVE ではどれか1つだけです（上にある [{2}] を表示しています）。下のテキストで1つにしてください。 -->
+    <sys:String x:Key="Pm.114">{0} brake systems are written ({1}). BVE uses only one (the upper one, [{2}], is shown). Keep only one in the text below.</sys:String>
+    <!-- {0}（{1}）は、{2} では使われません（{3} だけ）。 -->
+    <sys:String x:Key="Pm.115">{0} ({1}) is not used with {2} (only with {3}).</sys:String>
+    <!-- [AirSupplement] も [LockoutValve] も書かれていないので、BVE は既定の遅れ込め制御式 [AirSupplement] として扱います。ここで値を入れると [AirSupplement] ごと足します。 -->
+    <sys:String x:Key="Pm.116">Neither [AirSupplement] nor [LockoutValve] is written, so BVE treats it as the default delayed application type [AirSupplement]. Entering a value here adds [AirSupplement] too.</sys:String>
+    <!-- 電空協調制御が両方書かれています（{0}）。BVE ではどちらか1つだけです（上にある [{1}] を表示しています）。下のテキストで1つにしてください。 -->
+    <sys:String x:Key="Pm.117">Both electro-pneumatic blending types are written ({0}). BVE uses only one (the upper one, [{1}], is shown). Keep only one in the text below.</sys:String>
+    <!-- {0}（{1}）は、{2} では使われません（遅れ込め制御式 [AirSupplement] だけ）。 -->
+    <sys:String x:Key="Pm.118">{0} ({1}) is not used with {2} (only with the delayed application type [AirSupplement]).</sys:String>
+    <!-- {0}（{1}）は、このヘッダーのバージョン（{2}）では使えません。BVE で読まれないことがあります。 -->
+    <sys:String x:Key="Pm.119">{0} ({1}) cannot be used with this header version ({2}). BVE may not read it.</sys:String>
+    <!-- 力行より電気ブレーキを優先する -->
+    <sys:String x:Key="Pm.120">Give the electric brake priority over power</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、「電気ブレーキ開始の最低速度」と「すべり速度の比」は使えません（BveTs Vehicle Parameters 2.00 以降の項目）。 -->
+    <sys:String x:Key="Pm.121">With this header version ({0}), "Minimum electric brake start speed" and "Slip velocity ratio" cannot be used (they are items of BveTs Vehicle Parameters 2.00 and later).</sys:String>
+    <!-- {0}の「{1}」は 0 以上の数字にしてください（, で区切って書きます）。 -->
+    <sys:String x:Key="Pm.122">"{1}" in {0} must be a number of 0 or more (separate them with ,).</sys:String>
+    <!-- {0}「{1}」は数字にしてください。 -->
+    <sys:String x:Key="Pm.123">{0} "{1}" must be a number.</sys:String>
+    <!-- {0}「{1}」は 0 以上の数字にしてください。 -->
+    <sys:String x:Key="Pm.124">{0} "{1}" must be a number of 0 or more.</sys:String>
+    <!-- 再粘着制御は行われなくなります -->
+    <sys:String x:Key="Pm.125">re-adhesion control will no longer be done</sys:String>
+    <!-- [{0}] のセクションと、その中の値（{1} 件）を下のテキストから消します。 {2}（テキストをクリックして Ctrl+Z で戻せます）。  消しますか？ -->
+    <sys:String x:Key="Pm.126">The [{0}] section and its values ({1}) will be deleted from the text below.
+{2} (click the text and press Ctrl+Z to undo).
+
+Delete it?</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pm.127">Confirm</sys:String>
+    <!-- （既定: {0}） -->
+    <sys:String x:Key="Pm.128">(default: {0})</sys:String>
+    <!-- {0}（{1}）「{2}」は 0～3 のどれかにしてください。 -->
+    <sys:String x:Key="Pm.129">{0} ({1}) "{2}" must be one of 0 to 3.</sys:String>
+    <!-- ブレーキノッチ数 -->
+    <sys:String x:Key="Pm.130">Brake notches</sys:String>
+    <!-- 力行ノッチ数 -->
+    <sys:String x:Key="Pm.131">Power notches</sys:String>
+    <!-- 抑速ノッチ数 -->
+    <sys:String x:Key="Pm.132">Holding speed notches</sys:String>
+    <!-- ATS キャンセルノッチ -->
+    <sys:String x:Key="Pm.133">ATS cancel notch</sys:String>
+    <!-- モーターブレーキノッチ -->
+    <sys:String x:Key="Pm.134">Motor brake notch</sys:String>
+    <!-- ブレーキノッチ数 -->
+    <sys:String x:Key="Pm.135">Brake notches</sys:String>
+    <!-- ブレーキノッチのテキスト -->
+    <sys:String x:Key="Pm.136">Brake notch text</sys:String>
+    <!-- 力行ノッチ数 -->
+    <sys:String x:Key="Pm.137">Power notches</sys:String>
+    <!-- 力行ノッチのテキスト -->
+    <sys:String x:Key="Pm.138">Power notch text</sys:String>
+    <!-- 抑速ノッチ数 -->
+    <sys:String x:Key="Pm.139">Holding speed notches</sys:String>
+    <!-- 抑速ノッチのテキスト -->
+    <sys:String x:Key="Pm.140">Holding speed notch text</sys:String>
+    <!-- ATS キャンセルノッチ -->
+    <sys:String x:Key="Pm.141">ATS cancel notch</sys:String>
+    <!-- モーターブレーキノッチ -->
+    <sys:String x:Key="Pm.142">Motor brake notch</sys:String>
+    <!-- レバーサーのテキスト「{0}」の最後に「,」があります。BVE でエラーにはなりませんが、文字が壊れます。最後の「,」を消してください。 -->
+    <sys:String x:Key="Pm.143">The reverser text "{0}" ends with ",". BVE does not report an error, but the text will be broken. Remove the last ",".</sys:String>
+    <!-- {0}（書かれていないので既定の {1}） -->
+    <sys:String x:Key="Pm.144">{0} (not written, so the default {1})</sys:String>
+    <!-- {0}「{1}」は 0 以上の整数にしてください。 -->
+    <sys:String x:Key="Pm.145">{0} "{1}" must be a whole number of 0 or more.</sys:String>
+    <!-- {0}が、{1}の数（{2} 個）より多いです。 -->
+    <sys:String x:Key="Pm.146">{0} is more than the number of {1} ({2}).</sys:String>
+    <!-- {0}が、{1}より大きいです。 -->
+    <sys:String x:Key="Pm.147">{0} is larger than {1}.</sys:String>
+    <!-- 「;」と「#」はコメントの始まりなので、値には使えません。 -->
+    <sys:String x:Key="Pm.148">";" and "#" start a comment, so they cannot be used in values.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pm.149">Confirm</sys:String>
+    <!-- [Cab] も [OneLeverCab] も書かれていないので、BVE は既定のツーハンドル [Cab] として扱います。ここで値を入れると [Cab] ごと足します。 -->
+    <sys:String x:Key="Pm.150">Neither [Cab] nor [OneLeverCab] is written, so BVE treats it as the default two-handle [Cab]. Entering a value here adds [Cab] too.</sys:String>
+    <!-- [Cab] と [OneLeverCab] が両方書かれています。BVE ではどちらか1つだけです（上にある [{0}] を表示しています）。下のテキストでどちらかを消してください。 -->
+    <sys:String x:Key="Pm.151">Both [Cab] and [OneLeverCab] are written. BVE uses only one (the upper one, [{0}], is shown). Delete one of them in the text below.</sys:String>
+</ResourceDictionary>

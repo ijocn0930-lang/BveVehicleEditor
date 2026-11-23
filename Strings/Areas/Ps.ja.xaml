@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- PanelSubjects.cs の文（日本語）。英語は Ps.en.xaml -->
+    <sys:String x:Key="Ps.001">常に True（ずっと表示する）</sys:String>
+    <sys:String x:Key="Ps.002">速度 [km/h]</sys:String>
+    <sys:String x:Key="Ps.003">速度 [km/h] の 1 の位</sys:String>
+    <sys:String x:Key="Ps.004">速度 [km/h] の 10 の位</sys:String>
+    <sys:String x:Key="Ps.005">速度 [km/h] の 100 の位</sys:String>
+    <sys:String x:Key="Ps.006">ブレーキシリンダ圧力 [kPa]</sys:String>
+    <sys:String x:Key="Ps.007">ブレーキシリンダ圧力 [kPa] の 10 の位</sys:String>
+    <sys:String x:Key="Ps.008">ブレーキシリンダ圧力 [kPa] の 100 の位</sys:String>
+    <sys:String x:Key="Ps.009">元空気溜め圧力 [kPa]</sys:String>
+    <sys:String x:Key="Ps.010">元空気溜め圧力 [kPa] の 10 の位</sys:String>
+    <sys:String x:Key="Ps.011">元空気溜め圧力 [kPa] の 100 の位</sys:String>
+    <sys:String x:Key="Ps.012">直通管圧力 [kPa]</sys:String>
+    <sys:String x:Key="Ps.013">ブレーキ管圧力 [kPa]</sys:String>
+    <sys:String x:Key="Ps.014">釣り合い空気溜め圧力 [kPa]</sys:String>
+    <sys:String x:Key="Ps.015">電流 [A]（力行: +、ブレーキ: -）</sys:String>
+    <sys:String x:Key="Ps.016">電流 [A]（力行もブレーキも +）</sys:String>
+    <sys:String x:Key="Ps.017">ドアの状態（全ドア閉: True、どこかのドアが開: False）</sys:String>
+    <sys:String x:Key="Ps.018">号車ごとの左側ドアの状態（開: True、閉: False。先頭車両が doorl0、2 両目が doorl1 …）</sys:String>
+    <sys:String x:Key="Ps.019">号車ごとの右側ドアの状態（開: True、閉: False。先頭車両が doorr0、2 両目が doorr1 …）</sys:String>
+    <sys:String x:Key="Ps.020">定速制御（ブレーキだけの制御を除く）の状態（制御中: True、停止: False）</sys:String>
+    <sys:String x:Key="Ps.021">ATS プラグインから受け取った値（ats0 ～ ats255）</sys:String>
+    <sys:String x:Key="Ps.022">力行ノッチ</sys:String>
+    <sys:String x:Key="Ps.023">ブレーキノッチ</sys:String>
+    <sys:String x:Key="Ps.024">時刻 [時]</sys:String>
+    <sys:String x:Key="Ps.025">時刻 [分]</sys:String>
+    <sys:String x:Key="Ps.026">時刻 [秒]</sys:String>
+    <sys:String x:Key="Ps.027">左側</sys:String>
+    <sys:String x:Key="Ps.028">右側</sys:String>
+    <sys:String x:Key="Ps.029">{0} 両目の{1}ドアの状態（開: True、閉: False）（bool）</sys:String>
+    <sys:String x:Key="Ps.030">ATS プラグインから受け取った {0} 番の値（int）</sys:String>
+    <sys:String x:Key="Ps.031">表示する状態量（Subject）「{0}」：ATS の番号は 0 ～ 255 です。</sys:String>
+    <sys:String x:Key="Ps.032">表示する状態量（Subject）「{0}」は、状態量の一覧にありません（書き間違いかもしれません）。</sys:String>
+    <sys:String x:Key="Ps.033">表示する状態量（Subject）「{0}」は、ブレーキ方式が電磁直通 [Smee] か自動空気 [Cl] のときだけ使えます。今のパラメーターのブレーキ方式は {1} です。</sys:String>
+</ResourceDictionary>

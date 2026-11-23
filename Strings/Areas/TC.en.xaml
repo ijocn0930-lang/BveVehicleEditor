@@ -1,0 +1,70 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TractionCalculator.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 引張力 [N] -->
+    <sys:String x:Key="TC.001">Force [N]</sys:String>
+    <!-- 電流 [A] -->
+    <sys:String x:Key="TC.002">Current [A]</sys:String>
+    <!-- 引張力（空車） -->
+    <sys:String x:Key="TC.003">Force (empty)</sys:String>
+    <!-- 引張力（満車） -->
+    <sys:String x:Key="TC.004">Force (full)</sys:String>
+    <!-- 電流（空車） -->
+    <sys:String x:Key="TC.005">Current (empty)</sys:String>
+    <!-- 電流（満車） -->
+    <sys:String x:Key="TC.006">Current (full)</sys:String>
+    <!-- 無負荷電流 -->
+    <sys:String x:Key="TC.007">No-load current</sys:String>
+    <!-- M 車の両数は 1 以上にしてください（表は M 車 1 両あたりの値です）。 -->
+    <sys:String x:Key="TC.008">The number of M cars must be 1 or more (the tables are per M car).</sys:String>
+    <!-- M 車の重さは 0 より大きくしてください。 -->
+    <sys:String x:Key="TC.009">The M car mass must be greater than 0.</sys:String>
+    <!-- T 車の両数・重さはマイナスにできません。 -->
+    <sys:String x:Key="TC.010">The number and mass of T cars cannot be negative.</sys:String>
+    <!-- 慣性係数はマイナスにできません。 -->
+    <sys:String x:Key="TC.011">Inertia factors cannot be negative.</sys:String>
+    <!-- 最高速度は 0 より大きくしてください。 -->
+    <sys:String x:Key="TC.012">The maximum speed must be greater than 0.</sys:String>
+    <!-- 速度の刻みは 0 より大きくしてください。 -->
+    <sys:String x:Key="TC.013">The speed step must be greater than 0.</sys:String>
+    <!-- 行が多すぎます（最高速度 ÷ 刻みが {0} 未満になるようにしてください）。 -->
+    <sys:String x:Key="TC.014">Too many rows (make maximum speed ÷ step less than {0}).</sys:String>
+    <!-- ノッチを 1 つ以上入れてください。 -->
+    <sys:String x:Key="TC.015">Enter at least one notch.</sys:String>
+    <!-- 定員・体重はマイナスにできません。 -->
+    <sys:String x:Key="TC.016">Capacity and body weight cannot be negative.</sys:String>
+    <!-- 乗車率はマイナスにできません。 -->
+    <sys:String x:Key="TC.017">The load factor cannot be negative.</sys:String>
+    <!-- 満車で増やす速度の上限は 0 より大きくするか、空にしてください（空なら全部の速度）。 -->
+    <sys:String x:Key="TC.018">The upper speed limit for increasing at full load must be greater than 0, or empty (empty means all speeds).</sys:String>
+    <!-- 満車の電流の倍率は 0 より大きくしてください。 -->
+    <sys:String x:Key="TC.019">The full-load current ratio must be greater than 0.</sys:String>
+    <!-- 無負荷電流はマイナスにできません。 -->
+    <sys:String x:Key="TC.020">The no-load current cannot be negative.</sys:String>
+    <!-- 無負荷電流が下がり始める速度 v0 は 0 より大きくするか、空にしてください（空ならノッチごとの v1）。 -->
+    <sys:String x:Key="TC.021">The speed v0 where the no-load current starts to fall must be greater than 0, or empty (empty means v1 of each notch).</sys:String>
+    <!-- ノッチ {0}：減速度はマイナスにできません。 -->
+    <sys:String x:Key="TC.022">Notch {0}: the deceleration cannot be negative.</sys:String>
+    <!-- ノッチ {0}：vs（効き始める速度）はマイナスにできません。 -->
+    <sys:String x:Key="TC.023">Notch {0}: vs (speed where it starts to work) cannot be negative.</sys:String>
+    <!-- ノッチ {0}：va（最大になる速度）は vs 以上にしてください。 -->
+    <sys:String x:Key="TC.024">Notch {0}: va (speed of maximum force) must be vs or more.</sys:String>
+    <!-- ノッチ {0}：vb（弱め始める速度）は va 以上で、0 より大きくしてください。 -->
+    <sys:String x:Key="TC.025">Notch {0}: vb (speed where it starts to weaken) must be va or more and greater than 0.</sys:String>
+    <!-- ノッチ {0}：減衰の指数 k は 0 より大きくしてください（ふつう 2）。 -->
+    <sys:String x:Key="TC.026">Notch {0}: the decay exponent k must be greater than 0 (usually 2).</sys:String>
+    <!-- ノッチ {0}：最大の電流はマイナスにできません。 -->
+    <sys:String x:Key="TC.027">Notch {0}: the maximum current cannot be negative.</sys:String>
+    <!-- ノッチ {0}：起動加速度はマイナスにできません。 -->
+    <sys:String x:Key="TC.028">Notch {0}: the starting acceleration cannot be negative.</sys:String>
+    <!-- ノッチ {0}：v1 は 0 より大きくしてください。 -->
+    <sys:String x:Key="TC.029">Notch {0}: v1 must be greater than 0.</sys:String>
+    <!-- ノッチ {0}：v2 は v1 以上にしてください。 -->
+    <sys:String x:Key="TC.030">Notch {0}: v2 must be v1 or more.</sys:String>
+    <!-- ノッチ {0}：減衰の指数 k は 0 より大きくしてください（ふつう 2）。 -->
+    <sys:String x:Key="TC.031">Notch {0}: the decay exponent k must be greater than 0 (usually 2).</sys:String>
+    <!-- ノッチ {0}：起動時の電流はマイナスにできません。 -->
+    <sys:String x:Key="TC.032">Notch {0}: the starting current cannot be negative.</sys:String>
+</ResourceDictionary>

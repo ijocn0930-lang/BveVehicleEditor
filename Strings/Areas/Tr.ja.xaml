@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TractionWindow.xaml.cs の文（日本語）。英語は Tr.en.xaml -->
+    <sys:String x:Key="Tr.001">ブレーキ</sys:String>
+    <sys:String x:Key="Tr.002">力行</sys:String>
+    <sys:String x:Key="Tr.003">表を式から作る - {0}・{1}</sys:String>
+    <sys:String x:Key="Tr.004">開いている表：{0}の{1}（どの表も M 車 1 両あたり）</sys:String>
+    <sys:String x:Key="Tr.005">ノッチごとの減速度・vs・va・vb・減衰の指数 k・最大の電流を下の表で直せます（セルをダブルクリック）。「表を作り直す」を押すと、最高ノッチの値から、減速度と最大の電流をノッチの割合（ノッチ n は n ÷ ノッチ数）にした表を作り直します（vs・va・vb・k は全部のノッチに同じ値が入ります）。</sys:String>
+    <sys:String x:Key="Tr.006">最高ノッチの減速度 [km/h/s]</sys:String>
+    <sys:String x:Key="Tr.007">vb [km/h]（弱め始める速度）</sys:String>
+    <sys:String x:Key="Tr.008">最高ノッチの最大の電流 [A]</sys:String>
+    <sys:String x:Key="Tr.009">減速度 [km/h/s]</sys:String>
+    <sys:String x:Key="Tr.010">最大の電流 [A]</sys:String>
+    <sys:String x:Key="Tr.011">最大の力 [N]</sys:String>
+    <sys:String x:Key="Tr.012">{0}（開いている表）</sys:String>
+    <sys:String x:Key="Tr.013">{0}（ファイルなし）</sys:String>
+    <sys:String x:Key="Tr.014">画面の表を置き換えます（保存するまでファイルは変わりません）</sys:String>
+    <sys:String x:Key="Tr.015">このファイルに直接書きます：{0}</sys:String>
+    <sys:String x:Key="Tr.016">ノッチのファイルに書かれていないか、ファイルが見つかりません（ノッチのタブの「参照」で選んでください）</sys:String>
+    <sys:String x:Key="Tr.017">引張力は、① 0～v1 は一定（起動時の力）、② v1～v2 は速度に反比例、③ v2 より上は速度の k 乗に反比例（k はノッチごと）で作ります。起動時の力は「編成の重さ（慣性係数を含む）× 起動加速度 ÷ 3.6 ÷ M 車の両数」です（走行抵抗の分は足しません）。</sys:String>
+    <sys:String x:Key="Tr.018">電流は、ノッチごとの起動時の電流から、0～v2 は一定、v2 より上は（v2 ÷ v）の (k−1) 乗で下げて作ります。</sys:String>
+    <sys:String x:Key="Tr.019">値を変えると下のグラフがすぐ変わります。</sys:String>
+    <sys:String x:Key="Tr.020">{0}{1}グラフの灰色の点線は M 車 1 両あたりの走行抵抗で、引張力の線と交わる速度が、つり合う（それ以上加速しない）速度の目安です。</sys:String>
+    <sys:String x:Key="Tr.021">満車の引張力は「空車の引張力 × 満車の力の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1}灰色の点線は空車の走行抵抗の目安です。</sys:String>
+    <sys:String x:Key="Tr.022">満車の電流は「空車の電流 × 満車の電流の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1}</sys:String>
+    <sys:String x:Key="Tr.023">無負荷電流（引張力が 0 になる電流）は、0～v0 は入れた値で一定、v0 より上は「値 × v0 ÷ v」で下げます（v0 が空ならノッチごとの v1）。{0}</sys:String>
+    <sys:String x:Key="Tr.024">ブレーキの引張力は、0～vs は 0、vs～va は 0 から最大の力まで直線で上げる、va～vb は一定、vb より上は「最大の力 ×（vb ÷ v）^k」で作ります。最大の力は「編成の重さ（慣性係数を含む）× 減速度 ÷ 3.6 ÷ M 車の両数」です。</sys:String>
+    <sys:String x:Key="Tr.025">ブレーキの電流は「最大の電流 × そのときの力 ÷ 最大の力」（力に比例）で作ります。</sys:String>
+    <sys:String x:Key="Tr.026">値を変えると下のグラフがすぐ変わります。</sys:String>
+    <sys:String x:Key="Tr.027">満車の引張力は「空車の引張力 × 満車の力の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1}</sys:String>
+    <sys:String x:Key="Tr.028">満車の電流は「空車の電流 × 満車の電流の倍率」です（「増やすのは ○ km/h まで」より上は空車と同じ）。{0}{1}</sys:String>
+    <sys:String x:Key="Tr.029">無負荷電流（引張力が 0 になる電流）は、0～v0 は入れた値で一定、v0 より上は「値 × v0 ÷ v」で下げます（v0 が空ならノッチごとの vb）。{0}</sys:String>
+    <sys:String x:Key="Tr.030">「作る表」を 1 つ以上チェックしてください。</sys:String>
+    <sys:String x:Key="Tr.031">{0}が数字ではありません（「{1}」）。</sys:String>
+    <sys:String x:Key="Tr.032">M 車の重さ</sys:String>
+    <sys:String x:Key="Tr.033">T 車の重さ</sys:String>
+    <sys:String x:Key="Tr.034">M 車の両数</sys:String>
+    <sys:String x:Key="Tr.035">T 車の両数</sys:String>
+    <sys:String x:Key="Tr.036">M 車の慣性係数</sys:String>
+    <sys:String x:Key="Tr.037">T 車の慣性係数</sys:String>
+    <sys:String x:Key="Tr.038">増やす速度の上限</sys:String>
+    <sys:String x:Key="Tr.039">定員</sys:String>
+    <sys:String x:Key="Tr.040">体重</sys:String>
+    <sys:String x:Key="Tr.041">乗車率</sys:String>
+    <sys:String x:Key="Tr.042">満車の電流の倍率</sys:String>
+    <sys:String x:Key="Tr.043">無負荷電流</sys:String>
+    <sys:String x:Key="Tr.044">無負荷電流が下がり始める速度 v0</sys:String>
+    <sys:String x:Key="Tr.045">最高速度</sys:String>
+    <sys:String x:Key="Tr.046">速度の刻み</sys:String>
+    <sys:String x:Key="Tr.047">ノッチ {0}：減速度・vs・va・vb・減衰の指数 k・最大の電流に数字でない値があります。</sys:String>
+    <sys:String x:Key="Tr.048">ノッチ {0}：起動加速度・v1・v2・減衰の指数 k・起動時の電流に数字でない値があります。</sys:String>
+    <sys:String x:Key="Tr.049">ノッチ {0}</sys:String>
+    <sys:String x:Key="Tr.050">走行抵抗（パラメーター）</sys:String>
+    <sys:String x:Key="Tr.051">走行抵抗（既定の式）</sys:String>
+    <sys:String x:Key="Tr.052">最高ノッチの減速度・vs・va・vb・減衰の指数 k・最大の電流</sys:String>
+    <sys:String x:Key="Tr.053">最高ノッチの起動加速度・v1・v2・減衰の指数 k・起動時の電流</sys:String>
+    <sys:String x:Key="Tr.054">{0}は数字、ノッチ数は 1～255 の整数にしてください。</sys:String>
+    <sys:String x:Key="Tr.055">確認</sys:String>
+    <sys:String x:Key="Tr.056">最高ノッチの減速度 {0} km/h/s・vs {1} km/h・va {2} km/h・vb {3} km/h・減衰の指数 k {4}・最大の電流 {5} A</sys:String>
+    <sys:String x:Key="Tr.057">最高ノッチの起動加速度 {0} km/h/s・v1 {1} km/h・v2 {2} km/h・減衰の指数 k {3}・起動時の電流 {4} A</sys:String>
+    <sys:String x:Key="Tr.058">ノッチの表を、ノッチ数 {0}・{1} で作り直しますか？
+今のノッチの表で直した値は消えます。</sys:String>
+    <sys:String x:Key="Tr.059">確認</sys:String>
+    <sys:String x:Key="Tr.060">・{0}：開いている表を置き換えます（保存するまでファイルは変わりません）</sys:String>
+    <sys:String x:Key="Tr.061">・{0}：{1} に直接書きます</sys:String>
+    <sys:String x:Key="Tr.062">次の表を作ります（どの表も {0} 行 × ノッチ {1} 列。先頭のコメントの行は残します）。
+
+{2}
+
+ファイルに直接書く表は、書く前の中身を同じフォルダーに「○○.日時.bak」で残します。</sys:String>
+    <sys:String x:Key="Tr.063">確認</sys:String>
+    <sys:String x:Key="Tr.064">・{0}：{1}（前の中身：{2}）</sys:String>
+    <sys:String x:Key="Tr.065">・{0}：{1}
+　{2}</sys:String>
+    <sys:String x:Key="Tr.066">次のファイルに書きました。
+
+{0}</sys:String>
+    <sys:String x:Key="Tr.067">{0}次のファイルは書けませんでした。
+
+{1}</sys:String>
+    <sys:String x:Key="Tr.068">確認</sys:String>
+    <sys:String x:Key="Tr.069">表を式から作る</sys:String>
+</ResourceDictionary>

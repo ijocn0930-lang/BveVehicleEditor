@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TractionCalculator.cs の文（日本語）。英語は TC.en.xaml -->
+    <sys:String x:Key="TC.001">引張力 [N]</sys:String>
+    <sys:String x:Key="TC.002">電流 [A]</sys:String>
+    <sys:String x:Key="TC.003">引張力（空車）</sys:String>
+    <sys:String x:Key="TC.004">引張力（満車）</sys:String>
+    <sys:String x:Key="TC.005">電流（空車）</sys:String>
+    <sys:String x:Key="TC.006">電流（満車）</sys:String>
+    <sys:String x:Key="TC.007">無負荷電流</sys:String>
+    <sys:String x:Key="TC.008">M 車の両数は 1 以上にしてください（表は M 車 1 両あたりの値です）。</sys:String>
+    <sys:String x:Key="TC.009">M 車の重さは 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.010">T 車の両数・重さはマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.011">慣性係数はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.012">最高速度は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.013">速度の刻みは 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.014">行が多すぎます（最高速度 ÷ 刻みが {0} 未満になるようにしてください）。</sys:String>
+    <sys:String x:Key="TC.015">ノッチを 1 つ以上入れてください。</sys:String>
+    <sys:String x:Key="TC.016">定員・体重はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.017">乗車率はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.018">満車で増やす速度の上限は 0 より大きくするか、空にしてください（空なら全部の速度）。</sys:String>
+    <sys:String x:Key="TC.019">満車の電流の倍率は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.020">無負荷電流はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.021">無負荷電流が下がり始める速度 v0 は 0 より大きくするか、空にしてください（空ならノッチごとの v1）。</sys:String>
+    <sys:String x:Key="TC.022">ノッチ {0}：減速度はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.023">ノッチ {0}：vs（効き始める速度）はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.024">ノッチ {0}：va（最大になる速度）は vs 以上にしてください。</sys:String>
+    <sys:String x:Key="TC.025">ノッチ {0}：vb（弱め始める速度）は va 以上で、0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.026">ノッチ {0}：減衰の指数 k は 0 より大きくしてください（ふつう 2）。</sys:String>
+    <sys:String x:Key="TC.027">ノッチ {0}：最大の電流はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.028">ノッチ {0}：起動加速度はマイナスにできません。</sys:String>
+    <sys:String x:Key="TC.029">ノッチ {0}：v1 は 0 より大きくしてください。</sys:String>
+    <sys:String x:Key="TC.030">ノッチ {0}：v2 は v1 以上にしてください。</sys:String>
+    <sys:String x:Key="TC.031">ノッチ {0}：減衰の指数 k は 0 より大きくしてください（ふつう 2）。</sys:String>
+    <sys:String x:Key="TC.032">ノッチ {0}：起動時の電流はマイナスにできません。</sys:String>
+</ResourceDictionary>

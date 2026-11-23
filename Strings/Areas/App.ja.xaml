@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- App.xaml.cs の文（日本語）。英語は App.en.xaml -->
+    <sys:String x:Key="App.002">クラッシュログ: {0}</sys:String>
+    <sys:String x:Key="App.003">クラッシュログを保存できませんでした。</sys:String>
+    <sys:String x:Key="App.004">ご不便おかけし申し訳ございません。例外スローしたため、アプリケーションを終了します。
+
+</sys:String>
+    <sys:String x:Key="App.005">発生場所: {0}
+内容: {1}
+
+{2}</sys:String>
+</ResourceDictionary>

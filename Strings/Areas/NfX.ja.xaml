@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- NotchForm.xaml の文（日本語）。英語は NfX.en.xaml -->
+    <sys:String x:Key="NfX.001">表のファイル（CSV）を「参照」で選ぶと、下のテキストが書き換わります（テキストをクリックして Ctrl+Z で戻せます）。パスは Notch.txt からの相対パスです。「開く」で、表のファイルを別のウィンドウで表の形で見られます。</sys:String>
+    <sys:String x:Key="NfX.002">[Power] 力行（加速）ノッチ</sys:String>
+    <sys:String x:Key="NfX.003">[Brake] ブレーキノッチ</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,40 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TableWindow.xaml の文（日本語）。英語は TwX.en.xaml -->
+    <sys:String x:Key="TwX.001">表のファイル</sys:String>
+    <sys:String x:Key="TwX.002">セルをダブルクリック（または F2・文字を打つ）で直せます。Enter で決まり、Esc でやめます。Delete で中身を空にし、右クリックで行・列の追加や削除、コピー・貼り付けができます。見出しをダブルクリックするとその列を全部選びます。Ctrl+Z で元に戻し、Ctrl+Y でやり直せます。「保存」か Ctrl+S でこのファイルだけ保存します。灰色の行は「#」で始まるコメントの行です。</sys:String>
+    <sys:String x:Key="TwX.003">表</sys:String>
+    <sys:String x:Key="TwX.004">行を下に足す</sys:String>
+    <sys:String x:Key="TwX.005">選んでいるセルの行の下に、空の行を足します（選んでいなければ最後に足します）</sys:String>
+    <sys:String x:Key="TwX.006">行を消す</sys:String>
+    <sys:String x:Key="TwX.007">選んでいるセルの行を、確認してから消します</sys:String>
+    <sys:String x:Key="TwX.008">列（ノッチ）を足す</sys:String>
+    <sys:String x:Key="TwX.009">右の端に列を 1 つ足します</sys:String>
+    <sys:String x:Key="TwX.010">列を消す</sys:String>
+    <sys:String x:Key="TwX.011">選んでいるセルの列を、確認してから消します（左の「行」と 1 列目は消せません）</sys:String>
+    <sys:String x:Key="TwX.012">足りない項目を足す</sys:String>
+    <sys:String x:Key="TwX.013">書かれていない項目を、最後のデータの行の下に足します（値は仮に 0。確認してから足します）</sys:String>
+    <sys:String x:Key="TwX.014">式から作る…</sys:String>
+    <sys:String x:Key="TwX.015">起動加速度・v1・v2 などから引張力の表を作るウィンドウを開きます</sys:String>
+    <sys:String x:Key="TwX.016">抵抗制御で作る…</sys:String>
+    <sys:String x:Key="TwX.017">抵抗制御（直並列・弱め界磁）の車両の、列が進段ごとの表を作るウィンドウを開きます</sys:String>
+    <sys:String x:Key="TwX.018">元に戻す</sys:String>
+    <sys:String x:Key="TwX.019">やり直す</sys:String>
+    <sys:String x:Key="TwX.020">行を上に足す</sys:String>
+    <sys:String x:Key="TwX.021">行を下に足す</sys:String>
+    <sys:String x:Key="TwX.022">選んだ行を消す…</sys:String>
+    <sys:String x:Key="TwX.023">列を左に足す</sys:String>
+    <sys:String x:Key="TwX.024">列を右に足す</sys:String>
+    <sys:String x:Key="TwX.025">選んだ列を消す…</sys:String>
+    <sys:String x:Key="TwX.026">中身を空にする</sys:String>
+    <sys:String x:Key="TwX.027">切り取り</sys:String>
+    <sys:String x:Key="TwX.028">コピー</sys:String>
+    <sys:String x:Key="TwX.029">貼り付け</sys:String>
+    <sys:String x:Key="TwX.030">グラフ</sys:String>
+    <sys:String x:Key="TwX.031">マウスを乗せると近い点の値が出ます。ホイールで拡大・縮小、右ボタンのドラッグで移動、ダブルクリックで元の大きさに戻ります。表を直すと、このタブを開いたときに描き直します。</sys:String>
+    <sys:String x:Key="TwX.032">保存</sys:String>
+    <sys:String x:Key="TwX.033">このファイルだけを、元の文字コードで保存します（Ctrl+S）</sys:String>
+    <sys:String x:Key="TwX.034">閉じる</sys:String>
+</ResourceDictionary>

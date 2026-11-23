@@ -1,0 +1,128 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- SoundForm.xaml.cs の文（日本語）。英語は Sf.en.xaml -->
+    <sys:String x:Key="Sf.001">走行音（車輪の転動音）</sys:String>
+    <sys:String x:Key="Sf.002">曲線のきしり音</sys:String>
+    <sys:String x:Key="Sf.003">モーター音（音量・ピッチはモーター音のタブの表）</sys:String>
+    <sys:String x:Key="Sf.004">継ぎ目・分岐器の音（速度に応じて 1 回）</sys:String>
+    <sys:String x:Key="Sf.005">ブレーキの圧力が変わる音</sys:String>
+    <sys:String x:Key="Sf.006">ブレーキシリンダーの緩解音</sys:String>
+    <sys:String x:Key="Sf.007">ブレーキシリンダーが完全に緩解する音</sys:String>
+    <sys:String x:Key="Sf.008">高い圧力からの緩解音（なければ BcRelease）</sys:String>
+    <sys:String x:Key="Sf.009">ブレーキ管の急減圧音</sys:String>
+    <sys:String x:Key="Sf.010">ブレーキ管の減圧音（自動空気ブレーキ）</sys:String>
+    <sys:String x:Key="Sf.011">空気圧縮機</sys:String>
+    <sys:String x:Key="Sf.012">起動 5 秒間の音</sys:String>
+    <sys:String x:Key="Sf.013">作動中の音</sys:String>
+    <sys:String x:Key="Sf.014">停止する音</sys:String>
+    <sys:String x:Key="Sf.015">空気ばね</sys:String>
+    <sys:String x:Key="Sf.016">左側の排気音</sys:String>
+    <sys:String x:Key="Sf.017">右側の排気音</sys:String>
+    <sys:String x:Key="Sf.018">左側の給気音</sys:String>
+    <sys:String x:Key="Sf.019">右側の給気音</sys:String>
+    <sys:String x:Key="Sf.020">断流器</sys:String>
+    <sys:String x:Key="Sf.021">回路を閉じる音</sys:String>
+    <sys:String x:Key="Sf.022">回路を開く音</sys:String>
+    <sys:String x:Key="Sf.023">警笛</sys:String>
+    <sys:String x:Key="Sf.024">警笛 1（キーを押した時）</sys:String>
+    <sys:String x:Key="Sf.025">警笛 1 の余韻（キーを離した時）</sys:String>
+    <sys:String x:Key="Sf.026">警笛 2（キーを押した時）</sys:String>
+    <sys:String x:Key="Sf.027">警笛 2 の余韻（キーを離した時）</sys:String>
+    <sys:String x:Key="Sf.028">ミュージックホーン</sys:String>
+    <sys:String x:Key="Sf.029">客室ドア</sys:String>
+    <sys:String x:Key="Sf.030">左側のドアが開く音</sys:String>
+    <sys:String x:Key="Sf.031">右側のドアが開く音</sys:String>
+    <sys:String x:Key="Sf.032">左側のドアが閉まる音</sys:String>
+    <sys:String x:Key="Sf.033">右側のドアが閉まる音</sys:String>
+    <sys:String x:Key="Sf.034">ATS プラグインが鳴らす音（0～255）</sys:String>
+    <sys:String x:Key="Sf.035">車掌からの合図</sys:String>
+    <sys:String x:Key="Sf.036">「停止位置直せ」の合図</sys:String>
+    <sys:String x:Key="Sf.037">運転士知らせ灯</sys:String>
+    <sys:String x:Key="Sf.038">点灯する音</sys:String>
+    <sys:String x:Key="Sf.039">滅灯する音</sys:String>
+    <sys:String x:Key="Sf.040">ブレーキハンドルの操作音</sys:String>
+    <sys:String x:Key="Sf.041">込める方向にゆっくり</sys:String>
+    <sys:String x:Key="Sf.042">込める方向にすばやく（なければ Apply）</sys:String>
+    <sys:String x:Key="Sf.043">緩める方向にゆっくり</sys:String>
+    <sys:String x:Key="Sf.044">緩める方向にすばやく（なければ Release）</sys:String>
+    <sys:String x:Key="Sf.045">緩め位置にしたとき</sys:String>
+    <sys:String x:Key="Sf.046">非常位置にしたとき</sys:String>
+    <sys:String x:Key="Sf.047">主ハンドルの操作音</sys:String>
+    <sys:String x:Key="Sf.048">ノッチをゆっくり上げたとき</sys:String>
+    <sys:String x:Key="Sf.049">ノッチをすばやく上げたとき（なければ Up）</sys:String>
+    <sys:String x:Key="Sf.050">ノッチをゆっくり下げたとき</sys:String>
+    <sys:String x:Key="Sf.051">ノッチをすばやく下げたとき（なければ Down）</sys:String>
+    <sys:String x:Key="Sf.052">フルノッチにしたとき</sys:String>
+    <sys:String x:Key="Sf.053">切位置にしたとき</sys:String>
+    <sys:String x:Key="Sf.054">レバーサーの操作音</sys:String>
+    <sys:String x:Key="Sf.055">前位置か後位置にしたとき</sys:String>
+    <sys:String x:Key="Sf.056">切位置にしたとき</sys:String>
+    <sys:String x:Key="Sf.057">その他</sys:String>
+    <sys:String x:Key="Sf.058">いつも鳴り続ける音</sys:String>
+    <sys:String x:Key="Sf.059">制輪子のきしり音</sys:String>
+    <sys:String x:Key="Sf.060">（{0} 個）</sys:String>
+    <sys:String x:Key="Sf.061">（なし）</sys:String>
+    <sys:String x:Key="Sf.062">サウンドのファイルを読み込めていないので、音のファイルを探せません（参照ボタンも使えません）。</sys:String>
+    <sys:String x:Key="Sf.063">まだ書かれていません。下の「番号」に番号を入れて「この番号で音を選ぶ…」を押すと、「番号 = パス」の行を足します（セクションがなければセクションごと足します）。</sys:String>
+    <sys:String x:Key="Sf.064">番号は 0 以上の整数です{0}。下の「番号」で足し、「消す」で行を消せます。</sys:String>
+    <sys:String x:Key="Sf.065">番号 {0}</sys:String>
+    <sys:String x:Key="Sf.066">このセクションはまだ書かれていません。「参照」で選ぶと、セクションごと足します。</sys:String>
+    <sys:String x:Key="Sf.067">{0}（書かれていません）</sys:String>
+    <sys:String x:Key="Sf.068">参照</sys:String>
+    <sys:String x:Key="Sf.069">消す</sys:String>
+    <sys:String x:Key="Sf.070">この行を、確認してから下のテキストから消します（Ctrl+Z で戻せます）</sys:String>
+    <sys:String x:Key="Sf.071">ほか {0} 件</sys:String>
+    <sys:String x:Key="Sf.072">{0} 行目：[{1}] は公式の一覧にないセクションです（中の音は使われないかもしれません）</sys:String>
+    <sys:String x:Key="Sf.073">{0} 行目：[{1}] は {2} 行目の [{3}] と同じセクションです（空白の入れ方や古い名前など、書き方だけが違います）。1 つにまとめてください</sys:String>
+    <sys:String x:Key="Sf.074">{0} 行目：[{1}] {2} は公式の一覧にないキーです（{3} のどれか）</sys:String>
+    <sys:String x:Key="Sf.075">{0} 行目：[{1}] {2} … {3}</sys:String>
+    <sys:String x:Key="Sf.076">{0} 行目：[{1}] {2} … キーは 0 以上の整数にしてください</sys:String>
+    <sys:String x:Key="Sf.077">{0} 行目：[Ats] {1} … ATS の番号は 0～{2} です</sys:String>
+    <sys:String x:Key="Sf.078">BveTs Vehicle Sound {0} から使えます（今のヘッダーは {1}）</sys:String>
+    <sys:String x:Key="Sf.079">
+（このファイルは Shift_JIS なので、文字コードの指定 :shift_jis も付けます）</sys:String>
+    <sys:String x:Key="Sf.080">1 行目のヘッダー「Version 1.0」を「{0}」に書き換えますか？{1}
+
+中身（セクションとキー）は変えません。[Switch] などの古い名前は、書き直したあとに警告します。
+テキストをクリックして Ctrl+Z で戻せます。保存するまでファイルは変わりません。</sys:String>
+    <sys:String x:Key="Sf.081">確認</sys:String>
+    <sys:String x:Key="Sf.082">ファイルが見つかりません</sys:String>
+    <sys:String x:Key="Sf.083">[{0}] {1} の音のファイルを選択してください</sys:String>
+    <sys:String x:Key="Sf.084">この音のファイルを鳴らせませんでした。
+
+{0}
+
+{1}</sys:String>
+    <sys:String x:Key="Sf.085">確認</sys:String>
+    <sys:String x:Key="Sf.086">鳴らしている音を止めます</sys:String>
+    <sys:String x:Key="Sf.087">音を鳴らして確かめます（もう一度押すと止めます。ほかの行の ▶ を押すと、そちらに替わります）</sys:String>
+    <sys:String x:Key="Sf.088">この音のファイルを鳴らせませんでした。
+
+{0}
+
+{1}</sys:String>
+    <sys:String x:Key="Sf.089">確認</sys:String>
+    <sys:String x:Key="Sf.090">ファイルは wav の形をしています。</sys:String>
+    <sys:String x:Key="Sf.091">ファイルの中身が wav の形ではありません。ファイルが壊れているか、名前だけ .wav の別の形式かもしれません。</sys:String>
+    <sys:String x:Key="Sf.092">ファイルを読めませんでした（ほかのアプリが使っている・消された、などが考えられます）。</sys:String>
+    <sys:String x:Key="Sf.093">音のファイル (*.wav)|*.wav|すべてのファイル (*.*)|*.*</sys:String>
+    <sys:String x:Key="Sf.094">このファイルは Sound.txt に書けません。
+
+{0}
+{1}</sys:String>
+    <sys:String x:Key="Sf.095">確認</sys:String>
+    <sys:String x:Key="Sf.096">番号は 0 以上の整数で入れてください（「{0}」）。</sys:String>
+    <sys:String x:Key="Sf.097">ATS の番号は 0～{0} です（「{1}」）。</sys:String>
+    <sys:String x:Key="Sf.098">番号 {0} はもう書かれています。その行の「参照」で選び直してください。</sys:String>
+    <sys:String x:Key="Sf.099">確認</sys:String>
+    <sys:String x:Key="Sf.100">[{0}] 番号 {1} の音のファイルを選択してください</sys:String>
+    <sys:String x:Key="Sf.101">{0} 行目：{1} = {2}</sys:String>
+    <sys:String x:Key="Sf.102">[{0}] の次の行を消しますか？
+
+{1}
+
+音のファイル（wav）は消しません。テキストをクリックして Ctrl+Z で戻せます。</sys:String>
+    <sys:String x:Key="Sf.103">確認</sys:String>
+</ResourceDictionary>

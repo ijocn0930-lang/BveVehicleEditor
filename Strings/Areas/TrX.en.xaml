@@ -1,0 +1,124 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TractionWindow.xaml の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 表を式から作る -->
+    <sys:String x:Key="TrX.001">Create Tables from Formulas</sys:String>
+    <!-- 作る表 -->
+    <sys:String x:Key="TrX.002">Tables to create</sys:String>
+    <!-- チェックした表をまとめて作ります。開いている表は画面の表を置き換えます（保存するまでファイルは変わりません）。ほかの表は、確認してからファイルに直接書きます（書く前の中身は同じフォルダーに .bak で残します）。ノッチのファイルに書かれていない表・見つからない表は選べません。 -->
+    <sys:String x:Key="TrX.003">Creates the checked tables at once. The open table replaces the table in the window (the file does not change until you save). The other tables are written directly to their files after confirming (the previous contents are kept in the same folder as .bak). Tables not written in the notch file or not found cannot be chosen.</sys:String>
+    <!-- グラフで見る表： -->
+    <sys:String x:Key="TrX.004">Table shown in the graph:</sys:String>
+    <!-- 編成 -->
+    <sys:String x:Key="TrX.005">Train</sys:String>
+    <!-- パラメーターの [Dynamics] から読みました。ここで直しても、パラメーターは変わりません。 -->
+    <sys:String x:Key="TrX.006">Read from [Dynamics] in the parameters. Changing them here does not change the parameters.</sys:String>
+    <!-- M 車の重さ [kg] -->
+    <sys:String x:Key="TrX.007">M car mass [kg]</sys:String>
+    <!-- M 車の両数 -->
+    <sys:String x:Key="TrX.008">Number of M cars</sys:String>
+    <!-- M 車の慣性係数 -->
+    <sys:String x:Key="TrX.009">M car inertia factor</sys:String>
+    <!-- T 車の重さ [kg] -->
+    <sys:String x:Key="TrX.010">T car mass [kg]</sys:String>
+    <!-- T 車の両数 -->
+    <sys:String x:Key="TrX.011">Number of T cars</sys:String>
+    <!-- T 車の慣性係数 -->
+    <sys:String x:Key="TrX.012">T car inertia factor</sys:String>
+    <!-- 乗客と満車 -->
+    <sys:String x:Key="TrX.013">Passengers and full load</sys:String>
+    <!-- 満車の表（引張力・電流）で使います。定員と体重はパラメーターの [Passengers] から読みました。満車の重さ ＝ 編成の重さ ＋ 定員 × 乗車率 × 体重 × 全両数 で、満車の力の倍率は「満車の重さ ÷ 編成の重さ」です。 -->
+    <sys:String x:Key="TrX.014">Used for the full-load tables (force and current). Capacity and body weight were read from [Passengers] in the parameters. Full-load mass = train mass + capacity × load factor × body weight × total number of cars, and the full-load force ratio is "full-load mass ÷ train mass".</sys:String>
+    <!-- 1 両の定員 [人] -->
+    <sys:String x:Key="TrX.015">Capacity per car [people]</sys:String>
+    <!-- 体重 [kg] -->
+    <sys:String x:Key="TrX.016">Body weight [kg]</sys:String>
+    <!-- 乗車率 [%] -->
+    <sys:String x:Key="TrX.017">Load factor [%]</sys:String>
+    <!-- 定員の何 % が乗った重さを満車とするか（サンプルの車両では 100～180） -->
+    <sys:String x:Key="TrX.018">The percentage of the capacity regarded as full load (100 to 180 in the sample vehicles)</sys:String>
+    <!-- 増やすのは ○ km/h まで -->
+    <sys:String x:Key="TrX.019">Increase up to ○ km/h</sys:String>
+    <!-- 満車で力・電流を増やす速度の上限。空なら全部の速度。この速度より上は空車と同じ値 -->
+    <sys:String x:Key="TrX.020">Upper speed limit for increasing force and current at full load. Empty means all speeds. Above this speed the values are the same as for the empty car</sys:String>
+    <!-- 満車の力の倍率（計算） -->
+    <sys:String x:Key="TrX.021">Full-load force ratio (calculated)</sys:String>
+    <!-- 乗車率などから計算した値（直せません） -->
+    <sys:String x:Key="TrX.022">Calculated from the load factor and others (cannot be edited)</sys:String>
+    <!-- 電流 -->
+    <sys:String x:Key="TrX.023">Current</sys:String>
+    <!-- ノッチごとの起動時の電流は、下のノッチの表で入れます。満車の電流は「空車の電流 × 倍率」で、増やす速度の上限は満車の力と同じです。無負荷電流は、0～v0 は入れた値で一定、v0 より上は「値 × v0 ÷ v」で下げます（v0 が空ならノッチごとの v1。速度で変えないときは、v0 に最高速度より大きい値を入れます）。 -->
+    <sys:String x:Key="TrX.024">Enter the starting current of each notch in the notch table below. The full-load current is "empty current × ratio", with the same upper speed limit as the full-load force. The no-load current is constant at the entered value from 0 to v0 and decreases as "value × v0 ÷ v" above v0 (if v0 is empty, v1 of each notch; to keep it constant, enter a value above the maximum speed for v0).</sys:String>
+    <!-- 満車の電流の倍率 -->
+    <sys:String x:Key="TrX.025">Full-load current ratio</sys:String>
+    <!-- 最初は満車の力の倍率と同じ値（サンプルの車両では 1.0～1.8） -->
+    <sys:String x:Key="TrX.026">Initially the same as the full-load force ratio (1.0 to 1.8 in the sample vehicles)</sys:String>
+    <!-- 無負荷電流 [A] -->
+    <sys:String x:Key="TrX.027">No-load current [A]</sys:String>
+    <!-- 引張力が 0 になる主電動機電流（v0 までの値。サンプルの車両では 1～320 A） -->
+    <sys:String x:Key="TrX.028">Traction motor current at which the force becomes 0 (value up to v0; 1 to 320 A in the sample vehicles)</sys:String>
+    <!-- 無負荷電流が下がり始める速度 v0 [km/h] -->
+    <sys:String x:Key="TrX.029">Speed v0 where the no-load current starts to fall [km/h]</sys:String>
+    <!-- 空ならノッチごとの v1。サンプルの車両では v1 と同じか、それより低い速度でした -->
+    <sys:String x:Key="TrX.030">If empty, v1 of each notch. In the sample vehicles it was the same as v1 or lower</sys:String>
+    <!-- 表の形 -->
+    <sys:String x:Key="TrX.031">Table shape</sys:String>
+    <!-- 最高速度 [km/h] -->
+    <sys:String x:Key="TrX.032">Maximum speed [km/h]</sys:String>
+    <!-- 表の最後の行の速度 -->
+    <sys:String x:Key="TrX.033">Speed of the last row of the table</sys:String>
+    <!-- 速度の刻み [km/h] -->
+    <sys:String x:Key="TrX.034">Speed step [km/h]</sys:String>
+    <!-- 表の行の速度の間隔 -->
+    <sys:String x:Key="TrX.035">Speed interval between table rows</sys:String>
+    <!-- ノッチ -->
+    <sys:String x:Key="TrX.036">Notches</sys:String>
+    <!-- ノッチごとの起動加速度・v1・v2・減衰の指数 k・起動時の電流を下の表で直せます（セルをダブルクリック）。「表を作り直す」を押すと、最高ノッチの値から、起動加速度と起動時の電流をノッチの割合（ノッチ n は n ÷ ノッチ数）にした表を作り直します（v1・v2・k は全部のノッチに同じ値が入ります）。 -->
+    <sys:String x:Key="TrX.037">You can edit the starting acceleration, v1, v2, decay exponent k and starting current of each notch in the table below (double-click a cell). "Rebuild table" rebuilds the table from the top notch values, scaling the starting acceleration and starting current by the notch ratio (notch n is n ÷ number of notches) (v1, v2 and k are the same for all notches).</sys:String>
+    <!-- 最高ノッチの起動加速度 [km/h/s] -->
+    <sys:String x:Key="TrX.038">Top notch starting acceleration [km/h/s]</sys:String>
+    <!-- v1 [km/h]（定トルクの終わり） -->
+    <sys:String x:Key="TrX.039">v1 [km/h] (end of constant torque)</sys:String>
+    <!-- vs [km/h]（効き始める速度） -->
+    <sys:String x:Key="TrX.040">vs [km/h] (speed where it starts to work)</sys:String>
+    <!-- これより遅いと電気ブレーキの力は 0 -->
+    <sys:String x:Key="TrX.041">Below this speed the electric brake force is 0</sys:String>
+    <!-- va [km/h]（最大になる速度） -->
+    <sys:String x:Key="TrX.042">va [km/h] (speed of maximum force)</sys:String>
+    <!-- vs～va は 0 から最大の力まで直線で上げる（vs と同じなら va で一気に最大） -->
+    <sys:String x:Key="TrX.043">From vs to va the force rises linearly from 0 to the maximum (if equal to vs, it jumps to the maximum at va)</sys:String>
+    <!-- v2 [km/h]（定電力の終わり） -->
+    <sys:String x:Key="TrX.044">v2 [km/h] (end of constant power)</sys:String>
+    <!-- 減衰の指数 k -->
+    <sys:String x:Key="TrX.045">Decay exponent k</sys:String>
+    <!-- v2（ブレーキは vb）より上で、力を速度の k 乗に反比例させます（ふつう 2）。作り直すと全部のノッチに入ります -->
+    <sys:String x:Key="TrX.046">Above v2 (vb for the brake), the force is inversely proportional to the k-th power of the speed (usually 2). Rebuilding sets it for all notches</sys:String>
+    <!-- 最高ノッチの起動時の電流 [A] -->
+    <sys:String x:Key="TrX.047">Top notch starting current [A]</sys:String>
+    <!-- ノッチ数 -->
+    <sys:String x:Key="TrX.048">Number of notches</sys:String>
+    <!-- 最初はパラメーターの力行ノッチ数（PowerNotchCount） -->
+    <sys:String x:Key="TrX.049">Initially the number of power notches in the parameters (PowerNotchCount)</sys:String>
+    <!-- 表を作り直す -->
+    <sys:String x:Key="TrX.050">Rebuild table</sys:String>
+    <!-- 左の値で、下のノッチの表を作り直します（今の表の値は消えます） -->
+    <sys:String x:Key="TrX.051">Rebuilds the notch table below from the values on the left (the current values are discarded)</sys:String>
+    <!-- ノッチ -->
+    <sys:String x:Key="TrX.052">Notch</sys:String>
+    <!-- 起動加速度 [km/h/s] -->
+    <sys:String x:Key="TrX.053">Starting acceleration [km/h/s]</sys:String>
+    <!-- 減衰の指数 k -->
+    <sys:String x:Key="TrX.054">Decay exponent k</sys:String>
+    <!-- 起動時の電流 [A] -->
+    <sys:String x:Key="TrX.055">Starting current [A]</sys:String>
+    <!-- 起動時の力 [N] -->
+    <sys:String x:Key="TrX.056">Starting force [N]</sys:String>
+    <!-- 表に入れる -->
+    <sys:String x:Key="TrX.057">Put into tables</sys:String>
+    <!-- チェックした表を作ります（開いている表は画面で置き換え、ほかの表はファイルに直接書きます。先頭のコメントの行は残します） -->
+    <sys:String x:Key="TrX.058">Creates the checked tables (the open table is replaced in the window, the others are written directly to their files; the comment lines at the top are kept)</sys:String>
+    <!-- 閉じる -->
+    <sys:String x:Key="TrX.059">Close</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- EditorTemplates.cs の文（日本語）。英語は Tpl.en.xaml -->
+    <sys:String x:Key="Tpl.001">運転台（ツーハンドル）</sys:String>
+    <sys:String x:Key="Tpl.002">運転台（ワンハンドル）</sys:String>
+    <sys:String x:Key="Tpl.003">定速運転装置</sys:String>
+    <sys:String x:Key="Tpl.004">主制御装置</sys:String>
+    <sys:String x:Key="Tpl.005">再粘着制御</sys:String>
+    <sys:String x:Key="Tpl.006">ブレーキ方式（電気指令式）</sys:String>
+    <sys:String x:Key="Tpl.007">ブレーキ方式（電磁直通）</sys:String>
+    <sys:String x:Key="Tpl.008">ブレーキ方式（自動空気）</sys:String>
+    <sys:String x:Key="Tpl.009">直通管の圧力調整弁</sys:String>
+    <sys:String x:Key="Tpl.010">釣り合い空気ダメ</sys:String>
+    <sys:String x:Key="Tpl.011">ブレーキ管</sys:String>
+    <sys:String x:Key="Tpl.012">電空協調制御（遅れ込め）</sys:String>
+    <sys:String x:Key="Tpl.013">電空協調制御（締切電磁弁）</sys:String>
+    <sys:String x:Key="Tpl.014">ブレーキシリンダーの圧力調整弁</sys:String>
+    <sys:String x:Key="Tpl.015">ブレーキシリンダーの圧力調整弁（サーボ）</sys:String>
+    <sys:String x:Key="Tpl.016">基礎ブレーキ装置</sys:String>
+    <sys:String x:Key="Tpl.017">滑走再粘着制御</sys:String>
+    <sys:String x:Key="Tpl.018">空気圧縮機</sys:String>
+    <sys:String x:Key="Tpl.019">力学パラメーター</sys:String>
+    <sys:String x:Key="Tpl.020">乗客</sys:String>
+    <sys:String x:Key="Tpl.021">客室ドア</sys:String>
+    <sys:String x:Key="Tpl.022">運転士の視点</sys:String>
+    <sys:String x:Key="Tpl.023">もう書かれています</sys:String>
+    <sys:String x:Key="Tpl.024">もう書かれています</sys:String>
+    <sys:String x:Key="Tpl.025">もう書かれています</sys:String>
+    <sys:String x:Key="Tpl.026">もう書かれています</sys:String>
+    <sys:String x:Key="Tpl.027">[{0}] が書かれているので書けません</sys:String>
+    <sys:String x:Key="Tpl.028">力行</sys:String>
+    <sys:String x:Key="Tpl.029">ブレーキ</sys:String>
+    <sys:String x:Key="Tpl.030">もう書かれています</sys:String>
+    <sys:String x:Key="Tpl.031">カーソルを [Power] か [Brake] の中に置いてください</sys:String>
+    <sys:String x:Key="Tpl.032">[{0}] にもう書かれています</sys:String>
+</ResourceDictionary>

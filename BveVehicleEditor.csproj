@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Image\**" />
+    <Compile Remove="test\**" />
+    <Compile Remove="_backup\**" />
+    <EmbeddedResource Remove="Image\**" />
+    <EmbeddedResource Remove="test\**" />
+    <EmbeddedResource Remove="_backup\**" />
+    <None Remove="Image\**" />
+    <None Remove="test\**" />
+    <None Remove="_backup\**" />
+    <Page Remove="Image\**" />
+    <Page Remove="test\**" />
+    <Page Remove="_backup\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.3.1.120" />
+    <PackageReference Include="OxyPlot.Wpf" Version="2.2.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="11.0.0" />
+  </ItemGroup>
+
+</Project>

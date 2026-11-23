@@ -1,0 +1,496 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ParameterForm.xaml の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- ここで変えると下のテキストが書き換わります（テキストをクリックして Ctrl+Z で戻せます）。数字や文字の欄は、打ち終わって Enter を押すか、ほかの欄へ移ると書き込みます（Esc で取り消し）。 -->
+    <sys:String x:Key="PmX.001">Changes here rewrite the text below (click the text and press Ctrl+Z to undo). Number and text fields are written when you press Enter or move to another field (Esc cancels).</sys:String>
+    <!-- 基本 -->
+    <sys:String x:Key="PmX.002">Basic</sys:String>
+    <!-- 先頭車 -->
+    <sys:String x:Key="PmX.003">First car</sys:String>
+    <!-- FirstCar：先頭車が M 車（電動車）か T 車（付随車）か。圧力の表示や挙動が少し変わる -->
+    <sys:String x:Key="PmX.004">FirstCar: whether the first car is an M car (motor car) or a T car (trailer). Pressure displays and behavior change slightly</sys:String>
+    <!-- M（電動車） -->
+    <sys:String x:Key="PmX.005">M (motor car)</sys:String>
+    <!-- T（付随車） -->
+    <sys:String x:Key="PmX.006">T (trailer)</sys:String>
+    <!-- 応荷重制御 -->
+    <sys:String x:Key="PmX.007">Load compensation</sys:String>
+    <!-- LoadCompensating：乗客の重さに合わせて力行・ブレーキの強さを変えるか（true で有効） -->
+    <sys:String x:Key="PmX.008">LoadCompensating: whether to change power and brake strength according to the passenger load (true enables it)</sys:String>
+    <!-- 運転台 -->
+    <sys:String x:Key="PmX.009">Cab</sys:String>
+    <!-- ハンドル -->
+    <sys:String x:Key="PmX.010">Handles</sys:String>
+    <!-- [Cab] はツーハンドル車、[OneLeverCab] はワンハンドル車。どちらか1つだけ書く -->
+    <sys:String x:Key="PmX.011">[Cab] is for two-handle cars and [OneLeverCab] for one-handle cars. Write only one of them</sys:String>
+    <!-- ツーハンドル [Cab] -->
+    <sys:String x:Key="PmX.012">Two handles [Cab]</sys:String>
+    <!-- ワンハンドル [OneLeverCab] -->
+    <sys:String x:Key="PmX.013">One handle [OneLeverCab]</sys:String>
+    <!-- ブレーキノッチ数 -->
+    <sys:String x:Key="PmX.014">Brake notches</sys:String>
+    <!-- BrakeNotchCount：ブレーキノッチの数 -->
+    <sys:String x:Key="PmX.015">BrakeNotchCount: number of brake notches</sys:String>
+    <!-- 力行ノッチ数 -->
+    <sys:String x:Key="PmX.016">Power notches</sys:String>
+    <!-- PowerNotchCount：力行（加速）ノッチの数 -->
+    <sys:String x:Key="PmX.017">PowerNotchCount: number of power (acceleration) notches</sys:String>
+    <!-- 抑速ノッチ数 -->
+    <sys:String x:Key="PmX.018">Holding speed notches</sys:String>
+    <!-- HoldingSpeedNotchCount：抑速ノッチの数 -->
+    <sys:String x:Key="PmX.019">HoldingSpeedNotchCount: number of holding speed notches</sys:String>
+    <!-- 抑速ブレーキ -->
+    <sys:String x:Key="PmX.020">Holding speed brake</sys:String>
+    <!-- HoldingSpeedBrake：ブレーキノッチ1段目が抑速ブレーキか（true で抑速ブレーキ、false で通常のブレーキ） -->
+    <sys:String x:Key="PmX.021">HoldingSpeedBrake: whether the first brake notch is a holding speed brake (true: holding speed brake, false: normal brake)</sys:String>
+    <!-- ATS キャンセルノッチ -->
+    <sys:String x:Key="PmX.022">ATS cancel notch</sys:String>
+    <!-- AtsCancelNotch：ATS キャンセルノッチ -->
+    <sys:String x:Key="PmX.023">AtsCancelNotch: ATS cancel notch</sys:String>
+    <!-- モーターブレーキノッチ -->
+    <sys:String x:Key="PmX.024">Motor brake notch</sys:String>
+    <!-- MotorBrakeNotch：電気ブレーキを使うノッチ -->
+    <sys:String x:Key="PmX.025">MotorBrakeNotch: notch at which the electric brake is used</sys:String>
+    <!-- レバーサーのテキスト -->
+    <sys:String x:Key="PmX.026">Reverser text</sys:String>
+    <!-- ReverserText：レバーサーの表示（例: 後,切,前） -->
+    <sys:String x:Key="PmX.027">ReverserText: reverser display (e.g. B,N,F)</sys:String>
+    <!-- 力行ノッチのテキスト -->
+    <sys:String x:Key="PmX.028">Power notch text</sys:String>
+    <!-- PowerText：力行ノッチの表示（例: 切,1,2,3,4,5） -->
+    <sys:String x:Key="PmX.029">PowerText: power notch display (e.g. N,1,2,3,4,5)</sys:String>
+    <!-- ブレーキノッチのテキスト -->
+    <sys:String x:Key="PmX.030">Brake notch text</sys:String>
+    <!-- BrakeText：ブレーキノッチの表示（例: ユルメ,1,2,…,非常） -->
+    <sys:String x:Key="PmX.031">BrakeText: brake notch display (e.g. RL,1,2,…,EB)</sys:String>
+    <!-- 抑速ノッチのテキスト -->
+    <sys:String x:Key="PmX.032">Holding speed notch text</sys:String>
+    <!-- HoldingSpeedText：抑速ノッチの表示 -->
+    <sys:String x:Key="PmX.033">HoldingSpeedText: holding speed notch display</sys:String>
+    <!-- 定速運転装置 -->
+    <sys:String x:Key="PmX.034">Constant speed control</sys:String>
+    <!-- 力行中 -->
+    <sys:String x:Key="PmX.035">While powering</sys:String>
+    <!-- Power：力行中に定速スイッチを扱ったときの制御 -->
+    <sys:String x:Key="PmX.036">Power: control when the constant speed switch is used while powering</sys:String>
+    <!-- 0: 非制御 -->
+    <sys:String x:Key="PmX.037">0: no control</sys:String>
+    <!-- 1: 力行のみ制御 -->
+    <sys:String x:Key="PmX.038">1: power only</sys:String>
+    <!-- 2: ブレーキのみ制御 -->
+    <sys:String x:Key="PmX.039">2: brake only</sys:String>
+    <!-- 3: 両方制御 -->
+    <sys:String x:Key="PmX.040">3: both</sys:String>
+    <!-- 惰行中 -->
+    <sys:String x:Key="PmX.041">While coasting</sys:String>
+    <!-- Neutral：惰行中に定速スイッチを扱ったときの制御 -->
+    <sys:String x:Key="PmX.042">Neutral: control when the constant speed switch is used while coasting</sys:String>
+    <!-- 0: 非制御 -->
+    <sys:String x:Key="PmX.043">0: no control</sys:String>
+    <!-- 1: 力行のみ制御 -->
+    <sys:String x:Key="PmX.044">1: power only</sys:String>
+    <!-- 2: ブレーキのみ制御 -->
+    <sys:String x:Key="PmX.045">2: brake only</sys:String>
+    <!-- 3: 両方制御 -->
+    <sys:String x:Key="PmX.046">3: both</sys:String>
+    <!-- ブレーキ中 -->
+    <sys:String x:Key="PmX.047">While braking</sys:String>
+    <!-- Brake：ブレーキ中に定速スイッチを扱ったときの制御 -->
+    <sys:String x:Key="PmX.048">Brake: control when the constant speed switch is used while braking</sys:String>
+    <!-- 0: 非制御 -->
+    <sys:String x:Key="PmX.049">0: no control</sys:String>
+    <!-- 1: 力行のみ制御 -->
+    <sys:String x:Key="PmX.050">1: power only</sys:String>
+    <!-- 2: ブレーキのみ制御 -->
+    <sys:String x:Key="PmX.051">2: brake only</sys:String>
+    <!-- 3: 両方制御 -->
+    <sys:String x:Key="PmX.052">3: both</sys:String>
+    <!-- 主制御装置 -->
+    <sys:String x:Key="PmX.053">Main circuit</sys:String>
+    <!-- 電気ブレーキを切る速度 -->
+    <sys:String x:Key="PmX.054">Electric brake cut-off speed</sys:String>
+    <!-- RegenerationLimit：この速度より下で電気ブレーキを切る -->
+    <sys:String x:Key="PmX.055">RegenerationLimit: the electric brake is cut off below this speed</sys:String>
+    <!-- 電気ブレーキ開始の最低速度 -->
+    <sys:String x:Key="PmX.056">Minimum electric brake start speed</sys:String>
+    <!-- RegenerationStartLimit：電気ブレーキが始まれる一番低い速度（既定は「電気ブレーキを切る速度 + 5」。1.01 では使えない） -->
+    <sys:String x:Key="PmX.057">RegenerationStartLimit: the lowest speed at which the electric brake can start (default: cut-off speed + 5; not available in 1.01)</sys:String>
+    <!-- ハンドルの遅れ -->
+    <sys:String x:Key="PmX.058">Handle delay</sys:String>
+    <!-- LeverDelay：ハンドルを動かしてから指令が出るまでの遅れ時間 -->
+    <sys:String x:Key="PmX.059">LeverDelay: delay from moving the handle until the command is issued</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PmX.060">s</sys:String>
+    <!-- ブレーキ優先 -->
+    <sys:String x:Key="PmX.061">Brake priority</sys:String>
+    <!-- BrakePriority：力行の指令より電気ブレーキの指令を優先するか（true で優先） -->
+    <sys:String x:Key="PmX.062">BrakePriority: whether the electric brake command takes priority over the power command (true: priority)</sys:String>
+    <!-- すべり速度の比 -->
+    <sys:String x:Key="PmX.063">Slip velocity ratio</sys:String>
+    <!-- SlipVelocityCoefficient：インバーター制御で、トルク分電流とすべり速度の比（1.01 では使えない） -->
+    <sys:String x:Key="PmX.064">SlipVelocityCoefficient: ratio of torque current to slip velocity in inverter control (not available in 1.01)</sys:String>
+    <!-- 再粘着制御（主制御装置） -->
+    <sys:String x:Key="PmX.065">Re-adhesion control (main circuit)</sys:String>
+    <!-- 再粘着制御を使う（[PowerReAdhesion] を書く。書かないと再粘着制御は行われない） -->
+    <sys:String x:Key="PmX.066">Use re-adhesion control (write [PowerReAdhesion]; without it, no re-adhesion control is done)</sys:String>
+    <!-- 点 A の速度差 -->
+    <sys:String x:Key="PmX.067">Speed difference at point A</sys:String>
+    <!-- SlipVelocity：点 A の軸速度と基準速度の差 -->
+    <sys:String x:Key="PmX.068">SlipVelocity: difference between axle speed and reference speed at point A</sys:String>
+    <!-- 点 A の軸加速度 -->
+    <sys:String x:Key="PmX.069">Axle acceleration at point A</sys:String>
+    <!-- SlipAcceleration：点 A の軸加速度 -->
+    <sys:String x:Key="PmX.070">SlipAcceleration: axle acceleration at point A</sys:String>
+    <!-- 点 B の軸加速度 -->
+    <sys:String x:Key="PmX.071">Axle acceleration at point B</sys:String>
+    <!-- BalanceAcceleration：点 B の軸加速度。電流を最小まで下げるときは、マイナスの大きな値にする -->
+    <sys:String x:Key="PmX.072">BalanceAcceleration: axle acceleration at point B. To reduce the current to the minimum, use a large negative value</sys:String>
+    <!-- 点 A から C の最小時間 -->
+    <sys:String x:Key="PmX.073">Minimum time from A to C</sys:String>
+    <!-- HoldingTime：点 A から点 C までの最小時間 -->
+    <sys:String x:Key="PmX.074">HoldingTime: minimum time from point A to point C</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PmX.075">s</sys:String>
+    <!-- 基準速度の加速度 -->
+    <sys:String x:Key="PmX.076">Reference acceleration</sys:String>
+    <!-- ReferenceAcceleration：基準速度を計算するときの加速度 -->
+    <sys:String x:Key="PmX.077">ReferenceAcceleration: acceleration used to calculate the reference speed</sys:String>
+    <!-- 基準速度の減速度 -->
+    <sys:String x:Key="PmX.078">Reference deceleration</sys:String>
+    <!-- ReferenceDeceleration：基準速度を計算するときの減速度 -->
+    <sys:String x:Key="PmX.079">ReferenceDeceleration: deceleration used to calculate the reference speed</sys:String>
+    <!-- 電流を減らす速さ -->
+    <sys:String x:Key="PmX.080">Current decrease rate</sys:String>
+    <!-- CurrentDecrease：電流を減らす速さ（0 なら通常のジャーク制御と同じ） -->
+    <sys:String x:Key="PmX.081">CurrentDecrease: rate of decreasing the current (0 is the same as normal jerk control)</sys:String>
+    <!-- 電流を増やす速さ -->
+    <sys:String x:Key="PmX.082">Current increase rate</sys:String>
+    <!-- CurrentIncrease：電流を増やす速さ（0 なら通常のジャーク制御と同じ） -->
+    <sys:String x:Key="PmX.083">CurrentIncrease: rate of increasing the current (0 is the same as normal jerk control)</sys:String>
+    <!-- ブレーキ方式 -->
+    <sys:String x:Key="PmX.084">Brake system</sys:String>
+    <!-- 方式 -->
+    <sys:String x:Key="PmX.085">System</sys:String>
+    <!-- [Ecb] 電気指令式ブレーキ / [Smee] 電磁直通空気ブレーキ / [Cl] 自動空気ブレーキ。どれか1つだけ書く -->
+    <sys:String x:Key="PmX.086">[Ecb] electric command brake / [Smee] electromagnetic straight air brake / [Cl] automatic air brake. Write only one of them</sys:String>
+    <!-- 電気指令式 [Ecb] -->
+    <sys:String x:Key="PmX.087">Electric command [Ecb]</sys:String>
+    <!-- 電磁直通 [Smee] -->
+    <sys:String x:Key="PmX.088">Electromagnetic straight air [Smee]</sys:String>
+    <!-- 自動空気 [Cl] -->
+    <sys:String x:Key="PmX.089">Automatic air [Cl]</sys:String>
+    <!-- 常用最大の圧力 -->
+    <sys:String x:Key="PmX.090">Maximum service pressure</sys:String>
+    <!-- MaximumPressure：常用最大ブレーキのブレーキシリンダー圧力指令（空車）。電磁直通では直通管圧力 -->
+    <sys:String x:Key="PmX.091">MaximumPressure: brake cylinder pressure command at maximum service brake (empty car). Straight air pipe pressure for electromagnetic straight air</sys:String>
+    <!-- ノッチごとの圧力の割合 -->
+    <sys:String x:Key="PmX.092">Pressure rate per notch</sys:String>
+    <!-- PressureRates：常用最大の圧力を 1 としたときの、各ブレーキノッチの圧力指令（, で区切る）。電気指令式・電磁直通だけ -->
+    <sys:String x:Key="PmX.093">PressureRates: pressure command of each brake notch, with the maximum service pressure as 1 (separated by ,). Electric command and electromagnetic straight air only</sys:String>
+    <!-- 圧力の比 -->
+    <sys:String x:Key="PmX.094">Pressure ratio</sys:String>
+    <!-- SapBcRatio：圧力指令の変化に対する、ブレーキシリンダー圧力の変化の比 -->
+    <sys:String x:Key="PmX.095">SapBcRatio: ratio of the brake cylinder pressure change to the pressure command change</sys:String>
+    <!-- 圧力が上がり始める指令 -->
+    <sys:String x:Key="PmX.096">Pressure rise start command</sys:String>
+    <!-- SapBcOffset：ブレーキシリンダー圧力が上がり始める最低の圧力指令 -->
+    <sys:String x:Key="PmX.097">SapBcOffset: the lowest pressure command at which the brake cylinder pressure starts to rise</sys:String>
+    <!-- 緩めたときのブレーキ管圧力 -->
+    <sys:String x:Key="PmX.098">Brake pipe pressure when released</sys:String>
+    <!-- BpInitialPressure：ブレーキを緩めたときのブレーキ管圧力。電磁直通・自動空気だけ -->
+    <sys:String x:Key="PmX.099">BpInitialPressure: brake pipe pressure when the brake is released. Electromagnetic straight air and automatic air only</sys:String>
+    <!-- ブレーキハンドルの遅れ -->
+    <sys:String x:Key="PmX.100">Brake handle delay</sys:String>
+    <!-- LeverDelay：ブレーキハンドルを動かしてから指令が出るまでの遅れ時間 -->
+    <sys:String x:Key="PmX.101">LeverDelay: delay from moving the brake handle until the command is issued</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PmX.102">s</sys:String>
+    <!-- 直通管の圧力調整弁 [Sap] -->
+    <sys:String x:Key="PmX.103">Straight air pipe pressure regulator [Sap]</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="PmX.104">Apply speed</sys:String>
+    <!-- ApplySpeed：給気速度 -->
+    <sys:String x:Key="PmX.105">ApplySpeed: apply (intake) speed</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="PmX.106">Release speed</sys:String>
+    <!-- ReleaseSpeed：排気速度 -->
+    <sys:String x:Key="PmX.107">ReleaseSpeed: release (exhaust) speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="PmX.108">Volume ratio</sys:String>
+    <!-- VolumeRatio：元空気溜めと直通管の容積比 -->
+    <sys:String x:Key="PmX.109">VolumeRatio: volume ratio of the main reservoir to the straight air pipe</sys:String>
+    <!-- 釣り合い空気溜めの圧力調整弁 [Er] -->
+    <sys:String x:Key="PmX.110">Equalizing reservoir pressure regulator [Er]</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="PmX.111">Apply speed</sys:String>
+    <!-- ApplySpeed：給気速度 -->
+    <sys:String x:Key="PmX.112">ApplySpeed: apply (intake) speed</sys:String>
+    <!-- 常用の排気の速さ -->
+    <sys:String x:Key="PmX.113">Service release speed</sys:String>
+    <!-- ReleaseSpeed：常用ブレーキのときの排気速度 -->
+    <sys:String x:Key="PmX.114">ReleaseSpeed: release speed for service braking</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="PmX.115">Volume ratio</sys:String>
+    <!-- VolumeRatio：元空気溜めとブレーキ管の容積比 -->
+    <sys:String x:Key="PmX.116">VolumeRatio: volume ratio of the main reservoir to the brake pipe</sys:String>
+    <!-- 非常の排気の速さ -->
+    <sys:String x:Key="PmX.117">Emergency release speed</sys:String>
+    <!-- RapidReleaseSpeed：非常ブレーキのときの排気速度 -->
+    <sys:String x:Key="PmX.118">RapidReleaseSpeed: release speed for emergency braking</sys:String>
+    <!-- ブレーキ管の圧力調整弁 [Bp] -->
+    <sys:String x:Key="PmX.119">Brake pipe pressure regulator [Bp]</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="PmX.120">Apply speed</sys:String>
+    <!-- ApplySpeed：給気速度 -->
+    <sys:String x:Key="PmX.121">ApplySpeed: apply (intake) speed</sys:String>
+    <!-- 常用の排気の速さ -->
+    <sys:String x:Key="PmX.122">Service release speed</sys:String>
+    <!-- ReleaseSpeed：常用ブレーキのときの排気速度 -->
+    <sys:String x:Key="PmX.123">ReleaseSpeed: release speed for service braking</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="PmX.124">Volume ratio</sys:String>
+    <!-- VolumeRatio：元空気溜めとブレーキ管の容積比 -->
+    <sys:String x:Key="PmX.125">VolumeRatio: volume ratio of the main reservoir to the brake pipe</sys:String>
+    <!-- 非常の排気の速さ -->
+    <sys:String x:Key="PmX.126">Emergency release speed</sys:String>
+    <!-- RapidReleaseSpeed：非常ブレーキのときの排気速度 -->
+    <sys:String x:Key="PmX.127">RapidReleaseSpeed: release speed for emergency braking</sys:String>
+    <!-- 電空協調制御 -->
+    <sys:String x:Key="PmX.128">Electro-pneumatic blending</sys:String>
+    <!-- 方式 -->
+    <sys:String x:Key="PmX.129">System</sys:String>
+    <!-- [AirSupplement] 遅れ込め制御式 / [LockoutValve] 締切電磁弁式。どちらか1つだけ書く -->
+    <sys:String x:Key="PmX.130">[AirSupplement] delayed application / [LockoutValve] lockout valve. Write only one of them</sys:String>
+    <!-- 遅れ込め制御式 [AirSupplement] -->
+    <sys:String x:Key="PmX.131">Delayed application [AirSupplement]</sys:String>
+    <!-- 締切電磁弁式 [LockoutValve] -->
+    <sys:String x:Key="PmX.132">Lockout valve [LockoutValve]</sys:String>
+    <!-- 電気ブレーキ最大の圧力指令 -->
+    <sys:String x:Key="PmX.133">Pressure command at maximum electric brake</sys:String>
+    <!-- MaximumPressure：電気ブレーキ（限流値）が最大になるブレーキシリンダー圧力指令（空車。電磁直通では直通管圧力）。締切電磁弁式では、これを超えると遅れ込め圧力が立ち上がる -->
+    <sys:String x:Key="PmX.134">MaximumPressure: brake cylinder pressure command at which the electric brake (current limit) is maximum (empty car; straight air pipe pressure for electromagnetic straight air). With the lockout valve type, the supplementary air pressure rises above this</sys:String>
+    <!-- 初込め圧力 -->
+    <sys:String x:Key="PmX.135">Initial pressure</sys:String>
+    <!-- InitialPressure：初込め圧力 -->
+    <sys:String x:Key="PmX.136">InitialPressure: initial application pressure</sys:String>
+    <!-- 電空協調の最低速度 -->
+    <sys:String x:Key="PmX.137">Minimum blending speed</sys:String>
+    <!-- RegenerationLimit：電空協調制御をする最低の走行速度 -->
+    <sys:String x:Key="PmX.138">RegenerationLimit: the lowest running speed for electro-pneumatic blending</sys:String>
+    <!-- 制輪子の摩擦係数 -->
+    <sys:String x:Key="PmX.139">Brake shoe friction coefficient</sys:String>
+    <!-- ShoeFriction：電空演算に使う制輪子の想定摩擦係数。遅れ込め制御式だけ -->
+    <sys:String x:Key="PmX.140">ShoeFriction: assumed brake shoe friction coefficient used for blending. Delayed application type only</sys:String>
+    <!-- ブレーキシリンダーの圧力調整弁 -->
+    <sys:String x:Key="PmX.141">Brake cylinder pressure regulator</sys:String>
+    <!-- 方式 -->
+    <sys:String x:Key="PmX.142">System</sys:String>
+    <!-- [BC] 開・閉切り替え式 / [BcServo] 圧力比例制御式。どちらか1つだけ書く -->
+    <sys:String x:Key="PmX.143">[BC] on/off switching type / [BcServo] proportional pressure control type. Write only one of them</sys:String>
+    <!-- 開・閉切り替え式 [BC] -->
+    <sys:String x:Key="PmX.144">On/off switching [BC]</sys:String>
+    <!-- 圧力比例制御式 [BcServo] -->
+    <sys:String x:Key="PmX.145">Proportional control [BcServo]</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="PmX.146">Apply speed</sys:String>
+    <!-- ApplySpeed：給気速度 -->
+    <sys:String x:Key="PmX.147">ApplySpeed: apply (intake) speed</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="PmX.148">Release speed</sys:String>
+    <!-- ReleaseSpeed：排気速度 -->
+    <sys:String x:Key="PmX.149">ReleaseSpeed: release (exhaust) speed</sys:String>
+    <!-- 容積比 -->
+    <sys:String x:Key="PmX.150">Volume ratio</sys:String>
+    <!-- VolumeRatio：元空気溜めとブレーキシリンダー（配管を含む）の容積比 -->
+    <sys:String x:Key="PmX.151">VolumeRatio: volume ratio of the main reservoir to the brake cylinder (including piping)</sys:String>
+    <!-- 給気を始める圧力差 -->
+    <sys:String x:Key="PmX.152">Apply start difference</sys:String>
+    <!-- ApplyStart：給気が開始する際の、圧力指令と現在圧力の差 -->
+    <sys:String x:Key="PmX.153">ApplyStart: difference between the pressure command and the current pressure when intake starts</sys:String>
+    <!-- 給気を止める圧力差 -->
+    <sys:String x:Key="PmX.154">Apply stop difference</sys:String>
+    <!-- ApplyStop：給気が停止する際の、圧力指令と現在圧力の差 -->
+    <sys:String x:Key="PmX.155">ApplyStop: difference between the pressure command and the current pressure when intake stops</sys:String>
+    <!-- 排気を始める圧力差 -->
+    <sys:String x:Key="PmX.156">Release start difference</sys:String>
+    <!-- ReleaseStart：排気が開始する際の、圧力指令と現在圧力の差 -->
+    <sys:String x:Key="PmX.157">ReleaseStart: difference between the pressure command and the current pressure when exhaust starts</sys:String>
+    <!-- 排気を止める圧力差 -->
+    <sys:String x:Key="PmX.158">Release stop difference</sys:String>
+    <!-- ReleaseStop：排気が停止する際の、圧力指令と現在圧力の差 -->
+    <sys:String x:Key="PmX.159">ReleaseStop: difference between the pressure command and the current pressure when exhaust stops</sys:String>
+    <!-- シリンダーの受圧面積 -->
+    <sys:String x:Key="PmX.160">Cylinder piston area</sys:String>
+    <!-- PistonArea：てこ比を 1、機械的損失を 0 としたときの 1 両あたりのシリンダー受圧面積。ヘッダーが 1.01 以下のときだけここに書く（2.00 以降は [Brake]） -->
+    <sys:String x:Key="PmX.161">PistonArea: cylinder piston area per car with a lever ratio of 1 and no mechanical loss. Write it here only when the header is 1.01 or earlier (in [Brake] from 2.00)</sys:String>
+    <!-- 基礎ブレーキ装置 [Brake] -->
+    <sys:String x:Key="PmX.162">Foundation brake [Brake]</sys:String>
+    <!-- シリンダーの受圧面積 -->
+    <sys:String x:Key="PmX.163">Cylinder piston area</sys:String>
+    <!-- PistonArea：てこ比を 1、機械的損失を 0 としたときの 1 両あたりのシリンダー受圧面積 -->
+    <sys:String x:Key="PmX.164">PistonArea: cylinder piston area per car with a lever ratio of 1 and no mechanical loss</sys:String>
+    <!-- 摩擦係数の a -->
+    <sys:String x:Key="PmX.165">Friction coefficient a</sys:String>
+    <!-- ShoeFriction：制輪子の摩擦係数の式 μ = a × (1 + b × v) ÷ (1 + c × v) の係数 a（v は走行速度 km/h） -->
+    <sys:String x:Key="PmX.166">ShoeFriction: coefficient a of the brake shoe friction formula μ = a × (1 + b × v) ÷ (1 + c × v) (v is the running speed in km/h)</sys:String>
+    <!-- 摩擦係数の b -->
+    <sys:String x:Key="PmX.167">Friction coefficient b</sys:String>
+    <!-- ShoeFriction：制輪子の摩擦係数の式 μ = a × (1 + b × v) ÷ (1 + c × v) の係数 b -->
+    <sys:String x:Key="PmX.168">ShoeFriction: coefficient b of the brake shoe friction formula μ = a × (1 + b × v) ÷ (1 + c × v)</sys:String>
+    <!-- 摩擦係数の c -->
+    <sys:String x:Key="PmX.169">Friction coefficient c</sys:String>
+    <!-- ShoeFriction：制輪子の摩擦係数の式 μ = a × (1 + b × v) ÷ (1 + c × v) の係数 c -->
+    <sys:String x:Key="PmX.170">ShoeFriction: coefficient c of the brake shoe friction formula μ = a × (1 + b × v) ÷ (1 + c × v)</sys:String>
+    <!-- 上の a, b, c で計算した、走行速度ごとの制輪子の摩擦係数 -->
+    <sys:String x:Key="PmX.171">Brake shoe friction coefficient at each running speed, calculated from a, b and c above</sys:String>
+    <!-- 速度（km/h） -->
+    <sys:String x:Key="PmX.172">Speed (km/h)</sys:String>
+    <!-- 摩擦係数 μ -->
+    <sys:String x:Key="PmX.173">Friction coefficient μ</sys:String>
+    <!-- 滑走再粘着制御（基礎ブレーキ装置） -->
+    <sys:String x:Key="PmX.174">Slide re-adhesion control (foundation brake)</sys:String>
+    <!-- 滑走再粘着制御を使う（[BrakeReAdhesion] を書く。書かないと再粘着制御は行われない） -->
+    <sys:String x:Key="PmX.175">Use slide re-adhesion control (write [BrakeReAdhesion]; without it, no re-adhesion control is done)</sys:String>
+    <!-- 点 A の速度差 -->
+    <sys:String x:Key="PmX.176">Speed difference at point A</sys:String>
+    <!-- SlipVelocity：点 A の軸速度と基準速度の差 -->
+    <sys:String x:Key="PmX.177">SlipVelocity: difference between axle speed and reference speed at point A</sys:String>
+    <!-- 点 A の軸減速度 -->
+    <sys:String x:Key="PmX.178">Axle deceleration at point A</sys:String>
+    <!-- SlipDeceleration：点 A の軸減速度 -->
+    <sys:String x:Key="PmX.179">SlipDeceleration: axle deceleration at point A</sys:String>
+    <!-- 点 B の軸減速度 -->
+    <sys:String x:Key="PmX.180">Axle deceleration at point B</sys:String>
+    <!-- BalanceDeceleration：点 B の軸減速度。電流を最小まで引き下げるときは、マイナスの大きな値にする -->
+    <sys:String x:Key="PmX.181">BalanceDeceleration: axle deceleration at point B. To reduce the current to the minimum, use a large negative value</sys:String>
+    <!-- 点 A から C の最小時間 -->
+    <sys:String x:Key="PmX.182">Minimum time from A to C</sys:String>
+    <!-- HoldingTime：点 A から点 C までの最小時間 -->
+    <sys:String x:Key="PmX.183">HoldingTime: minimum time from point A to point C</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PmX.184">s</sys:String>
+    <!-- 基準速度の減速度 -->
+    <sys:String x:Key="PmX.185">Reference deceleration</sys:String>
+    <!-- ReferenceDeceleration：基準速度の計算に使う減速度 -->
+    <sys:String x:Key="PmX.186">ReferenceDeceleration: deceleration used to calculate the reference speed</sys:String>
+    <!-- 排気の速さ -->
+    <sys:String x:Key="PmX.187">Release speed</sys:String>
+    <!-- BcReleaseSpeed：排気速度（0 にすると通常の排気と同じ） -->
+    <sys:String x:Key="PmX.188">BcReleaseSpeed: release speed (0 is the same as normal release)</sys:String>
+    <!-- 給気の速さ -->
+    <sys:String x:Key="PmX.189">Apply speed</sys:String>
+    <!-- BcApplySpeed：給気速度（0 にすると通常の給気と同じ） -->
+    <sys:String x:Key="PmX.190">BcApplySpeed: apply speed (0 is the same as normal application)</sys:String>
+    <!-- 空気圧縮機 [Compressor] -->
+    <sys:String x:Key="PmX.191">Air compressor [Compressor]</sys:String>
+    <!-- 始動する圧力 -->
+    <sys:String x:Key="PmX.192">Start pressure</sys:String>
+    <!-- LowerPressure：空気圧縮機が始動する元空気溜め圧力 -->
+    <sys:String x:Key="PmX.193">LowerPressure: main reservoir pressure at which the compressor starts</sys:String>
+    <!-- 停止する圧力 -->
+    <sys:String x:Key="PmX.194">Stop pressure</sys:String>
+    <!-- UpperPressure：空気圧縮機が停止する元空気溜め圧力 -->
+    <sys:String x:Key="PmX.195">UpperPressure: main reservoir pressure at which the compressor stops</sys:String>
+    <!-- 圧力が上がる速さ -->
+    <sys:String x:Key="PmX.196">Pressure rise speed</sys:String>
+    <!-- CompressionSpeed：空気圧縮機による元空気溜め圧力上昇速度 -->
+    <sys:String x:Key="PmX.197">CompressionSpeed: main reservoir pressure rise speed by the compressor</sys:String>
+    <!-- 力学パラメーター [Dynamics] -->
+    <sys:String x:Key="PmX.198">Dynamics [Dynamics]</sys:String>
+    <!-- M 車の質量 -->
+    <sys:String x:Key="PmX.199">M car mass</sys:String>
+    <!-- MotorcarWeight：M 車（電動車）1 両の質量 -->
+    <sys:String x:Key="PmX.200">MotorcarWeight: mass of one M car (motor car)</sys:String>
+    <!-- T 車の質量 -->
+    <sys:String x:Key="PmX.201">T car mass</sys:String>
+    <!-- TrailerWeight：T 車（付随車）1 両の質量 -->
+    <sys:String x:Key="PmX.202">TrailerWeight: mass of one T car (trailer)</sys:String>
+    <!-- M 車の両数 -->
+    <sys:String x:Key="PmX.203">Number of M cars</sys:String>
+    <!-- MotorcarCount：M 車の両数 -->
+    <sys:String x:Key="PmX.204">MotorcarCount: number of M cars</sys:String>
+    <!-- 両 -->
+    <sys:String x:Key="PmX.205">cars</sys:String>
+    <!-- T 車の両数 -->
+    <sys:String x:Key="PmX.206">Number of T cars</sys:String>
+    <!-- TrailerCount：T 車の両数 -->
+    <sys:String x:Key="PmX.207">TrailerCount: number of T cars</sys:String>
+    <!-- 両 -->
+    <sys:String x:Key="PmX.208">cars</sys:String>
+    <!-- M 車の慣性係数 -->
+    <sys:String x:Key="PmX.209">M car inertia factor</sys:String>
+    <!-- MotorcarInertiaFactor：M 車の慣性係数 -->
+    <sys:String x:Key="PmX.210">MotorcarInertiaFactor: inertia factor of M cars</sys:String>
+    <!-- T 車の慣性係数 -->
+    <sys:String x:Key="PmX.211">T car inertia factor</sys:String>
+    <!-- TrailerInertiaFactor：T 車の慣性係数 -->
+    <sys:String x:Key="PmX.212">TrailerInertiaFactor: inertia factor of T cars</sys:String>
+    <!-- 1 両の長さ -->
+    <sys:String x:Key="PmX.213">Car length</sys:String>
+    <!-- CarLength：1 両の車両長。長さの違う車両が混ざる編成では平均 -->
+    <sys:String x:Key="PmX.214">CarLength: length of one car. The average if cars of different lengths are mixed</sys:String>
+    <!-- 走行抵抗の a -->
+    <sys:String x:Key="PmX.215">Running resistance a</sys:String>
+    <!-- RunningResistanceFactor：編成の走行抵抗 F = a × v² + b × v + c（N。v は走行速度 km/h）の係数 a。書かないと質量・両数から計算した値になる -->
+    <sys:String x:Key="PmX.216">RunningResistanceFactor: coefficient a of the train running resistance F = a × v² + b × v + c (N; v is the running speed in km/h). If omitted, it is calculated from the mass and number of cars</sys:String>
+    <!-- 走行抵抗の b -->
+    <sys:String x:Key="PmX.217">Running resistance b</sys:String>
+    <!-- RunningResistanceFactor：編成の走行抵抗 F = a × v² + b × v + c の係数 b。書かないと質量・両数から計算した値になる -->
+    <sys:String x:Key="PmX.218">RunningResistanceFactor: coefficient b of the train running resistance F = a × v² + b × v + c. If omitted, it is calculated from the mass and number of cars</sys:String>
+    <!-- 走行抵抗の c -->
+    <sys:String x:Key="PmX.219">Running resistance c</sys:String>
+    <!-- RunningResistanceFactor：編成の走行抵抗 F = a × v² + b × v + c の係数 c。書かないと質量・両数から計算した値になる -->
+    <sys:String x:Key="PmX.220">RunningResistanceFactor: coefficient c of the train running resistance F = a × v² + b × v + c. If omitted, it is calculated from the mass and number of cars</sys:String>
+    <!-- 曲線抵抗の係数 -->
+    <sys:String x:Key="PmX.221">Curve resistance factor</sys:String>
+    <!-- CurveResistanceFactor：編成の曲線抵抗 F = d ÷ R（N。R は曲線半径 m）の係数 d。書かないと質量・両数から計算した値になる -->
+    <sys:String x:Key="PmX.222">CurveResistanceFactor: coefficient d of the train curve resistance F = d ÷ R (N; R is the curve radius in m). If omitted, it is calculated from the mass and number of cars</sys:String>
+    <!-- 乗客 [Passengers] -->
+    <sys:String x:Key="PmX.223">Passengers [Passengers]</sys:String>
+    <!-- 1 両の定員 -->
+    <sys:String x:Key="PmX.224">Capacity per car</sys:String>
+    <!-- Capacity：車両 1 両の定員（乗車率 1 のときの人数） -->
+    <sys:String x:Key="PmX.225">Capacity: capacity of one car (number of people at load factor 1)</sys:String>
+    <!-- 人 -->
+    <sys:String x:Key="PmX.226">people</sys:String>
+    <!-- 乗客 1 人の質量 -->
+    <sys:String x:Key="PmX.227">Mass per passenger</sys:String>
+    <!-- BodyWeight：乗客 1 人の質量 -->
+    <sys:String x:Key="PmX.228">BodyWeight: mass of one passenger</sys:String>
+    <!-- 乗車する速さ -->
+    <sys:String x:Key="PmX.229">Boarding speed</sys:String>
+    <!-- BoardingSpeed：乗車する速さ -->
+    <sys:String x:Key="PmX.230">BoardingSpeed: boarding speed</sys:String>
+    <!-- 人/s -->
+    <sys:String x:Key="PmX.231">people/s</sys:String>
+    <!-- 降車する速さ -->
+    <sys:String x:Key="PmX.232">Alighting speed</sys:String>
+    <!-- AlightingSpeed：降車する速さ -->
+    <sys:String x:Key="PmX.233">AlightingSpeed: alighting speed</sys:String>
+    <!-- 人/s -->
+    <sys:String x:Key="PmX.234">people/s</sys:String>
+    <!-- 客室ドア [Door] -->
+    <sys:String x:Key="PmX.235">Passenger doors [Door]</sys:String>
+    <!-- 閉まるのにかかる時間 -->
+    <sys:String x:Key="PmX.236">Closing time</sys:String>
+    <!-- CloseTime：ドアが閉まるのに要する時間 -->
+    <sys:String x:Key="PmX.237">CloseTime: time required for the doors to close</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PmX.238">s</sys:String>
+    <!-- 運転士の視点 [ViewPoint] -->
+    <sys:String x:Key="PmX.239">Driver's viewpoint [ViewPoint]</sys:String>
+    <!-- 横の位置 X -->
+    <sys:String x:Key="PmX.240">Horizontal position X</sys:String>
+    <!-- X：軌道中心からの x 座標 -->
+    <sys:String x:Key="PmX.241">X: x coordinate from the track center</sys:String>
+    <!-- 高さ Y -->
+    <sys:String x:Key="PmX.242">Height Y</sys:String>
+    <!-- Y：レール頭頂面からの y 座標 -->
+    <sys:String x:Key="PmX.243">Y: y coordinate from the top of the rail</sys:String>
+    <!-- 前後の位置 Z -->
+    <sys:String x:Key="PmX.244">Longitudinal position Z</sys:String>
+    <!-- Z：車両先頭からの z 座標 -->
+    <sys:String x:Key="PmX.245">Z: z coordinate from the front of the car</sys:String>
+</ResourceDictionary>

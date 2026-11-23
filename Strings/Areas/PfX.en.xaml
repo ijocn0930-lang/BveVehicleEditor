@@ -1,0 +1,148 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- PanelForm.xaml の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 編集するセクションを選んでください。欄で変えると、選んだセクションの中だけ下のテキストが書き換わります（テキストをクリックして Ctrl+Z で戻せます）。「そのほかの項目」は今は表示だけです。 -->
+    <sys:String x:Key="PfX.001">Choose the section to edit. Changing a field rewrites the text below only inside the chosen section (click the text and press Ctrl+Z to undo). "Other items" are display-only for now.</sys:String>
+    <!-- セクション -->
+    <sys:String x:Key="PfX.002">Section</sys:String>
+    <!-- セクションを足す ▼ -->
+    <sys:String x:Key="PfX.003">Add section ▼</sys:String>
+    <!-- このセクションを消す -->
+    <sys:String x:Key="PfX.004">Delete this section</sys:String>
+    <!-- BveTs Instrument Panel 2.01 に書き直す -->
+    <sys:String x:Key="PfX.005">Convert to BveTs Instrument Panel 2.01</sys:String>
+    <!-- 計器に共通の項目 -->
+    <sys:String x:Key="PfX.006">Items common to instruments</sys:String>
+    <!-- 表示する状態量 -->
+    <sys:String x:Key="PfX.007">Subject</sys:String>
+    <!-- Subject：表示する状態量（kmph・bc・ats0 など） -->
+    <sys:String x:Key="PfX.008">Subject: the value to display (kmph, bc, ats0, etc.)</sys:String>
+    <!-- 一覧から選ぶ ▼ -->
+    <sys:String x:Key="PfX.009">Choose from list ▼</sys:String>
+    <!-- 位置 -->
+    <sys:String x:Key="PfX.010">Location</sys:String>
+    <!-- Location：パネル画像の座標（x, y） -->
+    <sys:String x:Key="PfX.011">Location: coordinates on the panel image (x, y)</sys:String>
+    <!-- 昼間の画像 -->
+    <sys:String x:Key="PfX.012">Daytime image</sys:String>
+    <!-- DaytimeImage：昼間の画像（このファイルからの相対パス） -->
+    <sys:String x:Key="PfX.013">DaytimeImage: daytime image (relative path from this file)</sys:String>
+    <!-- 夜間の画像 -->
+    <sys:String x:Key="PfX.014">Nighttime image</sys:String>
+    <!-- NighttimeImage：夜間の画像（このファイルからの相対パス） -->
+    <sys:String x:Key="PfX.015">NighttimeImage: nighttime image (relative path from this file)</sys:String>
+    <!-- 透過色 -->
+    <sys:String x:Key="PfX.016">Transparent color</sys:String>
+    <!-- TransparentColor：透過色。6 桁の 16 進数のカラーコード（例：FF0000） -->
+    <sys:String x:Key="PfX.017">TransparentColor: transparent color, a 6-digit hexadecimal color code (e.g. FF0000)</sys:String>
+    <!-- 描画順序 -->
+    <sys:String x:Key="PfX.018">Layer</sys:String>
+    <!-- Layer：この画像の描画順序。値が大きいほど手前。ベース画像（[This] の画像）は 0 -->
+    <sys:String x:Key="PfX.019">Layer: drawing order of this image. Larger values are drawn in front. The base image (the [This] image) is 0</sys:String>
+    <!-- 計器ごとの項目 -->
+    <sys:String x:Key="PfX.020">Items for each instrument</sys:String>
+    <!-- 色 -->
+    <sys:String x:Key="PfX.021">Color</sys:String>
+    <!-- Color：6 桁の 16 進数のカラーコード（例：FF0000）。[Needle] は面の色、[DigitalGauge] は LED 消灯の色 -->
+    <sys:String x:Key="PfX.022">Color: a 6-digit hexadecimal color code (e.g. FF0000). For [Needle] the face color, for [DigitalGauge] the color of unlit LEDs</sys:String>
+    <!-- 針の画像の回転中心 -->
+    <sys:String x:Key="PfX.023">Needle rotation center</sys:String>
+    <!-- Origin：針の画像における回転中心（x, y） -->
+    <sys:String x:Key="PfX.024">Origin: rotation center in the needle image (x, y)</sys:String>
+    <!-- 半径 -->
+    <sys:String x:Key="PfX.025">Radius</sys:String>
+    <!-- Radius：[Needle] は針の半径、[DigitalGauge] はゲージの半径 -->
+    <sys:String x:Key="PfX.026">Radius: for [Needle] the needle radius, for [DigitalGauge] the gauge radius</sys:String>
+    <!-- 最小の角度（度） -->
+    <sys:String x:Key="PfX.027">Minimum angle (deg)</sys:String>
+    <!-- InitialAngle：角度 [deg]。時計の 12 時の方向が 0 で、時計回りがプラス -->
+    <sys:String x:Key="PfX.028">InitialAngle: angle [deg]. 12 o'clock is 0 and clockwise is positive</sys:String>
+    <!-- 最大の角度（度） -->
+    <sys:String x:Key="PfX.029">Maximum angle (deg)</sys:String>
+    <!-- LastAngle：角度 [deg]。1 周以上回る針は、InitialAngle + 360 の値にする -->
+    <sys:String x:Key="PfX.030">LastAngle: angle [deg]. For a needle that turns more than once, use InitialAngle + 360</sys:String>
+    <!-- 最小値 -->
+    <sys:String x:Key="PfX.031">Minimum</sys:String>
+    <!-- Minimum：最小値 -->
+    <sys:String x:Key="PfX.032">Minimum: minimum value</sys:String>
+    <!-- 最大値 -->
+    <sys:String x:Key="PfX.033">Maximum</sys:String>
+    <!-- Maximum：最大値 -->
+    <sys:String x:Key="PfX.034">Maximum: maximum value</sys:String>
+    <!-- 傾き（X, Y 度） -->
+    <sys:String x:Key="PfX.035">Tilt (X, Y deg)</sys:String>
+    <!-- Tilt：垂直面に対する回転面（表示面）の角度。angleX は X 軸まわり（上向きがプラス）、angleY は Y 軸まわり（左向きがプラス） -->
+    <sys:String x:Key="PfX.036">Tilt: angle of the rotation plane (display plane) to the vertical plane. angleX is around the X axis (up is positive), angleY around the Y axis (left is positive)</sys:String>
+    <!-- 可動範囲の制限 -->
+    <sys:String x:Key="PfX.037">Stop pin</sys:String>
+    <!-- StopPin：針の動く範囲を Minimum と Maximum の間に止めるなら True -->
+    <sys:String x:Key="PfX.038">StopPin: True to keep the needle between Minimum and Maximum</sys:String>
+    <!-- 針の固有角振動数 -->
+    <sys:String x:Key="PfX.039">Needle natural frequency</sys:String>
+    <!-- NaturalFreq：高くすると震えやすいが、高くしすぎると針が消える -->
+    <sys:String x:Key="PfX.040">NaturalFreq: higher values make the needle shake more easily; too high and the needle disappears</sys:String>
+    <!-- 針の減衰比 -->
+    <sys:String x:Key="PfX.041">Needle damping ratio</sys:String>
+    <!-- DampingRatio：高くするとすぐに収まる -->
+    <sys:String x:Key="PfX.042">DampingRatio: higher values settle quickly</sys:String>
+    <!-- 分解能 -->
+    <sys:String x:Key="PfX.043">Step</sys:String>
+    <!-- Step：分解能 -->
+    <sys:String x:Key="PfX.044">Step: resolution</sys:String>
+    <!-- 1 コマの高さ -->
+    <sys:String x:Key="PfX.045">Frame height</sys:String>
+    <!-- Interval：数字配列画像の 1 コマの高さ -->
+    <sys:String x:Key="PfX.046">Interval: height of one frame in the digit image</sys:String>
+    <!-- （セクションを選んでください） -->
+    <sys:String x:Key="PfX.047">(Choose a section)</sys:String>
+    <!-- このセクションには何も書かれていません。 -->
+    <sys:String x:Key="PfX.048">Nothing is written in this section.</sys:String>
+    <!-- [This] 表示領域とベース画像 -->
+    <sys:String x:Key="PfX.049">[This] Display area and base image</sys:String>
+    <!-- 解像度 -->
+    <sys:String x:Key="PfX.050">Resolution</sys:String>
+    <!-- Resolution：ズーム 1 倍のときの X 解像度 -->
+    <sys:String x:Key="PfX.051">Resolution: X resolution at zoom 1x</sys:String>
+    <!-- 左の限界 -->
+    <sys:String x:Key="PfX.052">Left limit</sys:String>
+    <!-- Left：視点移動で表示できる限界の座標（左） -->
+    <sys:String x:Key="PfX.053">Left: limit coordinate shown when moving the viewpoint (left)</sys:String>
+    <!-- 上の限界 -->
+    <sys:String x:Key="PfX.054">Top limit</sys:String>
+    <!-- Top：視点移動で表示できる限界の座標（上） -->
+    <sys:String x:Key="PfX.055">Top: limit coordinate shown when moving the viewpoint (top)</sys:String>
+    <!-- 右の限界 -->
+    <sys:String x:Key="PfX.056">Right limit</sys:String>
+    <!-- Right：視点移動で表示できる限界の座標（右） -->
+    <sys:String x:Key="PfX.057">Right: limit coordinate shown when moving the viewpoint (right)</sys:String>
+    <!-- 下の限界 -->
+    <sys:String x:Key="PfX.058">Bottom limit</sys:String>
+    <!-- Bottom：視点移動で表示できる限界の座標（下） -->
+    <sys:String x:Key="PfX.059">Bottom: limit coordinate shown when moving the viewpoint (bottom)</sys:String>
+    <!-- 昼間の画像 -->
+    <sys:String x:Key="PfX.060">Daytime image</sys:String>
+    <!-- DaytimeImage：昼間のパネル画像（このファイルからの相対パス） -->
+    <sys:String x:Key="PfX.061">DaytimeImage: daytime panel image (relative path from this file)</sys:String>
+    <!-- 夜間の画像 -->
+    <sys:String x:Key="PfX.062">Nighttime image</sys:String>
+    <!-- NighttimeImage：夜間のパネル画像（このファイルからの相対パス） -->
+    <sys:String x:Key="PfX.063">NighttimeImage: nighttime panel image (relative path from this file)</sys:String>
+    <!-- 透過色 -->
+    <sys:String x:Key="PfX.064">Transparent color</sys:String>
+    <!-- TransparentColor：透過色。6 桁の 16 進数のカラーコード（例：FF0000） -->
+    <sys:String x:Key="PfX.065">TransparentColor: transparent color, a 6-digit hexadecimal color code (e.g. FF0000)</sys:String>
+    <!-- 画面の中心 -->
+    <sys:String x:Key="PfX.066">Screen center</sys:String>
+    <!-- Center：既定の視点で画面の中心になる座標（x, y） -->
+    <sys:String x:Key="PfX.067">Center: coordinates that are at the screen center in the default viewpoint (x, y)</sys:String>
+    <!-- 消失点 -->
+    <sys:String x:Key="PfX.068">Vanishing point</sys:String>
+    <!-- Origin：消失点の座標（x, y） -->
+    <sys:String x:Key="PfX.069">Origin: coordinates of the vanishing point (x, y)</sys:String>
+    <!-- パースの強さ -->
+    <sys:String x:Key="PfX.070">Perspective strength</sys:String>
+    <!-- Perspective：Tilt を設定した計器のパース（遠近感）の強さ。値が大きいほどパースは弱くなる。Tilt のない計器には効果なし -->
+    <sys:String x:Key="PfX.071">Perspective: strength of perspective for instruments with Tilt. Larger values make the perspective weaker. No effect on instruments without Tilt</sys:String>
+</ResourceDictionary>

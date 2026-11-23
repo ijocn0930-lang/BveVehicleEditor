@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- SoundForm.xaml.cs の文（日本語）。英語は Sf2.en.xaml -->
+    <sys:String x:Key="Sf2.001">（ATS は 0～{0}）</sys:String>
+    <sys:String x:Key="Sf2.002">・</sys:String>
+</ResourceDictionary>

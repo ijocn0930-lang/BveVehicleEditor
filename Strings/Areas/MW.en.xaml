@@ -1,0 +1,415 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- MainWindow.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- {0} のタブには、{1} で書けない文字があります（{2}）。 このまま保存すると文字化けするので、文字コードは変えません。 -->
+    <sys:String x:Key="MW.001">The {0} tab contains characters that cannot be written in {1} ({2}).
+Saving it would garble them, so the encoding is not changed.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.002">Confirm</sys:String>
+    <!-- 終了 -->
+    <sys:String x:Key="MW.003">exit</sys:String>
+    <!-- ・{0} -->
+    <sys:String x:Key="MW.004">• {0}</sys:String>
+    <!-- 保存していない変更があります。  {0}  保存しますか？   -->
+    <sys:String x:Key="MW.005">There are unsaved changes.
+
+{0}
+
+Do you want to save them?
+
+</sys:String>
+    <!-- はい：保存してから{0} いいえ：保存せずに{1}（変更は失われます） キャンセル：やめる -->
+    <sys:String x:Key="MW.006">Yes: save, then {0}
+No: {1} without saving (the changes will be lost)
+Cancel: do nothing</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.007">Confirm</sys:String>
+    <!-- 別のファイルを開く -->
+    <sys:String x:Key="MW.008">open another file</sys:String>
+    <!-- 車両ファイル (*.txt)|*.txt|すべてのファイル (*.*)|*.* -->
+    <sys:String x:Key="MW.009">Vehicle files (*.txt)|*.txt|All files (*.*)|*.*</sys:String>
+    <!-- 車両ファイル（Vehicle.txt）を選択してください -->
+    <sys:String x:Key="MW.010">Select a vehicle file (Vehicle.txt)</sys:String>
+    <!-- 新しい車両ファイルを作る -->
+    <sys:String x:Key="MW.011">create a new vehicle file</sys:String>
+    <!-- 車両ファイル (*.txt)|*.txt -->
+    <sys:String x:Key="MW.012">Vehicle files (*.txt)|*.txt</sys:String>
+    <!-- 新しい車両ファイルの名前と場所を選択してください -->
+    <sys:String x:Key="MW.013">Choose the name and location of the new vehicle file</sys:String>
+    <!-- 同じ名前のファイルがすでにあります。上書きしないので、別の名前にしてください。  {0} -->
+    <sys:String x:Key="MW.014">A file with the same name already exists. It is never overwritten, so please choose another name.
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.015">Confirm</sys:String>
+    <!-- この名前・場所には作れません。  {0} {1} -->
+    <sys:String x:Key="MW.016">A file cannot be created with this name or location.
+
+{0}
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.017">Confirm</sys:String>
+    <!-- 新しい車両ファイルを作れませんでした。  {0}  {1} -->
+    <sys:String x:Key="MW.018">The new vehicle file could not be created.
+
+{0}
+
+{1}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.019">Error</sys:String>
+    <!-- 閉じる -->
+    <sys:String x:Key="MW.020">close</sys:String>
+    <!-- 閉じました：{0} -->
+    <sys:String x:Key="MW.021">Closed: {0}</sys:String>
+    <!-- 次のファイルが見つかりません。  {0} -->
+    <sys:String x:Key="MW.022">The following file was not found.
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.023">Confirm</sys:String>
+    <!--  （ほかに {0} 件あります。その車両ファイルを開いたときに尋ねます） -->
+    <sys:String x:Key="MW.024">
+(There are {0} more. You will be asked when you open those vehicle files.)</sys:String>
+    <!-- 前回アプリが予期せず終わったとき、保存していない変更の控えが残っていますが、車両ファイルが見つかりません。  {0}（{1:yyyy/MM/dd HH:mm}）{2}  この控えを消しますか？  はい：消す いいえ：残す -->
+    <sys:String x:Key="MW.025">Unsaved changes were left behind when the app ended unexpectedly last time, but the vehicle file was not found.
+
+{0} ({1:yyyy/MM/dd HH:mm}){2}
+
+Do you want to delete this backup?
+
+Yes: delete it
+No: keep it</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.026">Confirm</sys:String>
+    <!-- 前回アプリが予期せず終わったとき、保存していない変更の控えが残っています。  {0}（{1:yyyy/MM/dd HH:mm}） {2}{3}  この車両ファイルを開いて、控えに戻しますか？   -->
+    <sys:String x:Key="MW.027">Unsaved changes were left behind when the app ended unexpectedly last time.
+
+{0} ({1:yyyy/MM/dd HH:mm})
+{2}{3}
+
+Do you want to open this vehicle file and restore the backup?
+
+</sys:String>
+    <!-- はい：開く（このあと、控えに戻すか確認します） いいえ：開かない（控えは残るので、あとでこの車両ファイルを開いたときにもう一度尋ねます） -->
+    <sys:String x:Key="MW.028">Yes: open it (you will then be asked whether to restore the backup)
+No: do not open it (the backup is kept, and you will be asked again when you open this vehicle file)</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.029">Confirm</sys:String>
+    <!-- 別のファイルを開く -->
+    <sys:String x:Key="MW.030">open another file</sys:String>
+    <!-- ・{0}（{1}）… 控えを読めません -->
+    <sys:String x:Key="MW.031">• {0} ({1}) … the backup cannot be read</sys:String>
+    <!-- ・{0}（{1}）… 今の車両ファイルでは別のファイルを指しているか、読み込めていません -->
+    <sys:String x:Key="MW.032">• {0} ({1}) … the current vehicle file points to another file, or it is not loaded</sys:String>
+    <!-- ・{0}（{1}） -->
+    <sys:String x:Key="MW.033">• {0} ({1})</sys:String>
+    <!--   次の控えは戻せません。 {0} -->
+    <sys:String x:Key="MW.034">
+
+The following backups cannot be restored.
+{0}</sys:String>
+    <!-- 前回、保存しないまま終わった変更の控えがありますが、今のファイルには戻せません（{0}）。{1}  この控えを消しますか？  はい：消す いいえ：残す -->
+    <sys:String x:Key="MW.035">There is a backup of changes that were not saved last time, but it cannot be restored to the current files ({0}).{1}
+
+Do you want to delete this backup?
+
+Yes: delete it
+No: keep it</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.036">Confirm</sys:String>
+    <!-- 前回、保存しないまま終わった変更の控えがあります（{0}）。  {1}{2}  控えの中身に戻しますか？   -->
+    <sys:String x:Key="MW.037">There is a backup of changes that were not saved last time ({0}).
+
+{1}{2}
+
+Do you want to restore the backup?
+
+</sys:String>
+    <!-- はい：控えの中身に戻す（まだファイルには保存していません。確かめてから「すべて保存」してください。Ctrl+Z でファイルの中身に戻せます） いいえ：控えを消して、ファイルの中身のまま開く -->
+    <sys:String x:Key="MW.038">Yes: restore the backup (it is not saved to the files yet; check it, then use "Save All". Ctrl+Z returns to the file contents)
+No: delete the backup and open the files as they are</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.039">Confirm</sys:String>
+    <!-- 控えの中身に戻しました（{0} 件。まだ保存していません） -->
+    <sys:String x:Key="MW.040">Restored the backup ({0} file(s); not saved yet)</sys:String>
+    <!-- 最近使った車両ファイル -->
+    <sys:String x:Key="MW.041">Recent Vehicle Files</sys:String>
+    <!-- 車両ファイル（Vehicle.txt など）を 1 つだけドラッグしてください（フォルダーや、2 つ以上のファイルは開けません）。 -->
+    <sys:String x:Key="MW.042">Please drag only one vehicle file (such as Vehicle.txt). Folders and two or more files cannot be opened.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.043">Confirm</sys:String>
+    <!-- 別のファイルを開く -->
+    <sys:String x:Key="MW.044">open another file</sys:String>
+    <!-- 別のファイルを開く -->
+    <sys:String x:Key="MW.045">open another file</sys:String>
+    <!-- 新しい車両ファイルを作りました：{0}（参照ボタンでファイルを選んでください） -->
+    <sys:String x:Key="MW.046">Created a new vehicle file: {0} (choose the files with the Browse buttons)</sys:String>
+    <!-- ファイル形式エラー -->
+    <sys:String x:Key="MW.047">File Format Error</sys:String>
+    <!-- ファイルの読み込み中にエラーが発生しました。  {0} -->
+    <sys:String x:Key="MW.048">An error occurred while reading the file.
+
+{0}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.049">Error</sys:String>
+    <!-- （このファイルは Shift_JIS なので、文字コードの指定 :shift_jis も付けます） -->
+    <sys:String x:Key="MW.050">(This file is Shift_JIS, so the encoding :shift_jis is also added.)</sys:String>
+    <!-- ・1 行目のヘッダーを「{0}」にします{1} -->
+    <sys:String x:Key="MW.051">• Change the header on line 1 to "{0}"{1}</sys:String>
+    <!-- ・Title・Author・Image・Comment の行（{0} 行）を、頭に「; 」を付けてコメントにします（2.00 では使われません） -->
+    <sys:String x:Key="MW.052">• Comment out the Title, Author, Image and Comment lines ({0} line(s)) by adding "; " (they are not used in 2.00)</sys:String>
+    <!-- ・「Ats =」を「Ats32 =」（32 ビット版の ATS プラグイン）にします -->
+    <sys:String x:Key="MW.053">• Change "Ats =" to "Ats32 =" (32-bit ATS plugin)</sys:String>
+    <!-- 車両ファイルを BveTs Vehicle 2.00 の形に書き直します。  {0}  テキストをクリックして Ctrl+Z で戻せます。保存は「すべて保存」のときです。  書き直しますか？ -->
+    <sys:String x:Key="MW.054">The vehicle file will be converted to the BveTs Vehicle 2.00 format.
+
+{0}
+
+You can undo it with Ctrl+Z in the text. It is saved when you use "Save All".
+
+Convert it?</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.055">Confirm</sys:String>
+    <!-- お知らせ -->
+    <sys:String x:Key="MW.056">Information</sys:String>
+    <!-- Ats64（64 ビット版の ATS プラグイン）がありません。BVE6 は 64 ビットなので、BVE6 で使うには 64 ビット版の DLL を用意して、「ATS 64 ビット」の参照欄から選んでください。 -->
+    <sys:String x:Key="MW.057">There is no Ats64 (64-bit ATS plugin). BVE6 is 64-bit, so to use it with BVE6, prepare a 64-bit DLL and choose it in the "ATS 64-bit" field.</sys:String>
+    <!-- 次の行は「キー = パス」の形ではなく、BVE でエラーになります（{0}）。下のテキストで直してください。 -->
+    <sys:String x:Key="MW.058">The following lines are not in the form "key = path" and BVE reports an error ({0}). Please fix them in the text below.</sys:String>
+    <!-- 先に車両ファイル（Vehicle.txt）を開いてください。 -->
+    <sys:String x:Key="MW.059">Please open a vehicle file (Vehicle.txt) first.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.060">Confirm</sys:String>
+    <!-- ATS プラグイン (*.dll)|*.dll|すべてのファイル (*.*)|*.* -->
+    <sys:String x:Key="MW.061">ATS plugins (*.dll)|*.dll|All files (*.*)|*.*</sys:String>
+    <!-- テキストファイル (*.txt;*.cfg)|*.txt;*.cfg|すべてのファイル (*.*)|*.* -->
+    <sys:String x:Key="MW.062">Text files (*.txt;*.cfg)|*.txt;*.cfg|All files (*.*)|*.*</sys:String>
+    <!-- {0} の ATS プラグイン（DLL）を選択してください -->
+    <sys:String x:Key="MW.063">Select the ATS plugin (DLL) for {0}</sys:String>
+    <!-- {0} のファイルを選択してください（新しい名前を打つと作れます） -->
+    <sys:String x:Key="MW.064">Select the file for {0} (type a new name to create it)</sys:String>
+    <!-- このファイルは車両ファイルに書けません。  {0} {1} -->
+    <sys:String x:Key="MW.065">This file cannot be written in the vehicle file.
+
+{0}
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.066">Confirm</sys:String>
+    <!-- {0}  {1}  このまま書きますか？  はい：このまま書く いいえ：書かない（選び直す） -->
+    <sys:String x:Key="MW.067">{0}
+
+{1}
+
+Write it anyway?
+
+Yes: write it
+No: do not write it (choose again)</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.068">Confirm</sys:String>
+    <!-- ・{0} = {1} -->
+    <sys:String x:Key="MW.069">• {0} = {1}</sys:String>
+    <!-- 次のファイルが見つかりません。 {0}  まとめて新しく作りますか？（中身はヘッダーだけです。フォルダーがなければ一緒に作ります） -->
+    <sys:String x:Key="MW.070">The following files were not found.
+{0}
+
+Create them all now? (They will contain only the header. Missing folders are created too.)</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.071">Confirm</sys:String>
+    <!-- ・{0}: {1} -->
+    <sys:String x:Key="MW.072">• {0}: {1}</sys:String>
+    <!-- 次のファイルは作れませんでした。  {0} -->
+    <sys:String x:Key="MW.073">The following files could not be created.
+
+{0}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.074">Error</sys:String>
+    <!-- 次のファイルはまだありません。 {0}  新しく作りますか？（中身はヘッダーだけです。フォルダーがなければ一緒に作ります） -->
+    <sys:String x:Key="MW.075">The following file does not exist yet.
+{0}
+
+Create it now? (It will contain only the header. Missing folders are created too.)</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.076">Confirm</sys:String>
+    <!-- ファイルを作れませんでした。  {0} -->
+    <sys:String x:Key="MW.077">The file could not be created.
+
+{0}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.078">Error</sys:String>
+    <!-- {0} のタブで、保存していない変更があります。 別のファイルを読み込むと、この変更は失われます。  読み込みますか？ -->
+    <sys:String x:Key="MW.079">The {0} tab has unsaved changes.
+Loading another file will discard these changes.
+
+Load it?</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.080">Confirm</sys:String>
+    <!-- {0} ・{1} -->
+    <sys:String x:Key="MW.081">{0}
+• {1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.082">Confirm</sys:String>
+    <!-- {0} ・{1}: {2} -->
+    <sys:String x:Key="MW.083">{0}
+• {1}: {2}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.084">Confirm</sys:String>
+    <!-- ファイル形式エラー -->
+    <sys:String x:Key="MW.085">File Format Error</sys:String>
+    <!-- ファイルの読み込み中にエラーが発生しました。  {0} -->
+    <sys:String x:Key="MW.086">An error occurred while reading the file.
+
+{0}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.087">Error</sys:String>
+    <!-- {0} のパスが車両ファイルから消えたか、ファイルが見つかりません。 このタブには保存していない変更があります。  タブを空にしますか？（変更は失われます） -->
+    <sys:String x:Key="MW.088">The path for {0} was removed from the vehicle file, or the file was not found.
+This tab has unsaved changes.
+
+Clear the tab? (The changes will be lost.)</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.089">Confirm</sys:String>
+    <!-- 次のファイルには [Power] も [Brake] もありません。ノッチ（PerformanceCurve）やモーター音（MotorNoise）のファイルとして正しいか確認してください。 -->
+    <sys:String x:Key="MW.090">The following file has neither [Power] nor [Brake]. Please check that it is really a notch (PerformanceCurve) or motor noise (MotorNoise) file.</sys:String>
+    <!-- 次のファイルは、ヘッダーの文字コード指定（:utf-8 など）と実際の文字コードが合いません。BVE で文字化けすることがあります。 -->
+    <sys:String x:Key="MW.091">In the following file, the encoding in the header (such as :utf-8) does not match the actual encoding. Text may be garbled in BVE.</sys:String>
+    <!-- 車両ファイルにファイルパスが1つも書かれていません。  BVE で車両を読み込むには、少なくともパラメーター（Parameters）とノッチ（PerformanceCurve）が必要です。 -->
+    <sys:String x:Key="MW.092">No file paths are written in the vehicle file.
+
+To load the vehicle, BVE needs at least the parameters (Parameters) and the notch file (PerformanceCurve).</sys:String>
+    <!-- 警告 -->
+    <sys:String x:Key="MW.093">Warning</sys:String>
+    <!-- 読み込みました：{0} -->
+    <sys:String x:Key="MW.094">Loaded: {0}</sys:String>
+    <!-- プロジェクトを読み込みました。 -->
+    <sys:String x:Key="MW.095">The project has been loaded.</sys:String>
+    <!--   【必須】次のファイルがないと、BVE で車両を読み込めません。 {0} -->
+    <sys:String x:Key="MW.096">
+
+[Required] BVE cannot load the vehicle without the following files.
+{0}</sys:String>
+    <!-- ・{0} = {1} 　　{2} -->
+    <sys:String x:Key="MW.097">• {0} = {1}
+    {2}</sys:String>
+    <!--   次のパスは使えないため、ファイルを探していません。 {0} -->
+    <sys:String x:Key="MW.098">
+
+The following paths cannot be used, so the files were not searched for.
+{0}</sys:String>
+    <!-- ・{0} = {1} -->
+    <sys:String x:Key="MW.099">• {0} = {1}</sys:String>
+    <!--   次のファイルが見つかりません。 {0} -->
+    <sys:String x:Key="MW.100">
+
+The following files were not found.
+{0}</sys:String>
+    <!-- ・{0}{1}: {2} -->
+    <sys:String x:Key="MW.101">• {0}{1}: {2}</sys:String>
+    <!--   次のファイルは読み込めなかったため、タブを空にしています（保存もされません）。 {0} -->
+    <sys:String x:Key="MW.102">
+
+The following files could not be loaded, so their tabs are empty (they are not saved either).
+{0}</sys:String>
+    <!-- ・{0}: {1} -->
+    <sys:String x:Key="MW.103">• {0}: {1}</sys:String>
+    <!-- ・{0} -->
+    <sys:String x:Key="MW.104">• {0}</sys:String>
+    <!--   次のファイルは古い形式（{0}）で書かれています。今のまま編集できますが、古い形式は非推奨です。 {1} -->
+    <sys:String x:Key="MW.105">
+
+The following files are written in the old format ({0}). You can edit them as they are, but the old format is deprecated.
+{1}</sys:String>
+    <!-- ・{0} -->
+    <sys:String x:Key="MW.106">• {0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.107">Confirm</sys:String>
+    <!-- プロジェクトが読み込まれていません。 -->
+    <sys:String x:Key="MW.108">No project is loaded.</sys:String>
+    <!-- 警告 -->
+    <sys:String x:Key="MW.109">Warning</sys:String>
+    <!-- 変更がないので保存しませんでした -->
+    <sys:String x:Key="MW.110">Nothing was saved because there are no changes</sys:String>
+    <!-- 保存しました：{0} -->
+    <sys:String x:Key="MW.111">Saved: {0}</sys:String>
+    <!-- 保存しました：{0} ほか {1} つ -->
+    <sys:String x:Key="MW.112">Saved: {0} and {1} more</sys:String>
+    <!-- 保存中にエラーが発生しました。  {0} -->
+    <sys:String x:Key="MW.113">An error occurred while saving.
+
+{0}</sys:String>
+    <!-- エラー -->
+    <sys:String x:Key="MW.114">Error</sys:String>
+    <!-- 設定のフォルダーはまだありません（アプリを一度閉じると作られます）。  {0} -->
+    <sys:String x:Key="MW.115">The settings folder does not exist yet (it is created when you close the app once).
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.116">Confirm</sys:String>
+    <!-- クラッシュログはまだありません（アプリが予期せず止まったことがありません）。  止まったときは、次のどちらかに書かれます。 {0} -->
+    <sys:String x:Key="MW.117">There are no crash logs yet (the app has never stopped unexpectedly).
+
+If it stops, a log is written to one of these folders.
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.118">Confirm</sys:String>
+    <!-- 自動保存中… -->
+    <sys:String x:Key="MW.119">Autosaving…</sys:String>
+    <!-- 自動保存できませんでした -->
+    <sys:String x:Key="MW.120">Autosave failed</sys:String>
+    <!-- 自動保存しました（{0:HH:mm}） -->
+    <sys:String x:Key="MW.121">Autosaved ({0:HH:mm})</sys:String>
+    <!-- バックアップのフォルダーはまだありません（変更したファイルを「すべて保存」すると作られます）。  {0} -->
+    <sys:String x:Key="MW.122">The backup folder does not exist yet (it is created when you use "Save All" on a changed file).
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.123">Confirm</sys:String>
+    <!-- BVE{0} を起動しました -->
+    <sys:String x:Key="MW.124">Launched BVE{0}</sys:String>
+    <!-- BVE{0} を起動できませんでした。  {1}  {2} -->
+    <sys:String x:Key="MW.125">BVE{0} could not be launched.
+
+{1}
+
+{2}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.126">Confirm</sys:String>
+    <!-- BVE{0} の場所を覚えました -->
+    <sys:String x:Key="MW.127">Remembered the location of BVE{0}</sys:String>
+    <!-- BVE の実行ファイル (*.exe)|*.exe -->
+    <sys:String x:Key="MW.128">BVE executable (*.exe)|*.exe</sys:String>
+    <!-- BVE{0} の exe（BveTs.exe など）を選択してください -->
+    <sys:String x:Key="MW.129">Select the exe of BVE{0} (such as BveTs.exe)</sys:String>
+    <!-- この場所の BVE は起動できません。  {0} {1} -->
+    <sys:String x:Key="MW.130">BVE cannot be launched from this location.
+
+{0}
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.131">Confirm</sys:String>
+    <!-- ・{0} -->
+    <sys:String x:Key="MW.132">• {0}</sys:String>
+    <!-- 保存していない変更があります。  {0}  BVE はファイルに保存した中身を読みます。保存してから起動しますか？   -->
+    <sys:String x:Key="MW.133">There are unsaved changes.
+
+{0}
+
+BVE reads the contents saved in the files. Save before launching?
+
+</sys:String>
+    <!-- はい：保存してから BVE{0} を起動 いいえ：保存せずに起動（BVE は変更する前の中身を読みます。変更はこの画面に残ります） キャンセル：やめる -->
+    <sys:String x:Key="MW.134">Yes: save, then launch BVE{0}
+No: launch without saving (BVE reads the contents before your changes; the changes remain in this window)
+Cancel: do nothing</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.135">Confirm</sys:String>
+    <!-- フォルダーを開けませんでした。  {0}  {1} -->
+    <sys:String x:Key="MW.136">The folder could not be opened.
+
+{0}
+
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="MW.137">Confirm</sys:String>
+</ResourceDictionary>

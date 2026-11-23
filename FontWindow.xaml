@@ -1,0 +1,54 @@
+﻿<Window x:Class="BveVehicleEditor.FontWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource FoX.001}" Width="520" Height="440" MinWidth="400" MinHeight="360"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+
+    <!-- テキストエリアのフォントの種類と大きさを選ぶウィンドウ（「表示 → フォント…」から開く）。OK で 6 つのテキストエリアに当てはめる -->
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.ColumnSpan="2" TextWrapping="Wrap" Margin="0,0,0,8" FontSize="12"
+                   Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                   Text="{DynamicResource FoX.002}" />
+
+        <TextBlock Grid.Row="1" Text="{DynamicResource FoX.003}" VerticalAlignment="Center" Margin="0,0,8,6" />
+        <ComboBox x:Name="CmbFont" Grid.Row="1" Grid.Column="1" Margin="0,0,0,6" SelectionChanged="Input_Changed"
+                  ToolTip="{DynamicResource FoX.004}" />
+
+        <TextBlock Grid.Row="2" Text="{DynamicResource FoX.005}" VerticalAlignment="Center" Margin="0,0,8,6" />
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,6">
+            <TextBox x:Name="TxtSize" Width="80" TextChanged="Input_Changed" ToolTip="{DynamicResource FoX.006}" />
+            <TextBlock x:Name="TxtSizeNote" VerticalAlignment="Center" Margin="8,0,0,0" Text="（8～40）"
+                       Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
+        </StackPanel>
+
+        <GroupBox Grid.Row="3" Grid.ColumnSpan="2" Header="{DynamicResource FoX.007}" Margin="0,4,0,6">
+            <TextBox x:Name="TxtPreview" IsReadOnly="True" TextWrapping="NoWrap" AcceptsReturn="True"
+                     HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" BorderThickness="0" />
+        </GroupBox>
+
+        <TextBlock x:Name="TxtProblem" Grid.Row="4" Grid.ColumnSpan="2" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,6"
+                   Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+
+        <DockPanel Grid.Row="5" Grid.ColumnSpan="2">
+            <Button Content="{DynamicResource FoX.008}" Click="BtnDefault_Click" ToolTip="{DynamicResource FoX.009}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="BtnOk" Content="OK" MinWidth="90" Margin="0,0,8,0" IsDefault="True" Click="BtnOk_Click"
+                        Style="{DynamicResource AccentButtonStyle}" />
+                <Button Content="{DynamicResource FoX.010}" MinWidth="90" IsCancel="True" />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

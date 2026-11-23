@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ParameterForm.xaml.cs の文（日本語）。英語は Pm2.en.xaml -->
+    <sys:String x:Key="Pm2.001">始動する圧力 LowerPressure</sys:String>
+    <sys:String x:Key="Pm2.002">停止する圧力 UpperPressure</sys:String>
+    <sys:String x:Key="Pm2.003">・</sys:String>
+    <sys:String x:Key="Pm2.004">・</sys:String>
+    <sys:String x:Key="Pm2.005">・</sys:String>
+    <sys:String x:Key="Pm2.006">・</sys:String>
+    <sys:String x:Key="Pm2.007">ブレーキノッチ数</sys:String>
+</ResourceDictionary>

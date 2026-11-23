@@ -1,0 +1,34 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- MotorNoiseForm.xaml.cs の文（日本語）。英語は Mn.en.xaml -->
+    <sys:String x:Key="Mn.001">力行</sys:String>
+    <sys:String x:Key="Mn.002">ブレーキ</sys:String>
+    <sys:String x:Key="Mn.003">音量</sys:String>
+    <sys:String x:Key="Mn.004">Volume：モーター音の音量の表（1 が元の音量。0～1）</sys:String>
+    <sys:String x:Key="Mn.005">音量（1 が元の音量）</sys:String>
+    <sys:String x:Key="Mn.006">ピッチ</sys:String>
+    <sys:String x:Key="Mn.007">Frequency：モーター音のピッチの表（1 が元のピッチ）</sys:String>
+    <sys:String x:Key="Mn.008">ピッチ（1 が元のピッチ）</sys:String>
+    <sys:String x:Key="Mn.009">参照</sys:String>
+    <sys:String x:Key="Mn.010">開く</sys:String>
+    <sys:String x:Key="Mn.011">表のファイルを別のウィンドウで、表の形で見ます</sys:String>
+    <sys:String x:Key="Mn.012">書かれていません</sys:String>
+    <sys:String x:Key="Mn.013">モーター音のファイルを読み込めていないので、表のファイルを探せません（参照ボタンも使えません）。</sys:String>
+    <sys:String x:Key="Mn.014">ファイルが見つかりません</sys:String>
+    <sys:String x:Key="Mn.015">表のファイル (*.csv;*.txt)|*.csv;*.txt|すべてのファイル (*.*)|*.*</sys:String>
+    <sys:String x:Key="Mn.016">[{0}] {1} の表のファイルを選択してください</sys:String>
+    <sys:String x:Key="Mn.017">このファイルは MotorNoise.txt に書けません。
+
+{0}
+{1}</sys:String>
+    <sys:String x:Key="Mn.018">確認</sys:String>
+    <sys:String x:Key="Mn.019">[{0}] {1}・モーター音の{2}</sys:String>
+    <sys:String x:Key="Mn.020">速度 (km/h)</sys:String>
+    <sys:String x:Key="Mn.021">音</sys:String>
+    <sys:String x:Key="Mn.022">表のファイルを開けませんでした。
+
+{0}</sys:String>
+    <sys:String x:Key="Mn.023">確認</sys:String>
+</ResourceDictionary>

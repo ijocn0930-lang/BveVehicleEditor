@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- LicenseWindow の文（英語）。日本語は Lic.ja.xaml -->
+    <sys:String x:Key="Lic.001">License and Disclaimer</sys:String>
+    <sys:String x:Key="Lic.002">Disclaimer</sys:String>
+    <sys:String x:Key="Lic.003">License of This App</sys:String>
+    <sys:String x:Key="Lic.004">Third-Party Licenses</sys:String>
+    <sys:String x:Key="Lic.005">Close</sys:String>
+    <sys:String x:Key="Lic.006">License and Disclaimer...</sys:String>
+    <sys:String x:Key="Lic.007">Shows the licenses of this app and its components, and the disclaimer</sys:String>
+    <sys:String x:Key="Lic.010">Disclaimer
+
+- This app is an unofficial tool made by an individual. It is not affiliated with BVE Trainsim or its author. Please do not contact the official BVE Trainsim site about this app.
+
+- This app is provided "as is", without warranty of any kind. The author is not responsible for any damage caused by using this app (such as broken files or lost data).
+
+- Please back up important vehicle files before using this app (you can also keep a copy before "Save All" in "File → Backup Settings...").
+
+- When you modify and distribute a vehicle made by someone else, read the original author's terms and get permission if needed.
+
+- "BVE Trainsim" is the work of its author. This app uses the name only for explanation.
+
+This app is released under the MIT License. See the "License of This App" tab for details.</sys:String>
+</ResourceDictionary>

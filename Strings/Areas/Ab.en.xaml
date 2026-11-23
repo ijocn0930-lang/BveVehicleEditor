@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- AboutWindow.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- バージョン {0} -->
+    <sys:String x:Key="Ab.002">Version {0}</sys:String>
+    <!-- ・.NET {0} ・AvalonEdit {1}（テキストエリア） ・OxyPlot {2}（グラフ） -->
+    <sys:String x:Key="Ab.003">• .NET {0}
+• AvalonEdit {1} (text area)
+• OxyPlot {2} (graphs)</sys:String>
+    <!-- 不明 -->
+    <sys:String x:Key="Ab.004">Unknown</sys:String>
+    <!-- ブラウザーで開けませんでした。  {0}  {1} -->
+    <sys:String x:Key="Ab.005">The link could not be opened in the browser.
+
+{0}
+
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Ab.006">Confirm</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- FileItem.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- ファイル '{0}' の形式が正しくありません。  -->
+    <sys:String x:Key="FI.001">The format of the file '{0}' is not correct.
+</sys:String>
+    <!-- 期待されるヘッダー: '{0}'  -->
+    <sys:String x:Key="FI.002">Expected header: '{0}'
+</sys:String>
+    <!-- 実際の先頭行: '{0}'   -->
+    <sys:String x:Key="FI.003">Actual first line: '{0}'
+
+</sys:String>
+    <!-- このファイルを指定したままだと、BVE でも「File format is not valid.」のエラーになります。 -->
+    <sys:String x:Key="FI.004">If this file stays specified, BVE also reports the error "File format is not valid."</sys:String>
+    <!-- {0} 行目の「{1}」 -->
+    <sys:String x:Key="FI.005">"{1}" on line {0}</sys:String>
+    <!-- ファイル '{0}' は、ノッチ（PerformanceCurve）やモーター音（MotorNoise）のファイルではないようです。  -->
+    <sys:String x:Key="FI.006">The file '{0}' does not seem to be a notch (PerformanceCurve) or motor noise (MotorNoise) file.
+</sys:String>
+    <!-- 1行目: '{0}'   -->
+    <sys:String x:Key="FI.007">Line 1: '{0}'
+
+</sys:String>
+    <!-- パラメーター・パネル・サウンドなど、別の種類のファイルを選んでいないか確認してください。 -->
+    <sys:String x:Key="FI.008">Please check that you have not chosen a different kind of file, such as parameters, panel or sound.</sys:String>
+    <!-- ヘッダーの文字コード名「{0}」が分かりません（utf-8 / shift_jis など） -->
+    <sys:String x:Key="FI.009">The encoding name "{0}" in the header is unknown (use utf-8, shift_jis, etc.)</sys:String>
+    <!-- ヘッダーに文字コードの指定がないため BVE は UTF-8 として読みますが、ファイルは {0} で保存されています -->
+    <sys:String x:Key="FI.010">The header has no encoding, so BVE reads it as UTF-8, but the file is saved as {0}</sys:String>
+    <!-- ヘッダーは「{0}」ですが、ファイルは {1} で保存されています -->
+    <sys:String x:Key="FI.011">The header says "{0}", but the file is saved as {1}</sys:String>
+</ResourceDictionary>

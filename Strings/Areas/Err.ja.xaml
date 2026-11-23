@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ErrorText.cs の文（日本語）。英語は Err.en.xaml -->
+    <sys:String x:Key="Err.001">原因の分からないエラーが起きました。</sys:String>
+    <sys:String x:Key="Err.002">ファイルが見つかりません。{0}</sys:String>
+    <sys:String x:Key="Err.003">フォルダーが見つかりません。フォルダーの名前を変えたり、消したりしていないか確かめてください。</sys:String>
+    <sys:String x:Key="Err.004">ドライブが見つかりません。USB メモリーや外付けのディスクがつながっているか確かめてください。</sys:String>
+    <sys:String x:Key="Err.005">パスが長すぎます。フォルダーやファイルの名前を短くしてください。</sys:String>
+    <sys:String x:Key="Err.006">ファイルを読み書きする権限がありません。読み取り専用のファイルか、管理者の権限が必要な場所（Program Files など）かもしれません。</sys:String>
+    <sys:String x:Key="Err.007">パスとして読み取れません。使えない文字が入っていないか確かめてください。</sys:String>
+    <sys:String x:Key="Err.008">メモリーが足りません。ほかのアプリを閉じてから、もう一度試してください。</sys:String>
+    <sys:String x:Key="Err.009">思わぬエラーが起きました（種類：{0}）。</sys:String>
+    <sys:String x:Key="Err.010">ほかのアプリがこのファイルを使っています。そのアプリでファイルを閉じてから、もう一度試してください。</sys:String>
+    <sys:String x:Key="Err.011">ディスクの空きが足りません。いらないファイルを消してから、もう一度試してください。</sys:String>
+    <sys:String x:Key="Err.012">書き込みが禁止されているディスクです。</sys:String>
+    <sys:String x:Key="Err.013">ドライブの準備ができていません。USB メモリーや外付けのディスクがつながっているか確かめてください。</sys:String>
+    <sys:String x:Key="Err.014">ファイルの読み書きでエラーが起きました（エラー番号 {0}）。</sys:String>
+</ResourceDictionary>

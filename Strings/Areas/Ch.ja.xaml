@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ChartBuilder.cs の文（日本語）。英語は Ch.en.xaml -->
+    <sys:String x:Key="Ch.001">速度</sys:String>
+    <sys:String x:Key="Ch.002">{0}
+速度: {2:0.##} km/h
+値: {4:0.###}</sys:String>
+    <sys:String x:Key="Ch.003">{0}（とても大きい値は軸の外）</sys:String>
+    <sys:String x:Key="Ch.005">線が {0} 本なので凡例は省略（マウスを乗せると名前）</sys:String>
+    <sys:String x:Key="Ch.006">{0}
+速度: {2:0.##} km/h
+値: {4:0.###}</sys:String>
+    <sys:String x:Key="Ch.007">{0}
+速度: {2:0.##} km/h
+値: {4:0.###}</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,123 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ResistanceBrakeWindow.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 限流値（空車）は進段パラメーター（{0}）から読みました。段ごとに限流値が違うときは、段ごとの値で段を進めます。ここで直しても、進段パラメーターは変わりません。 -->
+    <sys:String x:Key="Rb.001">The current limit (empty car) was read from the step parameters ({0}). If the current limit differs per step, the steps advance with each step's value. Changing it here does not change the step parameters.</sys:String>
+    <!-- 進段パラメーターがノッチのファイルに書かれていないか、読めないので、限流値は仮の値です。 -->
+    <sys:String x:Key="Rb.002">The step parameters are not written in the notch file or cannot be read, so the current limit is provisional.</sys:String>
+    <!-- 抵抗制御で作る - ブレーキ・{0} -->
+    <sys:String x:Key="Rb.003">Create for Resistance Control - Brake - {0}</sys:String>
+    <!-- 開いている表：ブレーキの{0}（列は段ごと。どの表も M 車 1 両あたり） -->
+    <sys:String x:Key="Rb.004">Open table: brake {0} (columns are per step; all tables are per M car)</sys:String>
+    <!-- 今の表（引張力と電流）に一番合うように、限流値の力・段 1 と最後の段の速度・飽和 s・電圧の下がり b・限流値より上の飽和・段ごとの切り替わる速度を選び直します -->
+    <sys:String x:Key="Rb.005">Re-chooses the force at current limit, the speeds of step 1 and the last step, saturation s, voltage drop b, saturation above current limit and the switching speeds to best match the current tables (force and current)</sys:String>
+    <!-- 引張力と電流の両方の表と、進段パラメーターの限流値が読めないので使えません -->
+    <sys:String x:Key="Rb.006">Not available because the force and current tables and the current limit in the step parameters cannot all be read</sys:String>
+    <!-- ・空車と同じ値 -->
+    <sys:String x:Key="Rb.007">, same values as empty</sys:String>
+    <!-- {0}（開いている表{1}） -->
+    <sys:String x:Key="Rb.008">{0} (open table{1})</sys:String>
+    <!-- {0}（ファイルなし） -->
+    <sys:String x:Key="Rb.009">{0} (no file)</sys:String>
+    <!-- 画面の表を置き換えます（保存するまでファイルは変わりません） -->
+    <sys:String x:Key="Rb.010">Replaces the table in the window (the file does not change until you save)</sys:String>
+    <!-- このファイルに直接書きます：{0} -->
+    <sys:String x:Key="Rb.011">Writes directly to this file: {0}</sys:String>
+    <!-- ノッチのファイルに書かれていないか、ファイルが見つかりません（ノッチのタブの「参照」で選んでください） -->
+    <sys:String x:Key="Rb.012">Not written in the notch file, or the file was not found (choose it with "Browse" on the Notch tab)</sys:String>
+    <!-- 引張力 -->
+    <sys:String x:Key="Rb.013">Force</sys:String>
+    <!-- 電流 -->
+    <sys:String x:Key="Rb.014">Current</sys:String>
+    <!-- 「作る表」を 1 つ以上チェックしてください。 -->
+    <sys:String x:Key="Rb.015">Check at least one table in "Tables to create".</sys:String>
+    <!-- {0}が数字ではありません（「{1}」）。 -->
+    <sys:String x:Key="Rb.016">{0} is not a number ("{1}").</sys:String>
+    <!-- 段の数が整数ではありません（「{0}」）。 -->
+    <sys:String x:Key="Rb.017">The number of steps is not a whole number ("{0}").</sys:String>
+    <!-- 限流値 -->
+    <sys:String x:Key="Rb.018">Current limit</sys:String>
+    <!-- 限流値の力 -->
+    <sys:String x:Key="Rb.019">Force at current limit</sys:String>
+    <!-- 段 1 の速度 -->
+    <sys:String x:Key="Rb.020">Speed of step 1</sys:String>
+    <!-- 最後の段の速度 -->
+    <sys:String x:Key="Rb.021">Speed of the last step</sys:String>
+    <!-- 飽和の強さ s -->
+    <sys:String x:Key="Rb.022">Saturation s</sys:String>
+    <!-- 電圧の下がり b -->
+    <sys:String x:Key="Rb.023">Voltage drop b</sys:String>
+    <!-- 限流値より上の飽和 -->
+    <sys:String x:Key="Rb.024">Saturation above current limit</sys:String>
+    <!-- 最高速度 -->
+    <sys:String x:Key="Rb.025">Maximum speed</sys:String>
+    <!-- 速度の刻み -->
+    <sys:String x:Key="Rb.026">Speed step</sys:String>
+    <!-- 段ごとの切り替わる速度に数字でない値があります（「{0}」）。 -->
+    <sys:String x:Key="Rb.027">The switching speeds contain a value that is not a number ("{0}").</sys:String>
+    <!-- 行が多すぎます（最高速度 ÷ 刻みが 5000 未満になるようにしてください）。 -->
+    <sys:String x:Key="Rb.028">Too many rows (make maximum speed ÷ step less than 5000).</sys:String>
+    <!-- 段ごとの切り替わる速度は入れた値 -->
+    <sys:String x:Key="Rb.029">switching speeds are the entered values</sys:String>
+    <!-- 段 1（{0} km/h）と最後の段（{1} km/h）の間を同じ比で並べる -->
+    <sys:String x:Key="Rb.030">arranged with the same ratio between step 1 ({0} km/h) and the last step ({1} km/h)</sys:String>
+    <!-- 。段ごとの限流値は進段パラメーターの値 -->
+    <sys:String x:Key="Rb.031">; the current limit of each step is from the step parameters</sys:String>
+    <!-- 作る段：全部で {0} 段（列）・{1}{2}。最後の段より遅いとブレーキが弱まり、約 {3:0.#} km/h で電気ブレーキが 0 になります。 -->
+    <sys:String x:Key="Rb.032">Steps to create: {0} steps (columns) in total, {1}{2}. Below the last step the brake weakens, and the electric brake becomes 0 at about {3:0.#} km/h.</sys:String>
+    <!--  ⚠ 進段パラメーターは {0} 段（列）です。段の数を合わせないと、BVE で段と表の列がずれます。 -->
+    <sys:String x:Key="Rb.033">
+⚠ The step parameters have {0} steps (columns). If the numbers do not match, the steps and the table columns will be out of step in BVE.</sys:String>
+    <!--  今の表は {0} 列です。表に入れると {1} 列になります。 -->
+    <sys:String x:Key="Rb.034">
+The current table has {0} columns. Putting it into the tables makes {1} columns.</sys:String>
+    <!-- 全ノッチで走ったとき（式） -->
+    <sys:String x:Key="Rb.035">Full notch (formula)</sys:String>
+    <!-- 全ノッチで走ったとき（今の表） -->
+    <sys:String x:Key="Rb.036">Full notch (current table)</sys:String>
+    <!-- 今の表に合わせるには、次の欄を直してください。  {0} -->
+    <sys:String x:Key="Rb.037">To fit to the current table, please fix the following fields.
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Rb.038">Confirm</sys:String>
+    <!-- 段ごとの切り替わる速度は、今の表の値を写しました（写さないより合ったため）。 -->
+    <sys:String x:Key="Rb.039">The switching speeds were copied from the current table (it fit better than not copying).</sys:String>
+    <!-- 段ごとの切り替わる速度は写さず、同じ比で並べました（写すより合ったため）。 -->
+    <sys:String x:Key="Rb.040">The switching speeds were not copied; they are arranged with the same ratio (it fit better than copying).</sys:String>
+    <!-- 全ノッチの力が今の表とそろうように、限流値の力を今の表の値の {0:0.###} 倍にしました。 -->
+    <sys:String x:Key="Rb.041"> So that the full-notch force matches the current table, the force at current limit was set to {0:0.###} times the current table value.</sys:String>
+    <!-- 今の表に合わせました。全ノッチで速い速度から下がったときのずれは、力が平均で約 {0:0.#}%・電流が約 {1:0.#}% です。{2}{3} -->
+    <sys:String x:Key="Rb.042">Fitted to the current table. Going down from high speed at full notch, the force differs by about {0:0.#}% on average and the current by about {1:0.#}%. {2}{3}</sys:String>
+    <!-- ・{0}：開いている表を置き換えます（保存するまでファイルは変わりません） -->
+    <sys:String x:Key="Rb.043">• {0}: replaces the open table (the file does not change until you save)</sys:String>
+    <!-- ・{0}：{1} に直接書きます -->
+    <sys:String x:Key="Rb.044">• {0}: written directly to {1}</sys:String>
+    <!-- 次のブレーキの表を作ります（どの表も {0} 行 × {1} 段（列）。満車の表は空車と同じ値です。先頭のコメントの行は残します）。  {2}  ファイルに直接書く表は、書く前の中身を同じフォルダーに「○○.日時.bak」で残します。 -->
+    <sys:String x:Key="Rb.045">The following brake tables will be created (each table has {0} rows × {1} steps (columns); the full-load tables have the same values as the empty tables; the comment lines at the top are kept).
+
+{2}
+
+For tables written directly to files, the previous contents are kept in the same folder as "name.datetime.bak".</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Rb.046">Confirm</sys:String>
+    <!-- ・{0}：{1}（前の中身：{2}） -->
+    <sys:String x:Key="Rb.047">• {0}: {1} (previous contents: {2})</sys:String>
+    <!-- ・{0}：{1} 　{2} -->
+    <sys:String x:Key="Rb.048">• {0}: {1}
+  {2}</sys:String>
+    <!-- 次のファイルに書きました。  {0} -->
+    <sys:String x:Key="Rb.049">Written to the following files.
+
+{0}</sys:String>
+    <!-- {0}次のファイルは書けませんでした。  {1} -->
+    <sys:String x:Key="Rb.050">{0}The following files could not be written.
+
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Rb.051">Confirm</sys:String>
+    <!-- 抵抗制御で作る -->
+    <sys:String x:Key="Rb.052">Create for Resistance Control</sys:String>
+</ResourceDictionary>

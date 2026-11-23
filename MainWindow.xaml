@@ -1,0 +1,501 @@
+﻿<Window x:Class="BveVehicleEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:local="clr-namespace:BveVehicleEditor"
+        Title="BveVehicleEditor" Height="900" Width="650"
+        MinWidth="480" MinHeight="600"
+        AllowDrop="True" PreviewDragOver="Window_PreviewDragOver" PreviewDrop="Window_PreviewDrop">
+
+    <!-- Fluent テーマの余白を詰めて、小さい画面でも作業領域を広く取る -->
+    <!-- BasedOn で Fluent の見た目を引き継ぎ、高さと余白だけ上書きする -->
+    <Window.Resources>
+        <!-- メニュー -->
+        <Style TargetType="MenuItem" BasedOn="{StaticResource {x:Type MenuItem}}">
+            <Setter Property="Padding" Value="8,3" />
+            <Setter Property="MinHeight" Value="0" />
+            <Style.Triggers>
+                <!-- 一番上の「ファイル(F)」など：Fluent が余白（外4・内10）を固定で付けているので、上下を少しはみ出させて詰める -->
+                <Trigger Property="Role" Value="TopLevelHeader">
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="0,-6" />
+                </Trigger>
+                <Trigger Property="Role" Value="TopLevelItem">
+                    <Setter Property="Padding" Value="0" />
+                    <Setter Property="Margin" Value="0,-6" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- タブの見出し -->
+        <!-- 保存していない変更があるタブ（Tag = true）は、名前の右上に小さな「*」を重ねる -->
+        <!-- 名前の後ろに「 *」を足すとタブの幅が広がり、幅 480 で2段に折り返すため、幅が変わらない重ね方にしている -->
+        <Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}">
+            <Setter Property="Padding" Value="6,3" />
+            <Setter Property="MinHeight" Value="0" />
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding}" />
+                            <!-- 右の余白の中に置く（Margin の右をマイナスにして、名前の外へ出す） -->
+                            <TextBlock x:Name="UnsavedMark" Text="*" FontSize="12" FontWeight="Bold"
+                                       HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-4,-7,0"
+                                       Visibility="Collapsed" />
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Tag, RelativeSource={RelativeSource AncestorType=TabItem}}" Value="True">
+                                <Setter TargetName="UnsavedMark" Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 入力欄 -->
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Padding" Value="6,2" />
+            <Setter Property="MinHeight" Value="26" />
+        </Style>
+
+        <!-- ボタン（「参照」の文字が切れないよう左右の余白も詰める） -->
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Padding" Value="6,2" />
+            <Setter Property="MinHeight" Value="26" />
+        </Style>
+
+        <!-- 枠の見出し（文字を小さくする） -->
+        <Style TargetType="GroupBox" BasedOn="{StaticResource {x:Type GroupBox}}">
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="13" FontWeight="SemiBold" />
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- テキストエディタ（AvalonEdit）：Fluent の色を使い、ライト/ダークに自動で合わせる -->
+        <!-- DynamicResource なので、Windows の設定を切り替えるとその場で色が変わる -->
+        <Style TargetType="avalonEdit:TextEditor" BasedOn="{StaticResource {x:Type avalonEdit:TextEditor}}">
+            <!-- 背景（ライト: 白 / ダーク: #2C2C2C） -->
+            <Setter Property="Background" Value="{DynamicResource SolidBackgroundFillColorQuarternaryBrush}" />
+            <!-- 文字（ライト: 黒系 / ダーク: 白） -->
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <!-- 行番号（本文より薄い色） -->
+            <Setter Property="LineNumbersForeground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
+            <!-- スクロールバーは必要なときだけ出す（AvalonEdit は「いつも出す」が初めの設定） -->
+            <!-- いつも出すと、Fluent の見た目では透明に近いスクロールバーの場所（下と右の幅 12）がテキストに見えて、押してもテキストに届かなかった -->
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <!-- 右クリックメニュー（AvalonEdit にはないので足す）。コマンドは右クリックしたテキストエディタの TextArea へ送る -->
+            <!-- （TextEditor へ送ると、AvalonEdit のコマンドを受け取る TextArea に届かない） -->
+            <Setter Property="ContextMenu">
+                <Setter.Value>
+                    <ContextMenu>
+                        <MenuItem Header="{DynamicResource Menu.Undo}" Command="ApplicationCommands.Undo"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <MenuItem Header="{DynamicResource Menu.Redo}" Command="ApplicationCommands.Redo"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <Separator />
+                        <MenuItem Header="{DynamicResource Menu.Cut}" Command="ApplicationCommands.Cut"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <MenuItem Header="{DynamicResource Menu.Copy}" Command="ApplicationCommands.Copy"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <MenuItem Header="{DynamicResource Menu.Paste}" Command="ApplicationCommands.Paste"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <Separator />
+                        <MenuItem Header="{DynamicResource Menu.SelectAll}" Command="ApplicationCommands.SelectAll"
+                                  CommandTarget="{Binding PlacementTarget.TextArea, RelativeSource={RelativeSource AncestorType=ContextMenu}}" />
+                        <Separator />
+                        <!-- 定型文を入れる：中身はメニューを開くときにタブに合わせて作る（MainWindow.xaml.cs の FillTemplateMenu・EditorTemplates.cs） -->
+                        <MenuItem Header="{DynamicResource Menu.InsertTemplate}" Tag="Templates">
+                            <MenuItem Header="{DynamicResource Menu.TemplateNone}" IsEnabled="False" />
+                        </MenuItem>
+                    </ContextMenu>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- ステータスバー（Fluent は余白 12 を付けているので小さくする） -->
+        <Style TargetType="StatusBar" BasedOn="{StaticResource {x:Type StatusBar}}">
+            <Setter Property="Padding" Value="6,2" />
+        </Style>
+        <Style TargetType="StatusBarItem" BasedOn="{StaticResource {x:Type StatusBarItem}}">
+            <Setter Property="Padding" Value="6,1" />
+        </Style>
+    </Window.Resources>
+
+    <!-- ショートカットキー：WPF 標準のコマンドを使う（Open = Ctrl+O、Save = Ctrl+S が最初から割り当て済み） -->
+    <!-- メニューにも Command を付けると、右側にキーが自動で表示される -->
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.New" Executed="NewCommand_Executed" />
+        <CommandBinding Command="ApplicationCommands.Open" Executed="OpenCommand_Executed" />
+        <!-- 閉じる：車両ファイルを開いているときだけ押せる（Ctrl+W は下の InputBindings で割り当てる） -->
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute" />
+        <CommandBinding Command="ApplicationCommands.Save" Executed="SaveCommand_Executed" />
+    </Window.CommandBindings>
+    <!-- 「閉じる」は WPF の標準ではキーがないので、Ctrl+W を割り当てる -->
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Close" Key="W" Modifiers="Control" />
+    </Window.InputBindings>
+
+    <DockPanel LastChildFill="True">
+        <!-- メニューバー -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="{DynamicResource Menu.File}">
+                <!-- 新規作成（Ctrl+N）：先に名前と場所を選び、ヘッダーとパスが空のキーだけの車両ファイルを作って開く -->
+                <MenuItem Header="{DynamicResource Menu.New}" Command="ApplicationCommands.New"
+                          ToolTip="{DynamicResource Tip.New}" />
+                <MenuItem Header="{DynamicResource Menu.Open}" Command="ApplicationCommands.Open" />
+                <!-- 閉じる（Ctrl+W）：未保存の確認をしてから、何も開いていない状態に戻す（アプリは閉じない） -->
+                <MenuItem Header="{DynamicResource Menu.Close}" Command="ApplicationCommands.Close" InputGestureText="Ctrl+W"
+                          ToolTip="{DynamicResource Tip.Close}" />
+                <MenuItem Header="{DynamicResource Menu.SaveAll}" Command="ApplicationCommands.Save" />
+                <Separator />
+                <!-- 最近使った車両ファイル（新しい順に 10 件。開くたびに作り直す RecentMenu_SubmenuOpened。空の行がないとサブメニューが開かないので 1 行置いておく） -->
+                <MenuItem Header="{DynamicResource Menu.Recent}" x:Name="MenuRecent" SubmenuOpened="RecentMenu_SubmenuOpened">
+                    <MenuItem Header="{DynamicResource Menu.RecentNone}" IsEnabled="False" />
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Menu.OpenLast}" x:Name="MenuOpenLastOnStartup" IsCheckable="True"
+                          ToolTip="{DynamicResource Tip.OpenLast}" />
+                <Separator />
+                <!-- 今開いているタブのファイルを、どの文字コードで保存するか（Tag の値で種類を見分ける） -->
+                <!-- 開いたときに、今の文字コードにチェックを付ける（EncodingMenu_SubmenuOpened） -->
+                <MenuItem Header="{DynamicResource Menu.Encoding}" x:Name="MenuEncoding" SubmenuOpened="EncodingMenu_SubmenuOpened">
+                    <MenuItem Header="UTF-8" x:Name="MenuEncodingUtf8" Tag="utf-8"
+                              IsCheckable="True" Click="EncodingMenu_Click" />
+                    <MenuItem Header="{DynamicResource Encoding.Utf8Bom}" x:Name="MenuEncodingUtf8Bom" Tag="utf-8-bom"
+                              IsCheckable="True" Click="EncodingMenu_Click" />
+                    <MenuItem Header="Shift_JIS" x:Name="MenuEncodingShiftJis" Tag="shift_jis"
+                              IsCheckable="True" Click="EncodingMenu_Click" />
+                </MenuItem>
+                <!-- 保存の前に前の中身を控えとして残すか・残す数（BackupWindow.xaml） -->
+                <MenuItem Header="{DynamicResource Menu.Backup}" Click="BackupMenu_Click"
+                          ToolTip="{DynamicResource Tip.Backup}" />
+                <Separator />
+                <MenuItem Header="{DynamicResource Menu.Exit}" Name="MenuExit" />
+            </MenuItem>
+            <!-- 編集：WPF の標準のコマンドなので、今カーソルがあるテキストエリア・入力欄に効く。使えないときは自動で灰色、キーは右に自動で出る -->
+            <MenuItem Header="{DynamicResource Menu.Edit}">
+                <MenuItem Header="{DynamicResource Menu.Undo}" Command="ApplicationCommands.Undo" />
+                <MenuItem Header="{DynamicResource Menu.Redo}" Command="ApplicationCommands.Redo" />
+                <Separator />
+                <MenuItem Header="{DynamicResource Menu.Cut}" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="{DynamicResource Menu.Copy}" Command="ApplicationCommands.Copy" />
+                <MenuItem Header="{DynamicResource Menu.Paste}" Command="ApplicationCommands.Paste" />
+                <Separator />
+                <MenuItem Header="{DynamicResource Menu.SelectAll}" Command="ApplicationCommands.SelectAll" />
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Menu.View}">
+                <!-- テーマの切り替え（Tag の値で種類を見分ける） -->
+                <MenuItem Header="{DynamicResource Menu.Theme}">
+                    <MenuItem Header="{DynamicResource Menu.ThemeSystem}" x:Name="MenuThemeSystem" Tag="System"
+                              IsCheckable="True" IsChecked="True" Click="ThemeMenu_Click" />
+                    <MenuItem Header="{DynamicResource Menu.ThemeLight}" x:Name="MenuThemeLight" Tag="Light"
+                              IsCheckable="True" Click="ThemeMenu_Click" />
+                    <MenuItem Header="{DynamicResource Menu.ThemeDark}" x:Name="MenuThemeDark" Tag="Dark"
+                              IsCheckable="True" Click="ThemeMenu_Click" />
+                </MenuItem>
+                <!-- テキストエリアのフォントの種類と大きさ（FontWindow.xaml） -->
+                <MenuItem Header="{DynamicResource Menu.Font}" Click="FontMenu_Click" />
+                <!-- 言語（Tag は ja / en。名前はいつもその言語で出す。Loc.cs） -->
+                <MenuItem Header="{DynamicResource Menu.Language}">
+                    <MenuItem Header="日本語" x:Name="MenuLanguageJa" Tag="ja" IsCheckable="True" Click="LanguageMenu_Click" />
+                    <MenuItem Header="English" x:Name="MenuLanguageEn" Tag="en" IsCheckable="True" Click="LanguageMenu_Click" />
+                </MenuItem>
+            </MenuItem>
+            <!-- デバッグ：BVE5・BVE6 を起動する（場所は初めに選んで覚える。Tag は 5 / 6） -->
+            <MenuItem Header="{DynamicResource Menu.Debug}">
+                <MenuItem Header="{DynamicResource Menu.LaunchBve5}" Tag="5" Click="LaunchBve_Click"
+                          ToolTip="{DynamicResource Tip.LaunchBve5}" />
+                <MenuItem Header="{DynamicResource Menu.LaunchBve6}" Tag="6" Click="LaunchBve_Click"
+                          ToolTip="{DynamicResource Tip.LaunchBve6}" />
+                <Separator />
+                <MenuItem Header="{DynamicResource Menu.ChooseBve5}" Tag="5" Click="ChooseBve_Click" />
+                <MenuItem Header="{DynamicResource Menu.ChooseBve6}" Tag="6" Click="ChooseBve_Click" />
+            </MenuItem>
+            <!-- ヘルプ：バージョン情報と、困ったときに開くフォルダー（リポジトリへのリンクとアップデート確認は、リポジトリができてから） -->
+            <MenuItem Header="{DynamicResource Menu.Help}">
+                <MenuItem Header="{DynamicResource Menu.About}" Click="AboutMenu_Click" />
+                <Separator />
+                <MenuItem Header="{DynamicResource Menu.OpenSettingsFolder}" Click="OpenSettingsFolder_Click"
+                          ToolTip="{DynamicResource Tip.OpenSettingsFolder}" />
+                <MenuItem Header="{DynamicResource Menu.OpenCrashLogFolder}" Click="OpenCrashLogFolder_Click"
+                          ToolTip="{DynamicResource Tip.OpenCrashLogFolder}" />
+                <MenuItem Header="{DynamicResource Menu.OpenBackupFolder}" Click="OpenBackupFolder_Click"
+                          ToolTip="{DynamicResource Tip.OpenBackupFolder}" />
+            </MenuItem>
+        </Menu>
+
+        <!-- ステータスバー -->
+        <StatusBar DockPanel.Dock="Bottom">
+            <!-- 右端に固定する欄を先に並べ、最後の欄（プロジェクト）が残りの幅を使う -->
+            <StatusBar.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel LastChildFill="True" />
+                </ItemsPanelTemplate>
+            </StatusBar.ItemsPanel>
+            <!-- 今開いているタブのファイルの文字コード（保存するときもこの文字コード）。いつも全部見えるよう右端に固定 -->
+            <StatusBarItem DockPanel.Dock="Right">
+                <TextBlock Text="-" x:Name="TxtEncodingStatus" />
+            </StatusBarItem>
+            <Separator DockPanel.Dock="Right" />
+            <!-- 今のタブの改行コード（CRLF / LF / CR / 混在） -->
+            <StatusBarItem DockPanel.Dock="Right">
+                <TextBlock Text="-" x:Name="TxtNewLineStatus"
+                           ToolTip="{DynamicResource Tip.NewLine}" />
+            </StatusBarItem>
+            <Separator DockPanel.Dock="Right" />
+            <!-- 少しの間だけ出す知らせ（保存しました・読み込みました など。ShowStatusMessage） -->
+            <StatusBarItem DockPanel.Dock="Right" x:Name="StatusMessageItem" Visibility="Collapsed">
+                <TextBlock x:Name="TxtStatusMessage" FontWeight="SemiBold" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" />
+            </StatusBarItem>
+            <!-- プロジェクトの場所。長いときは「…」で省略し、マウスを乗せると全部見える -->
+            <StatusBarItem HorizontalContentAlignment="Stretch">
+                <TextBlock Text="{DynamicResource Status.ProjectNone}" Name="TxtProjectStatus" TextTrimming="CharacterEllipsis" />
+            </StatusBarItem>
+        </StatusBar>
+
+        <!-- メインのファイル別タブ -->
+        <TabControl Margin="4" x:Name="MainFileTabControl">
+
+            <!-- タブ1: Vehicle.txt (各ファイルパスの指定がメイン) -->
+            <!-- タブの名前（x:Name）は、未保存の * を付けるときに使う -->
+            <TabItem Header="Vehicle" x:Name="TabVehicle">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="60" x:Name="RowVehicleForm" />
+                        <!-- パス指定フォーム -->
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <!-- Vehicle.txt テキストプレビュー/編集 -->
+                    </Grid.RowDefinitions>
+
+                    <!-- 上部: ファイルパス設定フォーム -->
+                    <!-- 車両ファイルを開く前は灰色にして使えなくする（UpdateTabEnabled） -->
+                    <GroupBox Header="{DynamicResource Vehicle.Group}" Grid.Row="0" Padding="6" x:Name="GrpVehicleForm">
+                        <StackPanel>
+                        <!-- ヘッダーが 2.00 より前（0.03・1.00）のときだけ出す。押すと、何を変えるか見せて確認してから 2.00 に書き直す（Ctrl+Z で戻せる） -->
+                        <Button x:Name="BtnUpgradeVehicle" Content="{DynamicResource Vehicle.Upgrade}" HorizontalAlignment="Left" Margin="0,0,0,4"
+                                Visibility="Collapsed" Click="BtnUpgradeVehicle_Click"/>
+                        <!-- 警告とお知らせは、ふだんは「⚠ 警告 3 件・お知らせ 1 件（クリックで開く）」の1行にまとめる（下のテキストが狭くならないように） -->
+                        <!-- クリックすると中身が開く。開いても高さに上限を付け、多いときは中でスクロールする。ないときは隠す（ShowVehicleKeyProblems） -->
+                        <Expander x:Name="ExpVehicleMessages" Visibility="Collapsed" IsExpanded="False" Margin="0,0,0,4" Padding="0"
+                                  Expanded="ExpVehicleMessages_Toggled" Collapsed="ExpVehicleMessages_Toggled">
+                            <Expander.Header>
+                                <TextBlock x:Name="TxtVehicleMessagesHeader" TextWrapping="Wrap" />
+                            </Expander.Header>
+                            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto">
+                                <StackPanel Margin="0,0,14,0">
+                                    <!-- バージョンに合わないキー（1.00 以降の Title、2.00 の Ats など）・知らないキー・「=」のない行の警告 -->
+                                    <TextBlock x:Name="TxtVehicleWarnings" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                                               Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                                    <!-- 0.03 の Title などは 1.00 以降 BveTs Scenario へ移った、BVE6 では読めない、などのお知らせ -->
+                                    <TextBlock x:Name="TxtVehicleNotice" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,0,0,4"
+                                               Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Expander>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!-- 項目名と参照ボタンの幅は、言語で長さが変わるので中身に合わせる（日本語ではこれまでどおりの幅） -->
+                                <ColumnDefinition Width="Auto" MinWidth="120"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto" MinWidth="50"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- 必須の参照欄：アクセント色の太めの枠線で目立たせる（ふだんの TextBox の見た目を引き継ぐ） -->
+                            <!-- ファイルを読み込めたら、MainWindow.xaml.cs の UpdateRequiredPathBorders で枠線を消す -->
+                            <Grid.Resources>
+                                <Style x:Key="RequiredPathBoxStyle" TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Setter Property="BorderBrush" Value="{DynamicResource AccentTextFillColorPrimaryBrush}"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                </Style>
+                            </Grid.Resources>
+
+                            <!-- パラメーターとノッチは BVE で必ず必要なファイル（必須の印を付ける） -->
+                            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,2" ToolTip="{DynamicResource Vehicle.RequiredTip}">
+                                <Run Text="{DynamicResource Vehicle.Parameters}"/><Run Text="{DynamicResource Vehicle.Required}" FontSize="11" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"/><Run Text=":"/>
+                            </TextBlock>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="2" x:Name="TxtParamPath" Style="{StaticResource RequiredPathBoxStyle}"/>
+                            <!-- 参照ボタン：Tag に車両ファイルのキーを入れて、どの欄かを見分ける -->
+                            <Button Content="{DynamicResource Common.Browse}" Grid.Row="0" Grid.Column="2" Margin="2" Tag="Parameters" Click="BrowsePath_Click"/>
+
+                            <TextBlock Text="{DynamicResource Vehicle.Panel}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,2"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" x:Name="TxtPanelPath"/>
+                            <Button Content="{DynamicResource Common.Browse}" Grid.Row="1" Grid.Column="2" Margin="2" Tag="Panel" Click="BrowsePath_Click"/>
+
+                            <TextBlock Text="{DynamicResource Vehicle.Sound}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,2"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="2" x:Name="TxtSoundPath"/>
+                            <Button Content="{DynamicResource Common.Browse}" Grid.Row="2" Grid.Column="2" Margin="2" Tag="Sound" Click="BrowsePath_Click"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,2" ToolTip="{DynamicResource Vehicle.RequiredTip}">
+                                <Run Text="{DynamicResource Vehicle.Notch}"/><Run Text="{DynamicResource Vehicle.Required}" FontSize="11" Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"/><Run Text=":"/>
+                            </TextBlock>
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="2" x:Name="TxtNotchPath" Style="{StaticResource RequiredPathBoxStyle}"/>
+                            <Button Content="{DynamicResource Common.Browse}" Grid.Row="3" Grid.Column="2" Margin="2" Tag="PerformanceCurve" Click="BrowsePath_Click"/>
+
+                            <TextBlock Text="{DynamicResource Vehicle.MotorNoise}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,2"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Margin="2" x:Name="TxtMotorNoisePath"/>
+                            <Button Content="{DynamicResource Common.Browse}" Grid.Row="4" Grid.Column="2" Margin="2" Tag="MotorNoise" Click="BrowsePath_Click"/>
+
+                            <!-- ATS プラグイン（DLL）。ヘッダーが 2.00 なら Ats32・Ats64 の 2 行、2.00 より前なら Ats の 1 行を出す（ShowAtsRows） -->
+                            <!-- 参照ボタンは DLL を選ぶだけで、タブには読み込まない -->
+                            <!-- 車両ファイルを開く前は、今の書き方（2.00）に合わせて Ats の行を隠しておく -->
+                            <TextBlock x:Name="LblAtsPath" Text="{DynamicResource Vehicle.Ats}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,2" Visibility="Collapsed"
+                                       ToolTip="{DynamicResource Vehicle.AtsTip}"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="2" x:Name="TxtAtsPath" Visibility="Collapsed"/>
+                            <Button x:Name="BtnAtsPath" Content="{DynamicResource Common.Browse}" Grid.Row="5" Grid.Column="2" Margin="2" Tag="Ats" Click="BrowsePath_Click" Visibility="Collapsed"/>
+
+                            <TextBlock x:Name="LblAts32Path" Text="{DynamicResource Vehicle.Ats32}" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Margin="0,2"
+                                       ToolTip="{DynamicResource Vehicle.Ats32Tip}"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="2" x:Name="TxtAts32Path"/>
+                            <Button x:Name="BtnAts32Path" Content="{DynamicResource Common.Browse}" Grid.Row="6" Grid.Column="2" Margin="2" Tag="Ats32" Click="BrowsePath_Click"/>
+
+                            <TextBlock x:Name="LblAts64Path" Text="{DynamicResource Vehicle.Ats64}" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Margin="0,2"
+                                       ToolTip="{DynamicResource Vehicle.Ats64Tip}"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="2" x:Name="TxtAts64Path"/>
+                            <Button x:Name="BtnAts64Path" Content="{DynamicResource Common.Browse}" Grid.Row="7" Grid.Column="2" Margin="2" Tag="Ats64" Click="BrowsePath_Click"/>
+                        </Grid>
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <!-- 下部: Vehicle.txt テキストエディタ -->
+                    <GroupBox Header="{DynamicResource Text.Vehicle}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="VehicleTextEditor"
+                                               FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- タブ2: 車両パラメーター -->
+            <TabItem Header="パラメーター" x:Name="TabParam">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <!-- 数値パラメータ入力フォーム -->
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="250" MinHeight="60" x:Name="RowParamText" />
+                        <!-- パラメーターファイル テキスト -->
+                    </Grid.RowDefinitions>
+
+                    <!-- 入力フォーム（ParameterForm.xaml）。下のテキストを読んで表示する -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <!-- 右の余白は、スクロールバーが単位（km/h/s など）に重ならないように広めにとる -->
+                        <local:ParameterForm x:Name="ParamForm" Margin="0,0,14,0" />
+                    </ScrollViewer>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <GroupBox Header="{DynamicResource Text.Parameters}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="ParamTextEditor"
+                                               FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- タブ3: パネル設定 -->
+            <TabItem Header="パネル" x:Name="TabPanel">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="250" MinHeight="60" x:Name="RowPanelText" />
+                    </Grid.RowDefinitions>
+
+                    <!-- 入力フォーム（PanelForm.xaml）。下のテキストを読んで、選んだセクションを表示する -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <local:PanelForm x:Name="PanelInputForm" Margin="0,0,14,0" />
+                    </ScrollViewer>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <GroupBox Header="{DynamicResource Text.Panel}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="PanelTextEditor" FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- タブ4: ノッチ設定 -->
+            <TabItem Header="ノッチ" x:Name="TabNotch">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="250" MinHeight="60" x:Name="RowNotchText" />
+                    </Grid.RowDefinitions>
+
+                    <!-- 入力フォーム（NotchForm.xaml）。[Power]・[Brake] の表のファイルのパスと参照ボタン -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <local:NotchForm x:Name="NotchInputForm" Margin="0,0,14,0" />
+                    </ScrollViewer>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <GroupBox Header="{DynamicResource Text.Notch}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="NotchTextEditor" FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- タブ5: モーター音設定 -->
+            <TabItem Header="モーター音" x:Name="TabMotorNoise">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="250" MinHeight="60" x:Name="RowMotorNoiseText" />
+                    </Grid.RowDefinitions>
+
+                    <!-- 入力フォーム（MotorNoiseForm.xaml）。[Power]・[Brake] の音量・ピッチの表のファイルのパスと参照ボタン -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <local:MotorNoiseForm x:Name="MotorNoiseInputForm" Margin="0,0,14,0" />
+                    </ScrollViewer>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <GroupBox Header="{DynamicResource Text.MotorNoise}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="MotorNoiseTextEditor" FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+            <!-- タブ6: サウンド設定 -->
+            <TabItem Header="サウンド" x:Name="TabSound">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" MinHeight="150" />
+                        <RowDefinition Height="5" />
+                        <RowDefinition Height="250" MinHeight="60" x:Name="RowSoundText" />
+                    </Grid.RowDefinitions>
+
+                    <!-- 入力フォーム（SoundForm.xaml）。セクションを選んで、音のファイルのパスと参照ボタン -->
+                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                        <local:SoundForm x:Name="SoundInputForm" Margin="0,0,14,0" />
+                    </ScrollViewer>
+
+                    <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray"/>
+
+                    <GroupBox Header="{DynamicResource Text.Sound}" Grid.Row="2">
+                        <avalonEdit:TextEditor x:Name="SoundTextEditor" FontFamily="Consolas" FontSize="13" ShowLineNumbers="True" />
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </DockPanel>
+</Window>

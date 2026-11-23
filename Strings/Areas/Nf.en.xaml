@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- NotchForm.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 力行 -->
+    <sys:String x:Key="Nf.001">Power</sys:String>
+    <!-- ブレーキ -->
+    <sys:String x:Key="Nf.002">Brake</sys:String>
+    <!-- 進段パラメーター -->
+    <sys:String x:Key="Nf.003">Step parameters</sys:String>
+    <!-- Params：進段パラメーターファイル（断流器の遅れ・ジャーク制御・進段の条件など） -->
+    <sys:String x:Key="Nf.004">Params: step parameter file (breaker delay, jerk control, step conditions, etc.)</sys:String>
+    <!-- 引張力（空車） -->
+    <sys:String x:Key="Nf.005">Force (empty)</sys:String>
+    <!-- Force：引張力テーブル（空車） -->
+    <sys:String x:Key="Nf.006">Force: tractive force table (empty car)</sys:String>
+    <!-- 引張力（満車） -->
+    <sys:String x:Key="Nf.007">Force (full)</sys:String>
+    <!-- MaxForce：引張力テーブル（満車） -->
+    <sys:String x:Key="Nf.008">MaxForce: tractive force table (full load)</sys:String>
+    <!-- 電流（空車） -->
+    <sys:String x:Key="Nf.009">Current (empty)</sys:String>
+    <!-- Current：電流テーブル（空車） -->
+    <sys:String x:Key="Nf.010">Current: current table (empty car)</sys:String>
+    <!-- 電流（満車） -->
+    <sys:String x:Key="Nf.011">Current (full)</sys:String>
+    <!-- MaxCurrent：電流テーブル（満車） -->
+    <sys:String x:Key="Nf.012">MaxCurrent: current table (full load)</sys:String>
+    <!-- 無負荷電流 -->
+    <sys:String x:Key="Nf.013">No-load current</sys:String>
+    <!-- NoLoadCurrent：無負荷電流テーブル -->
+    <sys:String x:Key="Nf.014">NoLoadCurrent: no-load current table</sys:String>
+    <!-- 参照 -->
+    <sys:String x:Key="Nf.015">Browse</sys:String>
+    <!-- 開く -->
+    <sys:String x:Key="Nf.016">Open</sys:String>
+    <!-- 表のファイルを別のウィンドウで、表の形で見ます -->
+    <sys:String x:Key="Nf.017">Shows the table file as a table in another window</sys:String>
+    <!-- 書かれていません -->
+    <sys:String x:Key="Nf.018">not written</sys:String>
+    <!-- ノッチのファイルを読み込めていないので、表のファイルを探せません（参照ボタンも使えません）。 -->
+    <sys:String x:Key="Nf.019">The notch file is not loaded, so the table files cannot be found (the Browse buttons cannot be used either).</sys:String>
+    <!-- ファイルが見つかりません -->
+    <sys:String x:Key="Nf.020">file not found</sys:String>
+    <!-- 表のファイル (*.csv;*.txt)|*.csv;*.txt|すべてのファイル (*.*)|*.* -->
+    <sys:String x:Key="Nf.021">Table files (*.csv;*.txt)|*.csv;*.txt|All files (*.*)|*.*</sys:String>
+    <!-- [{0}] {1} のファイルを選択してください -->
+    <sys:String x:Key="Nf.022">Select the file for [{0}] {1}</sys:String>
+    <!-- このファイルは Notch.txt に書けません。  {0} {1} -->
+    <sys:String x:Key="Nf.023">This file cannot be written in Notch.txt.
+
+{0}
+{1}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Nf.024">Confirm</sys:String>
+    <!-- 項目 -->
+    <sys:String x:Key="Nf.025">Item</sys:String>
+    <!-- 速度 (km/h) -->
+    <sys:String x:Key="Nf.026">Speed (km/h)</sys:String>
+    <!-- [{0}] {1}・{2} -->
+    <sys:String x:Key="Nf.027">[{0}] {1} - {2}</sys:String>
+    <!-- 表のファイルを開けませんでした。  {0} -->
+    <sys:String x:Key="Nf.028">The table file could not be opened.
+
+{0}</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Nf.029">Confirm</sys:String>
+    <!-- 引張力 [N] -->
+    <sys:String x:Key="Nf.030">Force [N]</sys:String>
+    <!-- 電流 [A] -->
+    <sys:String x:Key="Nf.031">Current [A]</sys:String>
+</ResourceDictionary>

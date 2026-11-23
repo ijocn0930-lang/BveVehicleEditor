@@ -1,0 +1,58 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ResistanceCalculator.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 起動 -->
+    <sys:String x:Key="RC.001">Starting</sys:String>
+    <!-- 直列 -->
+    <sys:String x:Key="RC.002">Series</sys:String>
+    <!-- 抵抗 -->
+    <sys:String x:Key="RC.003">Resistance</sys:String>
+    <!-- 並列 -->
+    <sys:String x:Key="RC.004">Parallel</sys:String>
+    <!-- 弱め界磁 -->
+    <sys:String x:Key="RC.005">Field weakening</sys:String>
+    <!-- 限流値は 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.006">The current limit must be greater than 0.</sys:String>
+    <!-- 全界磁の段で限流値まで下がる速度は 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.007">The speed at which the current falls to the current limit in the full-field step must be greater than 0.</sys:String>
+    <!-- そのときの力は 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.008">The force at that time must be greater than 0.</sys:String>
+    <!-- 起動の段の数はマイナスにできません。 -->
+    <sys:String x:Key="RC.009">The number of starting steps cannot be negative.</sys:String>
+    <!-- 直列（抵抗）の段の数は 1 以上にしてください。 -->
+    <sys:String x:Key="RC.010">The number of series (resistance) steps must be 1 or more.</sys:String>
+    <!-- 起動の段の数は、直列（抵抗）の段の数以下にしてください（起動の段は直列の段に含みます）。 -->
+    <sys:String x:Key="RC.011">The number of starting steps must not exceed the number of series (resistance) steps (starting steps are included in the series steps).</sys:String>
+    <!-- 並列の段の数はマイナスにできません（つなぎ替えがなければ 0）。 -->
+    <sys:String x:Key="RC.012">The number of parallel steps cannot be negative (0 without series-parallel switching).</sys:String>
+    <!-- 段が多すぎます（全部で {0} 段までにしてください）。 -->
+    <sys:String x:Key="RC.013">Too many steps (at most {0} steps in total).</sys:String>
+    <!-- 弱め界磁 {0}：界磁の割合は 0 より大きく 1（100%）以下にしてください。 -->
+    <sys:String x:Key="RC.014">Field weakening {0}: the field ratio must be greater than 0 and at most 1 (100%).</sys:String>
+    <!-- 弱め界磁の段の限流値は 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.015">The field weakening current limit must be greater than 0.</sys:String>
+    <!-- 飽和の強さ s は 0 より大きくしてください（ふつう 0.2～5）。 -->
+    <sys:String x:Key="RC.016">Saturation s must be greater than 0 (usually 0.2 to 5).</sys:String>
+    <!-- 電動機の中の抵抗 r は 0 より大きく 0.5 より小さくしてください（ふつう 0.03～0.3）。 -->
+    <sys:String x:Key="RC.017">Motor internal resistance r must be greater than 0 and less than 0.5 (usually 0.03 to 0.3).</sys:String>
+    <!-- 損失 L はマイナスにできません。 -->
+    <sys:String x:Key="RC.018">Loss L cannot be negative.</sys:String>
+    <!-- 弱め界磁の飽和 s はマイナスにできません（0 か空なら全界磁と同じ）。 -->
+    <sys:String x:Key="RC.019">Field weakening saturation s cannot be negative (0 or empty means the same as full field).</sys:String>
+    <!-- 弱め界磁の中の抵抗 r は 0 以上 0.5 より小さくしてください（0 か空なら全界磁と同じ）。 -->
+    <sys:String x:Key="RC.020">Field weakening internal resistance r must be 0 or more and less than 0.5 (0 or empty means the same as full field).</sys:String>
+    <!-- 弱め界磁の力の指数 q は 0～3 にしてください（0 か空なら飽和の形のまま）。 -->
+    <sys:String x:Key="RC.021">Field weakening force exponent q must be 0 to 3 (0 or empty keeps the saturation shape).</sys:String>
+    <!-- 最高速度は 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.022">The maximum speed must be greater than 0.</sys:String>
+    <!-- 速度の刻みは 0 より大きくしてください。 -->
+    <sys:String x:Key="RC.023">The speed step must be greater than 0.</sys:String>
+    <!-- 直列のときの電圧の割合は {0}～{1} にしてください（ふつう 0.5）。 -->
+    <sys:String x:Key="RC.024">The series voltage ratio must be {0} to {1} (usually 0.5).</sys:String>
+    <!-- 段ごとの切り替わる速度の数（{0} 個）を、起動の次からの直列と並列の段の数（{1}）と同じにするか、空にしてください。 -->
+    <sys:String x:Key="RC.025">Make the number of switching speeds ({0}) equal to the number of series and parallel steps after the starting steps ({1}), or leave it empty.</sys:String>
+    <!-- 段ごとの切り替わる速度は、0 以上で、だんだん大きくなる（同じでもよい）並びにしてください。 -->
+    <sys:String x:Key="RC.026">The switching speeds must be 0 or more and increase step by step (equal values are allowed).</sys:String>
+</ResourceDictionary>

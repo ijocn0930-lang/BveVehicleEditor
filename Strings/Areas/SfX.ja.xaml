@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- SoundForm.xaml の文（日本語）。英語は SfX.en.xaml -->
+    <sys:String x:Key="SfX.001">セクションを選ぶと、その音のファイル（wav）のパスが出ます。「参照」で選ぶと、下のテキストが書き換わります（行やセクションがなければ足します。テキストをクリックして Ctrl+Z で戻せます）。パスは Sound.txt からの相対パスです。</sys:String>
+    <sys:String x:Key="SfX.002">このファイルは古い形式（Version 1.0。非推奨）です。書き直すまで、参照・消す・番号を足すは使えません（▶ で鳴らすことはできます）。</sys:String>
+    <sys:String x:Key="SfX.003">BveTs Vehicle Sound 3.01 に書き直す</sys:String>
+    <sys:String x:Key="SfX.004">確認してから、1 行目のヘッダーだけを BveTs Vehicle Sound 3.01 に書き換えます（中身は変えません。Ctrl+Z で戻せます）</sys:String>
+    <sys:String x:Key="SfX.005">セクション</sys:String>
+    <sys:String x:Key="SfX.006">番号</sys:String>
+    <sys:String x:Key="SfX.007">足す番号（0 以上の整数。ATS は 0～255）。最初は空いている番号のうち、いちばん大きい番号の次</sys:String>
+    <sys:String x:Key="SfX.008">この番号で音を選ぶ…</sys:String>
+    <sys:String x:Key="SfX.009">音のファイル（wav）を選ぶと、下のテキストに「番号 = パス」の行を足します（Ctrl+Z で戻せます）</sys:String>
+</ResourceDictionary>

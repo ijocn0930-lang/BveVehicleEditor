@@ -1,0 +1,108 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- ResistanceWindow.xaml.cs の文（日本語）。英語は Rw.en.xaml -->
+    <sys:String x:Key="Rw.001">抵抗制御で作る - 力行・{0}</sys:String>
+    <sys:String x:Key="Rw.002">開いている表：力行の{0}（列は進段ごと。どの表も M 車 1 両あたり）</sys:String>
+    <sys:String x:Key="Rw.003">今の表（引張力と電流）に一番合うように、全界磁の点・界磁の割合・飽和 s・中の抵抗 r・損失 L を選び直します</sys:String>
+    <sys:String x:Key="Rw.004">引張力と電流の両方の表が読めないので使えません（ノッチのファイルに引張力（空車）と電流（空車）の表を書いてください）</sys:String>
+    <sys:String x:Key="Rw.005">進段パラメーターがノッチのファイルに書かれていないか、見つからないので、段の数と限流値は仮の値です。</sys:String>
+    <sys:String x:Key="Rw.006">進段パラメーターが見つからないので、段の数と限流値は仮の値です。</sys:String>
+    <sys:String x:Key="Rw.007">進段パラメーター（{0}）の見出し（S・P・WF）と限流値（空車）から読みました。ここで直しても、進段パラメーターは変わりません。</sys:String>
+    <sys:String x:Key="Rw.008">進段パラメーター（{0}）に段の見出し（S1・P1・WF1 など）がないので、直列・並列・弱め界磁の数は仮の値です。限流値（空車）は読みました。</sys:String>
+    <sys:String x:Key="Rw.009">進段パラメーターを読めなかったので、段の数と限流値は仮の値です。（{0}）</sys:String>
+    <sys:String x:Key="Rw.010">・空車と同じ値</sys:String>
+    <sys:String x:Key="Rw.011">{0}（開いている表{1}）</sys:String>
+    <sys:String x:Key="Rw.012">{0}（ファイルなし）</sys:String>
+    <sys:String x:Key="Rw.013">画面の表を置き換えます（保存するまでファイルは変わりません）</sys:String>
+    <sys:String x:Key="Rw.014">このファイルに直接書きます：{0}</sys:String>
+    <sys:String x:Key="Rw.015">ノッチのファイルに書かれていないか、ファイルが見つかりません（ノッチのタブの「参照」で選んでください）</sys:String>
+    <sys:String x:Key="Rw.016">引張力</sys:String>
+    <sys:String x:Key="Rw.017">電流</sys:String>
+    <sys:String x:Key="Rw.018">「作る表」を 1 つ以上チェックしてください。</sys:String>
+    <sys:String x:Key="Rw.019">{0}が数字ではありません（「{1}」）。</sys:String>
+    <sys:String x:Key="Rw.020">{0}が整数ではありません（「{1}」）。</sys:String>
+    <sys:String x:Key="Rw.021">起動の段の数</sys:String>
+    <sys:String x:Key="Rw.022">直列の段の数</sys:String>
+    <sys:String x:Key="Rw.023">並列の段の数</sys:String>
+    <sys:String x:Key="Rw.024">弱め界磁の段の数</sys:String>
+    <sys:String x:Key="Rw.025">限流値</sys:String>
+    <sys:String x:Key="Rw.026">弱め界磁の段の限流値</sys:String>
+    <sys:String x:Key="Rw.027">全界磁の速度</sys:String>
+    <sys:String x:Key="Rw.028">全界磁の力</sys:String>
+    <sys:String x:Key="Rw.029">飽和の強さ s</sys:String>
+    <sys:String x:Key="Rw.030">電動機の中の抵抗 r</sys:String>
+    <sys:String x:Key="Rw.031">損失 L</sys:String>
+    <sys:String x:Key="Rw.032">弱め界磁の飽和 s</sys:String>
+    <sys:String x:Key="Rw.033">弱め界磁の中の抵抗 r</sys:String>
+    <sys:String x:Key="Rw.034">弱め界磁の力の指数 q</sys:String>
+    <sys:String x:Key="Rw.035">最高速度</sys:String>
+    <sys:String x:Key="Rw.036">速度の刻み</sys:String>
+    <sys:String x:Key="Rw.037">直列の電圧の割合</sys:String>
+    <sys:String x:Key="Rw.038">界磁の割合に数字でない値があります（「{0}」）。</sys:String>
+    <sys:String x:Key="Rw.039">界磁の割合の数（{0} 個）を、弱め界磁の段の数（{1}）と同じにしてください。</sys:String>
+    <sys:String x:Key="Rw.040">段ごとの切り替わる速度に数字でない値があります（「{0}」）。</sys:String>
+    <sys:String x:Key="Rw.041">行が多すぎます（最高速度 ÷ 刻みが 5000 未満になるようにしてください）。</sys:String>
+    <sys:String x:Key="Rw.042">作る段：全部で {0} 段（列）</sys:String>
+    <sys:String x:Key="Rw.043">{0}の段の跳ね上がりの倍率 {1:0.000}</sys:String>
+    <sys:String x:Key="Rw.044">並列の段の跳ね上がりの倍率 {0:0.000}</sys:String>
+    <sys:String x:Key="Rw.045">段ごとの切り替わる速度は入れた値。倍率は平均</sys:String>
+    <sys:String x:Key="Rw.046">区間の中は同じ倍率</sys:String>
+    <sys:String x:Key="Rw.047">・</sys:String>
+    <sys:String x:Key="Rw.048">（{0}。跳ね上がりの倍率は、次の段に進んだときの電流が限流値の何倍になるか。サンプルでは 1.02～1.2）。</sys:String>
+    <sys:String x:Key="Rw.049">
+⚠ 進段パラメーターは {0} 段（列）です。段の数を合わせないと、BVE で段と表の列がずれます（進段パラメーターは、表のウィンドウで列を足す・消すことができます）。</sys:String>
+    <sys:String x:Key="Rw.050">
+今の表は {0} 列です。表に入れると {1} 列になります。</sys:String>
+    <sys:String x:Key="Rw.051">全ノッチで走ったとき（式）</sys:String>
+    <sys:String x:Key="Rw.052">全ノッチで走ったとき（今の表）</sys:String>
+    <sys:String x:Key="Rw.053">並列</sys:String>
+    <sys:String x:Key="Rw.054">弱め界磁</sys:String>
+    <sys:String x:Key="Rw.055">{0}を 0 以上の整数にしてください。</sys:String>
+    <sys:String x:Key="Rw.056">{0}を 0 より大きい数字にしてください。</sys:String>
+    <sys:String x:Key="Rw.057">起動の段の数</sys:String>
+    <sys:String x:Key="Rw.058">直列の段の数</sys:String>
+    <sys:String x:Key="Rw.059">並列の段の数</sys:String>
+    <sys:String x:Key="Rw.060">弱め界磁の段の数</sys:String>
+    <sys:String x:Key="Rw.061">限流値</sys:String>
+    <sys:String x:Key="Rw.062">弱め界磁の段の限流値</sys:String>
+    <sys:String x:Key="Rw.063">最高速度</sys:String>
+    <sys:String x:Key="Rw.064">速度の刻み</sys:String>
+    <sys:String x:Key="Rw.065">今の表に合わせるには、次の欄を直してください。
+
+{0}</sys:String>
+    <sys:String x:Key="Rw.066">確認</sys:String>
+    <sys:String x:Key="Rw.067">今の表を読み取れませんでした。
+
+弱め界磁の段の数（{0}）と限流値（{1} A）が今の表に合っているか、全界磁の段（弱め界磁の 1 つ前の段）の電流が限流値まで下がっているかを確かめてください。</sys:String>
+    <sys:String x:Key="Rw.068">確認</sys:String>
+    <sys:String x:Key="Rw.069">今の表に合わせるには、次の欄を直してください。
+
+{0}</sys:String>
+    <sys:String x:Key="Rw.070">確認</sys:String>
+    <sys:String x:Key="Rw.071">到達時間が合うように、全界磁の力を今の表の値の {0:0.###} 倍にしました（式の段の作り方が今の表と少し違うため、そのままだと力が少し低めになります）。</sys:String>
+    <sys:String x:Key="Rw.072">到達時間が合うように、全界磁の力を今の表の値の {0:0.###} 倍にしました（そのままだと、今の表より力が少し大きくなります）。</sys:String>
+    <sys:String x:Key="Rw.073">段ごとの切り替わる速度は、今の表の値を写しました（写さないより合ったため）。</sys:String>
+    <sys:String x:Key="Rw.074">段ごとの切り替わる速度は写さず、区間の中は同じ跳ね上がりの倍率にしました（写すより合ったため）。</sys:String>
+    <sys:String x:Key="Rw.075">今の表に合わせました。全ノッチで走ったときのずれは、力が平均で約 {0:0.#}%・電流が約 {1:0.#}%、0 から 20 km/h ごとの到達時間がいちばん大きいところで約 {2:0.#}% です。{3}{4}</sys:String>
+    <sys:String x:Key="Rw.076">・{0}：開いている表を置き換えます（保存するまでファイルは変わりません）</sys:String>
+    <sys:String x:Key="Rw.077">・{0}：{1} に直接書きます</sys:String>
+    <sys:String x:Key="Rw.078">次の表を作ります（どの表も {0} 行 × {1} 段（列）。満車の表は空車と同じ値です。先頭のコメントの行は残します）。
+
+{2}
+
+ファイルに直接書く表は、書く前の中身を同じフォルダーに「○○.日時.bak」で残します。</sys:String>
+    <sys:String x:Key="Rw.079">確認</sys:String>
+    <sys:String x:Key="Rw.080">・{0}：{1}（前の中身：{2}）</sys:String>
+    <sys:String x:Key="Rw.081">・{0}：{1}
+　{2}</sys:String>
+    <sys:String x:Key="Rw.082">次のファイルに書きました。
+
+{0}</sys:String>
+    <sys:String x:Key="Rw.083">{0}次のファイルは書けませんでした。
+
+{1}</sys:String>
+    <sys:String x:Key="Rw.084">確認</sys:String>
+    <sys:String x:Key="Rw.085">抵抗制御で作る</sys:String>
+</ResourceDictionary>

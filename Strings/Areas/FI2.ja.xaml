@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- FileItem.cs の文（日本語）。英語は FI2.en.xaml -->
+    <sys:String x:Key="FI2.001">(空)</sys:String>
+</ResourceDictionary>

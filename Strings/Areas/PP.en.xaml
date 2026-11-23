@@ -1,0 +1,50 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- PerformanceParams.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 秒 -->
+    <sys:String x:Key="PP.001">s</sys:String>
+    <!-- 断流器遅れ時間（入） -->
+    <sys:String x:Key="PP.002">Breaker delay (on)</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PP.003">s</sys:String>
+    <!-- 断流器遅れ時間（切） -->
+    <sys:String x:Key="PP.004">Breaker delay (off)</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PP.005">s</sys:String>
+    <!-- 断流器を切ったあと、入れられるようになるまでの時間 -->
+    <sys:String x:Key="PP.006">Time after the breaker opens until it can be closed again</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PP.007">s</sys:String>
+    <!-- 減流遮断の減流時間（減流遮断をしないなら 0） -->
+    <sys:String x:Key="PP.008">Current reduction time for current-reducing cutoff (0 if not used)</sys:String>
+    <!-- ジャーク制御（増）（ジャーク制御をしないなら 0） -->
+    <sys:String x:Key="PP.009">Jerk control (increase) (0 if jerk control is not used)</sys:String>
+    <!-- ジャーク制御（減）（ジャーク制御をしないなら 0） -->
+    <sys:String x:Key="PP.010">Jerk control (decrease) (0 if jerk control is not used)</sys:String>
+    <!-- 次の段に進むのに必要な最小のハンドル位置（力行・抑速のとき） -->
+    <sys:String x:Key="PP.011">Minimum handle position needed to advance to the next step (when powering or holding speed)</sys:String>
+    <!-- 前の段に戻るのに必要な最大のハンドル位置（戻さないなら 0、惰行で初期段に戻さないなら -1） -->
+    <sys:String x:Key="PP.012">Maximum handle position needed to return to the previous step (0 to never return; -1 to not return to the initial step when coasting)</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PP.013">s</sys:String>
+    <!-- 次の段に進むのにかかる時間 -->
+    <sys:String x:Key="PP.014">Time needed to advance to the next step</sys:String>
+    <!-- 秒 -->
+    <sys:String x:Key="PP.015">s</sys:String>
+    <!-- 前の段に戻るのにかかる時間 -->
+    <sys:String x:Key="PP.016">Time needed to return to the previous step</sys:String>
+    <!-- 次の段に進める最大の電流（空車） -->
+    <sys:String x:Key="PP.017">Maximum current to advance to the next step (empty car)</sys:String>
+    <!-- 次の段に進める最大の電流（応荷重最大） -->
+    <sys:String x:Key="PP.018">Maximum current to advance to the next step (maximum load)</sys:String>
+    <!-- 空車限流値（CurrentLimitingValue_Empty と同じ働きと思われる） -->
+    <sys:String x:Key="PP.019">Current limit for an empty car (seems to work the same as CurrentLimitingValue_Empty)</sys:String>
+    <!-- 最大限流値（CurrentLimitingValue_Full と同じ働きと思われる） -->
+    <sys:String x:Key="PP.020">Maximum current limit (seems to work the same as CurrentLimitingValue_Full)</sys:String>
+    <!-- ⚠ 一覧にない項目名 -->
+    <sys:String x:Key="PP.021">⚠ Item name not in the list</sys:String>
+    <!-- （{0:0.00} からの項目） -->
+    <sys:String x:Key="PP.022">(item from {0:0.00})</sys:String>
+</ResourceDictionary>

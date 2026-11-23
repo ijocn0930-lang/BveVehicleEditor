@@ -1,0 +1,32 @@
+﻿<Window x:Class="BveVehicleEditor.LicenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="{DynamicResource Lic.001}" Width="640" Height="520" MinWidth="400" MinHeight="300"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+
+    <!-- 「バージョン情報」の「ライセンスと免責事項…」から開くウィンドウ。免責事項（言語で切り替え）・このアプリのライセンス（MIT）・部品のライセンス -->
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TabControl x:Name="TabsLicense">
+            <TabItem Header="{DynamicResource Lic.002}">
+                <TextBox Text="{DynamicResource Lic.010}" IsReadOnly="True" TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto" BorderThickness="0" Padding="8" />
+            </TabItem>
+            <TabItem Header="{DynamicResource Lic.003}">
+                <TextBox x:Name="TxtAppLicense" IsReadOnly="True" TextWrapping="Wrap" FontFamily="Consolas"
+                         VerticalScrollBarVisibility="Auto" BorderThickness="0" Padding="8" />
+            </TabItem>
+            <TabItem Header="{DynamicResource Lic.004}">
+                <TextBox x:Name="TxtThirdParty" IsReadOnly="True" TextWrapping="Wrap" FontFamily="Consolas"
+                         VerticalScrollBarVisibility="Auto" BorderThickness="0" Padding="8" />
+            </TabItem>
+        </TabControl>
+
+        <Button Grid.Row="1" Content="{DynamicResource Lic.005}" MinWidth="90" HorizontalAlignment="Right" Margin="0,12,0,0"
+                IsDefault="True" IsCancel="True" Click="BtnClose_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,121 @@
+﻿<Window x:Class="BveVehicleEditor.ResistanceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        Title="{DynamicResource RwX.001}" Width="820" Height="660" MinWidth="480" MinHeight="480"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Closing="Window_Closing">
+
+    <!-- 抵抗制御（直並列・弱め界磁。列が進段ごと）の力行の表（引張力・電流の空車と満車）を式から作るウィンドウ。計算は ResistanceCalculator.cs -->
+    <Window.Resources>
+        <!-- 名前と欄を縦に並べた 1 組（狭いときは横に折り返す） -->
+        <Style x:Key="FieldPanel" TargetType="StackPanel">
+            <Setter Property="Margin" Value="0,0,12,6" />
+            <Setter Property="Width" Value="130" />
+        </Style>
+        <Style x:Key="FieldLabel" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,0,2" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style x:Key="Note" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorTertiaryBrush}" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="120" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" MinHeight="120" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="0,0,14,0">
+                <TextBlock x:Name="TxtKind" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,2" />
+                <TextBlock Style="{StaticResource Note}" Margin="0,0,0,6"
+                           Text="{DynamicResource RwX.002}" />
+
+                <GroupBox Header="{DynamicResource RwX.003}" Margin="0,0,0,6">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Note}"
+                                   Text="{DynamicResource RwX.004}" />
+                        <WrapPanel x:Name="PanelTargets" />
+                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                            <TextBlock Text="{DynamicResource RwX.005}" VerticalAlignment="Center" Margin="0,0,6,0" />
+                            <ComboBox x:Name="CmbPreview" MinWidth="160" SelectionChanged="CmbPreview_SelectionChanged" />
+                        </StackPanel>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{DynamicResource RwX.006}" Margin="0,0,0,6">
+                    <StackPanel>
+                        <TextBlock x:Name="TxtLayoutNote" Style="{StaticResource Note}" />
+                        <WrapPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.007}" /><TextBox x:Name="TxtStart" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.008}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.009}" /><TextBox x:Name="TxtSeries" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.010}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.011}" /><TextBox x:Name="TxtParallel" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.012}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.013}" /><TextBox x:Name="TxtWeakCount" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.014}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.015}" /><TextBox x:Name="TxtLimit" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.016}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.017}" /><TextBox x:Name="TxtWeakLimit" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.018}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.019}" /><TextBox x:Name="TxtSeriesVoltage" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.020}" /></StackPanel>
+                        </WrapPanel>
+                        <TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.021}" />
+                        <TextBox x:Name="TxtFields" TextChanged="Input_TextChanged" Margin="0,0,0,6"
+                                 ToolTip="{DynamicResource RwX.022}" />
+                        <TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.023}" />
+                        <TextBox x:Name="TxtSwitchSpeeds" TextChanged="Input_TextChanged" Margin="0,0,0,6"
+                                 ToolTip="{DynamicResource RwX.024}" />
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{DynamicResource RwX.025}" Margin="0,0,0,6">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource Note}"
+                                   Text="{DynamicResource RwX.026}" />
+                        <WrapPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.027}" /><TextBox x:Name="TxtRatedSpeed" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.028}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.029}" /><TextBox x:Name="TxtRatedForce" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.030}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.031}" /><TextBox x:Name="TxtSaturation" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.032}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.033}" /><TextBox x:Name="TxtInternal" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.034}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.035}" /><TextBox x:Name="TxtLoss" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.036}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.037}" /><TextBox x:Name="TxtWeakSaturation" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.038}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.039}" /><TextBox x:Name="TxtWeakResistance" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.040}" /></StackPanel>
+                            <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.041}" /><TextBox x:Name="TxtWeakForceExponent" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.042}" /></StackPanel>
+                            <Button x:Name="BtnFit" Content="{DynamicResource RwX.043}" VerticalAlignment="Bottom" Margin="0,0,0,6" Click="BtnFit_Click" />
+                        </WrapPanel>
+                        <TextBlock x:Name="TxtFitResult" Style="{StaticResource Note}" />
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{DynamicResource RwX.044}" Margin="0,0,0,6">
+                    <WrapPanel>
+                        <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.045}" /><TextBox x:Name="TxtMaxSpeed" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.046}" /></StackPanel>
+                        <StackPanel Style="{StaticResource FieldPanel}"><TextBlock Style="{StaticResource FieldLabel}" Text="{DynamicResource RwX.047}" /><TextBox x:Name="TxtSpeedStep" TextChanged="Input_TextChanged" ToolTip="{DynamicResource RwX.048}" /></StackPanel>
+                    </WrapPanel>
+                </GroupBox>
+
+                <!-- 作った段のようす（段の数・跳ね上がりの倍率・進段パラメーターの列の数との違い） -->
+                <TextBlock x:Name="TxtSummary" Style="{StaticResource Note}" Margin="0,0,0,6" />
+            </StackPanel>
+        </ScrollViewer>
+
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="LightGray" />
+
+        <!-- プレビュー（段ごとの線と、全ノッチで走ったときの線。ChartBuilder） -->
+        <oxy:PlotView x:Name="PlotPreview" Grid.Row="2" Background="Transparent" Margin="0,4,0,0" />
+
+        <!-- 値の問題（問題があるうちは表に入れられない） -->
+        <TextBlock x:Name="TxtProblems" Grid.Row="3" Visibility="Collapsed" TextWrapping="Wrap" Margin="0,4,0,0"
+                   Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button x:Name="BtnApply" Content="{DynamicResource RwX.049}" MinWidth="110" Margin="0,0,8,0" Click="BtnApply_Click"
+                    Style="{DynamicResource AccentButtonStyle}" ToolTip="{DynamicResource RwX.050}" />
+            <Button Content="{DynamicResource RwX.051}" MinWidth="90" Click="BtnClose_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

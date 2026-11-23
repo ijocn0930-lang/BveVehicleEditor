@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- FontWindow.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- ── おすすめ（等幅）── -->
+    <sys:String x:Key="Fo.002">── Recommended (monospaced) ──</sys:String>
+    <!-- ── この PC のすべてのフォント（{0}）── -->
+    <sys:String x:Key="Fo.003">── All fonts on this PC ({0}) ──</sys:String>
+    <!-- フォントを選んでください。 -->
+    <sys:String x:Key="Fo.004">Please choose a font.</sys:String>
+    <!-- 大きさは {0}～{1} の数にしてください（「{2}」）。 -->
+    <sys:String x:Key="Fo.005">The size must be a number from {0} to {1} ("{2}").</sys:String>
+</ResourceDictionary>

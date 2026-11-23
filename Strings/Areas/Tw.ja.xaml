@@ -1,0 +1,62 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TableWindow.xaml.cs の文（日本語）。英語は Tw.en.xaml -->
+    <sys:String x:Key="Tw.002">列（{0}）を足す</sys:String>
+    <sys:String x:Key="Tw.004">{0} で書けない文字があります（{1}）。その文字を消してから保存してください。</sys:String>
+    <sys:String x:Key="Tw.005">{0} 行目の{1}「{2}」</sys:String>
+    <sys:String x:Key="Tw.006">{0} 行目（{1}「{2}」）</sys:String>
+    <sys:String x:Key="Tw.007">{0} 行目</sys:String>
+    <sys:String x:Key="Tw.008">{0}　ほか {1} 行</sys:String>
+    <sys:String x:Key="Tw.009">行</sys:String>
+    <sys:String x:Key="Tw.010">単位・説明</sys:String>
+    <sys:String x:Key="Tw.011">ヘッダー：{0}　文字コード：{1}　データの行：{2}　{3}の列：{4}</sys:String>
+    <sys:String x:Key="Tw.012">　ほか {0} か所</sys:String>
+    <sys:String x:Key="Tw.013">数字でないセル：{0}{1}</sys:String>
+    <sys:String x:Key="Tw.014">値が空の行（2 列目から全部空。BVE でエラーになります）：{0}</sys:String>
+    <sys:String x:Key="Tw.015">{0}が空の行（値だけが入っています）：{1}</sys:String>
+    <sys:String x:Key="Tw.016">{0} 行目「{1}」</sys:String>
+    <sys:String x:Key="Tw.017">一覧にない項目名（BVE でエラーになります）：{0}</sys:String>
+    <sys:String x:Key="Tw.018">{0}（{1} 行目）</sys:String>
+    <sys:String x:Key="Tw.019">同じ項目名が 2 回以上あります：{0}</sys:String>
+    <sys:String x:Key="Tw.020">{0} は {1:0.00} からの項目です</sys:String>
+    <sys:String x:Key="Tw.021">{0}（ヘッダーは {1:0.00}）</sys:String>
+    <sys:String x:Key="Tw.022">書かれていない項目：{0}（「足りない項目を足す」で足せます）</sys:String>
+    <sys:String x:Key="Tw.023">次の項目を、最後のデータの行の下に足しますか？
+
+{0}
+
+値はどのノッチも仮に 0 にします。足したあとで直してください。
+保存するまでファイルは変わりません。</sys:String>
+    <sys:String x:Key="Tw.024">確認</sys:String>
+    <sys:String x:Key="Tw.025">消す行のセルを選んでから押してください。</sys:String>
+    <sys:String x:Key="Tw.026">確認</sys:String>
+    <sys:String x:Key="Tw.027">・</sys:String>
+    <sys:String x:Key="Tw.028"> ほか</sys:String>
+    <sys:String x:Key="Tw.029">{0} 行（{1}{2} 行目）を消しますか？
+
+保存するまでファイルは変わりません。保存せずに閉じれば元に戻ります。</sys:String>
+    <sys:String x:Key="Tw.030">確認</sys:String>
+    <sys:String x:Key="Tw.031">消す列（{0}）のセルを選んでから押してください。左の「行」と 1 列目は消せません。</sys:String>
+    <sys:String x:Key="Tw.032">確認</sys:String>
+    <sys:String x:Key="Tw.033">{0} の列を消しますか？
+すべての行のこの列の値が消え、右の列が左へ詰まります。
+
+保存するまでファイルは変わりません。保存せずに閉じれば元に戻ります。</sys:String>
+    <sys:String x:Key="Tw.034">確認</sys:String>
+    <sys:String x:Key="Tw.035">保存できませんでした。
+
+{0}</sys:String>
+    <sys:String x:Key="Tw.036">確認</sys:String>
+    <sys:String x:Key="Tw.037">保存しました。
+
+{0}</sys:String>
+    <sys:String x:Key="Tw.038">保存</sys:String>
+    <sys:String x:Key="Tw.039">「{0}」は保存していません。保存してから閉じますか？
+
+はい：保存して閉じる
+いいえ：保存せずに閉じる
+キャンセル：閉じない</sys:String>
+    <sys:String x:Key="Tw.040">確認</sys:String>
+</ResourceDictionary>

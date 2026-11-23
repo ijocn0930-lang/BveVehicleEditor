@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- BackupWindow.xaml の文（日本語）。英語は BkX.en.xaml -->
+    <sys:String x:Key="BkX.001">バックアップの設定</sys:String>
+    <sys:String x:Key="BkX.002">「すべて保存」でファイルを上書きする前に、前の中身を控え（.bak）として残します。間違えて保存したときは、控えを開いて中身を戻せます。</sys:String>
+    <sys:String x:Key="BkX.003">保存の前に控えを残す</sys:String>
+    <sys:String x:Key="BkX.004">1 つのファイルにつき残す数</sys:String>
+    <sys:String x:Key="BkX.005">1～100（多いときは古いものから消します）</sys:String>
+    <sys:String x:Key="BkX.006">個（1～100）</sys:String>
+    <sys:String x:Key="BkX.007">置き場所（車両ファイルごとにフォルダーを分けます。「ヘルプ → バックアップのフォルダーを開く」で開けます）</sys:String>
+    <sys:String x:Key="BkX.008">自動保存は、保存していない編集中の中身を、決まった間隔で控えとして残します。車両ファイルは書き換えません（BVE が読むファイルは「すべて保存」のときだけ変わります）。普通に閉じたときは控えを消します。</sys:String>
+    <sys:String x:Key="BkX.009">自動保存する</sys:String>
+    <sys:String x:Key="BkX.010">間隔</sys:String>
+    <sys:String x:Key="BkX.011">1～60 分（変更がないときは保存しません）</sys:String>
+    <sys:String x:Key="BkX.012">分ごと（1～60）</sys:String>
+    <sys:String x:Key="BkX.013">自動保存の置き場所</sys:String>
+    <sys:String x:Key="BkX.014">初めに戻す</sys:String>
+    <sys:String x:Key="BkX.015">控えを残す・10 個・自動保存する・5 分ごとにします（OK で当てはめます）</sys:String>
+    <sys:String x:Key="BkX.016">キャンセル</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,190 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- PanelForm.xaml.cs の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 解像度 -->
+    <sys:String x:Key="Pf.001">Resolution</sys:String>
+    <!-- 左の限界 -->
+    <sys:String x:Key="Pf.002">Left limit</sys:String>
+    <!-- 上の限界 -->
+    <sys:String x:Key="Pf.003">Top limit</sys:String>
+    <!-- 右の限界 -->
+    <sys:String x:Key="Pf.004">Right limit</sys:String>
+    <!-- 下の限界 -->
+    <sys:String x:Key="Pf.005">Bottom limit</sys:String>
+    <!-- 昼間の画像 -->
+    <sys:String x:Key="Pf.006">Daytime image</sys:String>
+    <!-- 夜間の画像 -->
+    <sys:String x:Key="Pf.007">Nighttime image</sys:String>
+    <!-- 透過色 -->
+    <sys:String x:Key="Pf.008">Transparent color</sys:String>
+    <!-- 画面の中心 -->
+    <sys:String x:Key="Pf.009">Screen center</sys:String>
+    <!-- 消失点 -->
+    <sys:String x:Key="Pf.010">Vanishing point</sys:String>
+    <!-- パースの強さ -->
+    <sys:String x:Key="Pf.011">Perspective strength</sys:String>
+    <!-- 表示する状態量 -->
+    <sys:String x:Key="Pf.012">Subject</sys:String>
+    <!-- 位置 -->
+    <sys:String x:Key="Pf.013">Location</sys:String>
+    <!-- 昼間の画像 -->
+    <sys:String x:Key="Pf.014">Daytime image</sys:String>
+    <!-- 夜間の画像 -->
+    <sys:String x:Key="Pf.015">Nighttime image</sys:String>
+    <!-- 透過色 -->
+    <sys:String x:Key="Pf.016">Transparent color</sys:String>
+    <!-- 描画順序 -->
+    <sys:String x:Key="Pf.017">Layer</sys:String>
+    <!-- 色 -->
+    <sys:String x:Key="Pf.018">Color</sys:String>
+    <!-- 針の画像の回転中心 -->
+    <sys:String x:Key="Pf.019">Needle rotation center</sys:String>
+    <!-- 半径 -->
+    <sys:String x:Key="Pf.020">Radius</sys:String>
+    <!-- 最小の角度 -->
+    <sys:String x:Key="Pf.021">Minimum angle</sys:String>
+    <!-- 最大の角度 -->
+    <sys:String x:Key="Pf.022">Maximum angle</sys:String>
+    <!-- 最小値 -->
+    <sys:String x:Key="Pf.023">Minimum</sys:String>
+    <!-- 最大値 -->
+    <sys:String x:Key="Pf.024">Maximum</sys:String>
+    <!-- 傾き -->
+    <sys:String x:Key="Pf.025">Tilt</sys:String>
+    <!-- 針の固有角振動数 -->
+    <sys:String x:Key="Pf.026">Needle natural frequency</sys:String>
+    <!-- 針の減衰比 -->
+    <sys:String x:Key="Pf.027">Needle damping ratio</sys:String>
+    <!-- 分解能 -->
+    <sys:String x:Key="Pf.028">Step</sys:String>
+    <!-- 1 コマの高さ -->
+    <sys:String x:Key="Pf.029">Frame height</sys:String>
+    <!-- 表示領域とベース画像（1 つだけ） -->
+    <sys:String x:Key="Pf.030">Display area and base image (only one)</sys:String>
+    <!-- 表示灯 -->
+    <sys:String x:Key="Pf.031">Pilot lamp</sys:String>
+    <!-- 指針 -->
+    <sys:String x:Key="Pf.032">Needle</sys:String>
+    <!-- デジタル数字 -->
+    <sys:String x:Key="Pf.033">Digital number</sys:String>
+    <!-- 円形デジタルゲージ -->
+    <sys:String x:Key="Pf.034">Circular digital gauge</sys:String>
+    <!-- （セクションを選んでください） -->
+    <sys:String x:Key="Pf.035">(Choose a section)</sys:String>
+    <!-- {0}（テキストの {1} 行目） -->
+    <sys:String x:Key="Pf.036">{0} (line {1} of the text)</sys:String>
+    <!-- そのほかの項目（表示だけ。テキストの {0} 行目から） -->
+    <sys:String x:Key="Pf.037">Other items (display only; from line {0} of the text)</sys:String>
+    <!-- 「一覧から選ぶ」で状態量を選べます。 -->
+    <sys:String x:Key="Pf.038">You can choose a value with "Choose from list".</sys:String>
+    <!-- （一覧にない状態量です） -->
+    <sys:String x:Key="Pf.039">(not in the list of values)</sys:String>
+    <!--   [This] を消すと、BVE で運転台が丸ごと見えなくなります。 -->
+    <sys:String x:Key="Pf.040">
+
+If you delete [This], the whole cab will not be visible in BVE.</sys:String>
+    <!-- {0} のセクションと、その中の値（{1} 件）を下のテキストから消します（テキストをクリックして Ctrl+Z で戻せます）。{2}  消しますか？ -->
+    <sys:String x:Key="Pf.041">The {0} section and its values ({1}) will be deleted from the text below (click the text and press Ctrl+Z to undo).{2}
+
+Delete it?</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pf.042">Confirm</sys:String>
+    <!-- 可動範囲の制限 -->
+    <sys:String x:Key="Pf.043">Stop pin</sys:String>
+    <!-- 可動範囲の制限 -->
+    <sys:String x:Key="Pf.044">Stop pin</sys:String>
+    <!-- 最小値～最大値の間で止める（既定: {0}） -->
+    <sys:String x:Key="Pf.045">Stop between Minimum and Maximum (default: {0})</sys:String>
+    <!-- 最小値～最大値の間で止める -->
+    <sys:String x:Key="Pf.046">Stop between Minimum and Maximum</sys:String>
+    <!-- 可動範囲の制限（StopPin）「{0}」は True か False にしてください。 -->
+    <sys:String x:Key="Pf.047">Stop pin (StopPin) "{0}" must be True or False.</sys:String>
+    <!-- 面の色 -->
+    <sys:String x:Key="Pf.048">Face color</sys:String>
+    <!-- LED 消灯の色 -->
+    <sys:String x:Key="Pf.049">Color of unlit LEDs</sys:String>
+    <!-- 針の半径 -->
+    <sys:String x:Key="Pf.050">Needle radius</sys:String>
+    <!-- ゲージの半径 -->
+    <sys:String x:Key="Pf.051">Gauge radius</sys:String>
+    <!-- 最小値を指す角度（度） -->
+    <sys:String x:Key="Pf.052">Angle for the minimum (deg)</sys:String>
+    <!-- 最小の角度（度） -->
+    <sys:String x:Key="Pf.053">Minimum angle (deg)</sys:String>
+    <!-- 最大値を指す角度（度） -->
+    <sys:String x:Key="Pf.054">Angle for the maximum (deg)</sys:String>
+    <!-- 最大の角度（度） -->
+    <sys:String x:Key="Pf.055">Maximum angle (deg)</sys:String>
+    <!-- 位置（左上） -->
+    <sys:String x:Key="Pf.056">Location (top left)</sys:String>
+    <!-- 位置（数字の左上） -->
+    <sys:String x:Key="Pf.057">Location (top left of the digits)</sys:String>
+    <!-- 位置（回転中心） -->
+    <sys:String x:Key="Pf.058">Location (rotation center)</sys:String>
+    <!-- {0}（{1}）：このバージョンでは「#」から後ろはコメントになるので、色が読まれません。「#」を付けずに 00FFFF のように書いてください。 -->
+    <sys:String x:Key="Pf.059">{0} ({1}): in this version everything after "#" is a comment, so the color is not read. Write it without "#", like 00FFFF.</sys:String>
+    <!-- ヘッダーのバージョン（{0}）では、{1}（{2}）は使えません（BveTs Instrument Panel 2.01 の項目）。 -->
+    <sys:String x:Key="Pf.060">With this header version ({0}), {1} ({2}) cannot be used (it is a BveTs Instrument Panel 2.01 item).</sys:String>
+    <!-- {0}（{1}）は、このヘッダーのバージョン（{2}）では使えません。BVE で読まれないことがあります。 -->
+    <sys:String x:Key="Pf.061">{0} ({1}) cannot be used with this header version ({2}). BVE may not read it.</sys:String>
+    <!-- 昼間の画像 -->
+    <sys:String x:Key="Pf.062">Daytime image</sys:String>
+    <!-- 夜間の画像 -->
+    <sys:String x:Key="Pf.063">Nighttime image</sys:String>
+    <!-- {0}（{1}）「{2}」が見つかりません（パネルファイルからの相対パスで探しました）。 -->
+    <sys:String x:Key="Pf.064">{0} ({1}) "{2}" was not found (searched as a relative path from the panel file).</sys:String>
+    <!-- {0}「{1}」の大きさ（{2}×{3}）は 2 のべき乗（64・128・256 …）ではありません。DirectX の仕様で、画像が間延び・縮んだり崩れたりすることがあります。 -->
+    <sys:String x:Key="Pf.065">The size of {0} "{1}" ({2}×{3}) is not a power of two (64, 128, 256 …). Because of DirectX, the image may be stretched, shrunk or broken.</sys:String>
+    <!-- （未記入） -->
+    <sys:String x:Key="Pf.066">(empty)</sys:String>
+    <!-- （既定: {0}） -->
+    <sys:String x:Key="Pf.067">(default: {0})</sys:String>
+    <!-- {0}（{1}）「{2}」は数字にしてください。 -->
+    <sys:String x:Key="Pf.068">{0} ({1}) "{2}" must be a number.</sys:String>
+    <!-- {0}（{1}）「{2}」は「x, y」の 2 つの数字にしてください。 -->
+    <sys:String x:Key="Pf.069">{0} ({1}) "{2}" must be two numbers "x, y".</sys:String>
+    <!-- {0}（{1}）「{2}」は 6 桁の 16 進数（例：FF0000）にしてください。 -->
+    <sys:String x:Key="Pf.070">{0} ({1}) "{2}" must be a 6-digit hexadecimal number (e.g. FF0000).</sys:String>
+    <!-- {0}（{1}）「{2}」は 0 ～ 255 の整数にしてください。 -->
+    <sys:String x:Key="Pf.071">{0} ({1}) "{2}" must be a whole number from 0 to 255.</sys:String>
+    <!-- 「;」と「#」 -->
+    <sys:String x:Key="Pf.072">";" and "#"</sys:String>
+    <!-- {0}はコメントの始まりなので、値には使えません。 -->
+    <sys:String x:Key="Pf.073">{0} start a comment, so they cannot be used in values.</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pf.074">Confirm</sys:String>
+    <!-- セクション（[This] や [Needle] など）が1つも書かれていません。 -->
+    <sys:String x:Key="Pf.075">No section (such as [This] or [Needle]) is written.</sys:String>
+    <!-- 古い形式（Version 1.0）のパネルです。この形式では「#」はコメントではなく色（#00ffff など）として読みます。 -->
+    <sys:String x:Key="Pf.076">This is an old-format (Version 1.0) panel. In this format "#" is not a comment but is read as a color (such as #00ffff).</sys:String>
+    <!-- ⚠ [This] がありません。BVE で運転台が丸ごと見えなくなります。「セクションを足す ▼」で [This] を足してください。 -->
+    <sys:String x:Key="Pf.077">⚠ There is no [This]. The whole cab will not be visible in BVE. Add [This] with "Add section ▼".</sys:String>
+    <!-- （このファイルは Shift_JIS なので、文字コードの指定 :shift_jis も付けます） -->
+    <sys:String x:Key="Pf.078">(This file is Shift_JIS, so the encoding :shift_jis is also added.)</sys:String>
+    <!-- 古い形式（Version 1.0）のパネルを、BveTs Instrument Panel 2.01 の形に書き直します。   -->
+    <sys:String x:Key="Pf.079">The old-format (Version 1.0) panel will be converted to the BveTs Instrument Panel 2.01 format.
+
+</sys:String>
+    <!-- ・1 行目のヘッダーを「{0}」にします{1}  -->
+    <sys:String x:Key="Pf.080">• Change the header on line 1 to "{0}"{1}
+</sys:String>
+    <!-- ・色（Color・TransparentColor）の前の「#」を外します（{0} か所）   -->
+    <sys:String x:Key="Pf.081">• Remove the "#" before colors (Color, TransparentColor) ({0} place(s))
+
+</sys:String>
+    <!-- テキストをクリックして Ctrl+Z で戻せます。保存は「すべて保存」のときです。  書き直しますか？ -->
+    <sys:String x:Key="Pf.082">Click the text and press Ctrl+Z to undo. It is saved when you use "Save All".
+
+Convert it?</sys:String>
+    <!-- 確認 -->
+    <sys:String x:Key="Pf.083">Confirm</sys:String>
+    <!-- 次の行には、色のほかに「#」があります（{0}）。 2.01 では「#」から後ろはコメントになるので、必要なら下のテキストで直してください。 -->
+    <sys:String x:Key="Pf.084">The following lines contain "#" other than in colors ({0}).
+In 2.01 everything after "#" is a comment, so fix them in the text below if needed.</sys:String>
+    <!-- お知らせ -->
+    <sys:String x:Key="Pf.085">Information</sys:String>
+    <!-- [{0}] {1}つ目 -->
+    <sys:String x:Key="Pf.086">[{0}] #{1}</sys:String>
+</ResourceDictionary>

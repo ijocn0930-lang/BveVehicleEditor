@@ -1,0 +1,74 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- TableWindow.xaml の文（英語）。各行の上のコメントは日本語の文 -->
+    <!-- 表のファイル -->
+    <sys:String x:Key="TwX.001">Table File</sys:String>
+    <!-- セルをダブルクリック（または F2・文字を打つ）で直せます。Enter で決まり、Esc でやめます。Delete で中身を空にし、右クリックで行・列の追加や削除、コピー・貼り付けができます。見出しをダブルクリックするとその列を全部選びます。Ctrl+Z で元に戻し、Ctrl+Y でやり直せます。「保存」か Ctrl+S でこのファイルだけ保存します。灰色の行は「#」で始まるコメントの行です。 -->
+    <sys:String x:Key="TwX.002">Double-click a cell (or press F2 / start typing) to edit it. Enter confirms and Esc cancels. Delete clears the contents; right-click to add or delete rows and columns, copy and paste. Double-clicking a header selects the whole column. Ctrl+Z undoes and Ctrl+Y redoes. "Save" or Ctrl+S saves only this file. Gray rows are comment lines starting with "#".</sys:String>
+    <!-- 表 -->
+    <sys:String x:Key="TwX.003">Table</sys:String>
+    <!-- 行を下に足す -->
+    <sys:String x:Key="TwX.004">Add row below</sys:String>
+    <!-- 選んでいるセルの行の下に、空の行を足します（選んでいなければ最後に足します） -->
+    <sys:String x:Key="TwX.005">Adds an empty row below the row of the selected cell (at the end if nothing is selected)</sys:String>
+    <!-- 行を消す -->
+    <sys:String x:Key="TwX.006">Delete rows</sys:String>
+    <!-- 選んでいるセルの行を、確認してから消します -->
+    <sys:String x:Key="TwX.007">Deletes the rows of the selected cells after confirming</sys:String>
+    <!-- 列（ノッチ）を足す -->
+    <sys:String x:Key="TwX.008">Add column (notch)</sys:String>
+    <!-- 右の端に列を 1 つ足します -->
+    <sys:String x:Key="TwX.009">Adds one column at the right end</sys:String>
+    <!-- 列を消す -->
+    <sys:String x:Key="TwX.010">Delete columns</sys:String>
+    <!-- 選んでいるセルの列を、確認してから消します（左の「行」と 1 列目は消せません） -->
+    <sys:String x:Key="TwX.011">Deletes the columns of the selected cells after confirming (the "Row" column and the first column cannot be deleted)</sys:String>
+    <!-- 足りない項目を足す -->
+    <sys:String x:Key="TwX.012">Add missing items</sys:String>
+    <!-- 書かれていない項目を、最後のデータの行の下に足します（値は仮に 0。確認してから足します） -->
+    <sys:String x:Key="TwX.013">Adds the items that are not written below the last data row (values are 0 for now; asks first)</sys:String>
+    <!-- 式から作る… -->
+    <sys:String x:Key="TwX.014">Create from formulas…</sys:String>
+    <!-- 起動加速度・v1・v2 などから引張力の表を作るウィンドウを開きます -->
+    <sys:String x:Key="TwX.015">Opens a window that creates the force table from the starting acceleration, v1, v2 and so on</sys:String>
+    <!-- 抵抗制御で作る… -->
+    <sys:String x:Key="TwX.016">Create for resistance control…</sys:String>
+    <!-- 抵抗制御（直並列・弱め界磁）の車両の、列が進段ごとの表を作るウィンドウを開きます -->
+    <sys:String x:Key="TwX.017">Opens a window that creates a table with one column per step for resistance-controlled (series-parallel, field weakening) vehicles</sys:String>
+    <!-- 元に戻す -->
+    <sys:String x:Key="TwX.018">Undo</sys:String>
+    <!-- やり直す -->
+    <sys:String x:Key="TwX.019">Redo</sys:String>
+    <!-- 行を上に足す -->
+    <sys:String x:Key="TwX.020">Add row above</sys:String>
+    <!-- 行を下に足す -->
+    <sys:String x:Key="TwX.021">Add row below</sys:String>
+    <!-- 選んだ行を消す… -->
+    <sys:String x:Key="TwX.022">Delete selected rows…</sys:String>
+    <!-- 列を左に足す -->
+    <sys:String x:Key="TwX.023">Add column to the left</sys:String>
+    <!-- 列を右に足す -->
+    <sys:String x:Key="TwX.024">Add column to the right</sys:String>
+    <!-- 選んだ列を消す… -->
+    <sys:String x:Key="TwX.025">Delete selected columns…</sys:String>
+    <!-- 中身を空にする -->
+    <sys:String x:Key="TwX.026">Clear contents</sys:String>
+    <!-- 切り取り -->
+    <sys:String x:Key="TwX.027">Cut</sys:String>
+    <!-- コピー -->
+    <sys:String x:Key="TwX.028">Copy</sys:String>
+    <!-- 貼り付け -->
+    <sys:String x:Key="TwX.029">Paste</sys:String>
+    <!-- グラフ -->
+    <sys:String x:Key="TwX.030">Graph</sys:String>
+    <!-- マウスを乗せると近い点の値が出ます。ホイールで拡大・縮小、右ボタンのドラッグで移動、ダブルクリックで元の大きさに戻ります。表を直すと、このタブを開いたときに描き直します。 -->
+    <sys:String x:Key="TwX.031">Hover to see the value of the nearest point. Zoom with the wheel, move by dragging with the right button, and double-click to return to the original size. When you edit the table, the graph is redrawn when you open this tab.</sys:String>
+    <!-- 保存 -->
+    <sys:String x:Key="TwX.032">Save</sys:String>
+    <!-- このファイルだけを、元の文字コードで保存します（Ctrl+S） -->
+    <sys:String x:Key="TwX.033">Saves only this file in its original encoding (Ctrl+S)</sys:String>
+    <!-- 閉じる -->
+    <sys:String x:Key="TwX.034">Close</sys:String>
+</ResourceDictionary>

@@ -1,0 +1,104 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+                    xml:space="preserve">
+    <!-- PanelForm.xaml.cs の文（日本語）。英語は Pf.en.xaml -->
+    <sys:String x:Key="Pf.001">解像度</sys:String>
+    <sys:String x:Key="Pf.002">左の限界</sys:String>
+    <sys:String x:Key="Pf.003">上の限界</sys:String>
+    <sys:String x:Key="Pf.004">右の限界</sys:String>
+    <sys:String x:Key="Pf.005">下の限界</sys:String>
+    <sys:String x:Key="Pf.006">昼間の画像</sys:String>
+    <sys:String x:Key="Pf.007">夜間の画像</sys:String>
+    <sys:String x:Key="Pf.008">透過色</sys:String>
+    <sys:String x:Key="Pf.009">画面の中心</sys:String>
+    <sys:String x:Key="Pf.010">消失点</sys:String>
+    <sys:String x:Key="Pf.011">パースの強さ</sys:String>
+    <sys:String x:Key="Pf.012">表示する状態量</sys:String>
+    <sys:String x:Key="Pf.013">位置</sys:String>
+    <sys:String x:Key="Pf.014">昼間の画像</sys:String>
+    <sys:String x:Key="Pf.015">夜間の画像</sys:String>
+    <sys:String x:Key="Pf.016">透過色</sys:String>
+    <sys:String x:Key="Pf.017">描画順序</sys:String>
+    <sys:String x:Key="Pf.018">色</sys:String>
+    <sys:String x:Key="Pf.019">針の画像の回転中心</sys:String>
+    <sys:String x:Key="Pf.020">半径</sys:String>
+    <sys:String x:Key="Pf.021">最小の角度</sys:String>
+    <sys:String x:Key="Pf.022">最大の角度</sys:String>
+    <sys:String x:Key="Pf.023">最小値</sys:String>
+    <sys:String x:Key="Pf.024">最大値</sys:String>
+    <sys:String x:Key="Pf.025">傾き</sys:String>
+    <sys:String x:Key="Pf.026">針の固有角振動数</sys:String>
+    <sys:String x:Key="Pf.027">針の減衰比</sys:String>
+    <sys:String x:Key="Pf.028">分解能</sys:String>
+    <sys:String x:Key="Pf.029">1 コマの高さ</sys:String>
+    <sys:String x:Key="Pf.030">表示領域とベース画像（1 つだけ）</sys:String>
+    <sys:String x:Key="Pf.031">表示灯</sys:String>
+    <sys:String x:Key="Pf.032">指針</sys:String>
+    <sys:String x:Key="Pf.033">デジタル数字</sys:String>
+    <sys:String x:Key="Pf.034">円形デジタルゲージ</sys:String>
+    <sys:String x:Key="Pf.035">（セクションを選んでください）</sys:String>
+    <sys:String x:Key="Pf.036">{0}（テキストの {1} 行目）</sys:String>
+    <sys:String x:Key="Pf.037">そのほかの項目（表示だけ。テキストの {0} 行目から）</sys:String>
+    <sys:String x:Key="Pf.038">「一覧から選ぶ」で状態量を選べます。</sys:String>
+    <sys:String x:Key="Pf.039">（一覧にない状態量です）</sys:String>
+    <sys:String x:Key="Pf.040">
+
+[This] を消すと、BVE で運転台が丸ごと見えなくなります。</sys:String>
+    <sys:String x:Key="Pf.041">{0} のセクションと、その中の値（{1} 件）を下のテキストから消します（テキストをクリックして Ctrl+Z で戻せます）。{2}
+
+消しますか？</sys:String>
+    <sys:String x:Key="Pf.042">確認</sys:String>
+    <sys:String x:Key="Pf.043">可動範囲の制限</sys:String>
+    <sys:String x:Key="Pf.044">可動範囲の制限</sys:String>
+    <sys:String x:Key="Pf.045">最小値～最大値の間で止める（既定: {0}）</sys:String>
+    <sys:String x:Key="Pf.046">最小値～最大値の間で止める</sys:String>
+    <sys:String x:Key="Pf.047">可動範囲の制限（StopPin）「{0}」は True か False にしてください。</sys:String>
+    <sys:String x:Key="Pf.048">面の色</sys:String>
+    <sys:String x:Key="Pf.049">LED 消灯の色</sys:String>
+    <sys:String x:Key="Pf.050">針の半径</sys:String>
+    <sys:String x:Key="Pf.051">ゲージの半径</sys:String>
+    <sys:String x:Key="Pf.052">最小値を指す角度（度）</sys:String>
+    <sys:String x:Key="Pf.053">最小の角度（度）</sys:String>
+    <sys:String x:Key="Pf.054">最大値を指す角度（度）</sys:String>
+    <sys:String x:Key="Pf.055">最大の角度（度）</sys:String>
+    <sys:String x:Key="Pf.056">位置（左上）</sys:String>
+    <sys:String x:Key="Pf.057">位置（数字の左上）</sys:String>
+    <sys:String x:Key="Pf.058">位置（回転中心）</sys:String>
+    <sys:String x:Key="Pf.059">{0}（{1}）：このバージョンでは「#」から後ろはコメントになるので、色が読まれません。「#」を付けずに 00FFFF のように書いてください。</sys:String>
+    <sys:String x:Key="Pf.060">ヘッダーのバージョン（{0}）では、{1}（{2}）は使えません（BveTs Instrument Panel 2.01 の項目）。</sys:String>
+    <sys:String x:Key="Pf.061">{0}（{1}）は、このヘッダーのバージョン（{2}）では使えません。BVE で読まれないことがあります。</sys:String>
+    <sys:String x:Key="Pf.062">昼間の画像</sys:String>
+    <sys:String x:Key="Pf.063">夜間の画像</sys:String>
+    <sys:String x:Key="Pf.064">{0}（{1}）「{2}」が見つかりません（パネルファイルからの相対パスで探しました）。</sys:String>
+    <sys:String x:Key="Pf.065">{0}「{1}」の大きさ（{2}×{3}）は 2 のべき乗（64・128・256 …）ではありません。DirectX の仕様で、画像が間延び・縮んだり崩れたりすることがあります。</sys:String>
+    <sys:String x:Key="Pf.066">（未記入）</sys:String>
+    <sys:String x:Key="Pf.067">（既定: {0}）</sys:String>
+    <sys:String x:Key="Pf.068">{0}（{1}）「{2}」は数字にしてください。</sys:String>
+    <sys:String x:Key="Pf.069">{0}（{1}）「{2}」は「x, y」の 2 つの数字にしてください。</sys:String>
+    <sys:String x:Key="Pf.070">{0}（{1}）「{2}」は 6 桁の 16 進数（例：FF0000）にしてください。</sys:String>
+    <sys:String x:Key="Pf.071">{0}（{1}）「{2}」は 0 ～ 255 の整数にしてください。</sys:String>
+    <sys:String x:Key="Pf.072">「;」と「#」</sys:String>
+    <sys:String x:Key="Pf.073">{0}はコメントの始まりなので、値には使えません。</sys:String>
+    <sys:String x:Key="Pf.074">確認</sys:String>
+    <sys:String x:Key="Pf.075">セクション（[This] や [Needle] など）が1つも書かれていません。</sys:String>
+    <sys:String x:Key="Pf.076">古い形式（Version 1.0）のパネルです。この形式では「#」はコメントではなく色（#00ffff など）として読みます。</sys:String>
+    <sys:String x:Key="Pf.077">⚠ [This] がありません。BVE で運転台が丸ごと見えなくなります。「セクションを足す ▼」で [This] を足してください。</sys:String>
+    <sys:String x:Key="Pf.078">（このファイルは Shift_JIS なので、文字コードの指定 :shift_jis も付けます）</sys:String>
+    <sys:String x:Key="Pf.079">古い形式（Version 1.0）のパネルを、BveTs Instrument Panel 2.01 の形に書き直します。
+
+</sys:String>
+    <sys:String x:Key="Pf.080">・1 行目のヘッダーを「{0}」にします{1}
+</sys:String>
+    <sys:String x:Key="Pf.081">・色（Color・TransparentColor）の前の「#」を外します（{0} か所）
+
+</sys:String>
+    <sys:String x:Key="Pf.082">テキストをクリックして Ctrl+Z で戻せます。保存は「すべて保存」のときです。
+
+書き直しますか？</sys:String>
+    <sys:String x:Key="Pf.083">確認</sys:String>
+    <sys:String x:Key="Pf.084">次の行には、色のほかに「#」があります（{0}）。
+2.01 では「#」から後ろはコメントになるので、必要なら下のテキストで直してください。</sys:String>
+    <sys:String x:Key="Pf.085">お知らせ</sys:String>
+    <sys:String x:Key="Pf.086">[{0}] {1}つ目</sys:String>
+</ResourceDictionary>
